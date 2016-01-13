@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCustomersHistoryTable extends Migration
+class CreateCustomerHistoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCustomersHistoryTable extends Migration
     public function up()
     {
         Schema::create('customers_history', function (Blueprint $table) {
-            $table->int('userID');
+            $table->integer('userID')->references('id')->on('users')->onDelete('cascade');;
 			$table->integer('customerId')->references('id')->on('customers')->onDelete('cascade');
 			$table->text('remark')->default('');
 			$table->increments('id');

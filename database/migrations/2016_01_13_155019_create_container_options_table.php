@@ -18,7 +18,7 @@ class CreateContainerOptionsTable extends Migration
 			$table->string('currency',3)->default('EUR');
 			$table->double('value',7,2);
 			$table->text('remark')->default('');
-			$table->integer('counter',2);
+			$table->integer('counter');
 			$table->integer('customerReference');
             $table->timestamps();
         });

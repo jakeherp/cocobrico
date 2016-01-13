@@ -19,7 +19,7 @@ class CreateContainersTable extends Migration
 			$table->integer('customerId')->references('id')->on('customers')->onDelete('cascade');
 			$table->integer('priceId')->references('id')->on('prices')->onDelete('cascade');
 			$table->integer('containerId');
-			$table->integer('BillOfLoading');
+			$table->integer('billOfLoading');
 			$table->date('loadingTime');
 			$table->date('estimatedArrival');
 			$table->date('actualArrival');

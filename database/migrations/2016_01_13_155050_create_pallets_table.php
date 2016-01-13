@@ -20,7 +20,7 @@ class CreatePalletsTable extends Migration
 			$table->date('loadingDate');
 			// ORDER, CONFIRMED
 			$table->string('pdfInvoiceCBE')->default('');
-			$table->integer('status',2)->default(0);
+			$table->integer('status')->default(0);
 			$table->tinyInteger('pickup')->default(0);
 			$table->string('warehouseReference', 10)->default('');
 			$table->integer('warehouseId');

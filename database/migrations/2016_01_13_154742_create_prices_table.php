@@ -12,7 +12,7 @@ class CreatePricesTable extends Migration
      */
     public function up()
     {
-        Schema::create('accounts', function (Blueprint $table) {
+        Schema::create('prices', function (Blueprint $table) {
             $table->increments('id');
 			$table->string('name')->default('');
 			$table->text('description')->default('');
@@ -29,6 +29,6 @@ class CreatePricesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('accounts');
+        Schema::drop('prices');
     }
 }
