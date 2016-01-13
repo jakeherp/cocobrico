@@ -21,7 +21,7 @@ class CreateCustomersTable extends Migration
 			$table->string('billingAddress2', 255)->default('');
 			$table->string('billingCity', 255)->default('');
 			$table->string('billingPostCode', 255)->default('');
-			$table->int('billingCountry', 3)->default(0);
+			$table->integer('billingCountry', 3)->default(0);
 			$table->string('billingPhone', 255)->default('');
 			$table->string('billingFax', 255)->default('');
 			$table->string('billingEmail', 255)->default('');
@@ -33,7 +33,7 @@ class CreateCustomersTable extends Migration
 			$table->string('shippingAddress2', 255)->default('');
 			$table->string('shippingCity', 255)->default('');
 			$table->string('shippingPostCode', 255)->default('');
-			$table->int('shippingCountry', 3)->default(0);
+			$table->integer('shippingCountry', 3)->default(0);
 			$table->string('shippingPhone', 255)->default('');
 			$table->string('shippingFax', 255)->default('');
 			$table->string('shippingEmail', 255)->default('');
@@ -44,19 +44,18 @@ class CreateCustomersTable extends Migration
 			$table->string('forwarderAddress2', 255)->default('');
 			$table->string('forwarderCity', 255)->default('');
 			$table->string('forwarderPostCode', 255)->default('');
-			$table->int('forwarderCountry', 3)->default(0);
+			$table->integer('forwarderCountry', 3)->default(0);
 			$table->string('forwarderPhone', 255)->default('');
 			$table->string('forwarderFax', 255)->default('');
 			$table->string('forwarderEmail', 255)->default('');
-			$table->int('standardPriceID', 10)->default(0);
+			$table->integer('standardPriceID', 10)->default(0);
 			$table->string('currency', 3)->default('EUR');
 			$table->boolean('active')->default(true);
-			$table->int('warehouseID', 10)->default(0);
-			//$table->foreign('warehouseName')->references('warehouseID')->on('warehouses');
+			$table->integer('warehouseID', 10)->default(0);
 			$table->text('hotRemark')->default('');
 			$table->text('remark')->default('');
-			$table->int('loginCount', 10)->default(0);
-			$table->int('loginFailedCount', 10)->default(0);
+			$table->integer('loginCount', 10)->default(0);
+			$table->integer('loginFailedCount', 10)->default(0);
             $table->timestamps();
         });
     }

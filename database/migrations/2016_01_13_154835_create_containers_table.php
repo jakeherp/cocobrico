@@ -14,7 +14,23 @@ class CreateContainersTable extends Migration
     {
         Schema::create('containers', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+			$table->integer('factoryReference');
+			$table->integer('customerReference');
+			$table->integer('customerId')->references('id')->on('customers')->onDelete('cascade');
+			$table->integer('priceId')->references('id')->on('prices')->onDelete('cascade');
+			$table->integer('containerId');
+			$table->integer('BillOfLoading');
+			$table->date('loadingTime');
+			$table->date('estimatedArrival');
+			$table->date('actualArrival');
+			// ORDER, CONFIRMED
+			$table->string('portOfDestination', 255)->default('');
+			$table->string('pdfInvoiceCMA', 255)->default('');
+			$table->string('pdfInvoiceCBE', 255)->default('');
+			$table->string('pdfBillOfLoading', 255)->default('');
+			$table->string('pdfCertificateOfOrigin', 255)->default('');
+			$table->string('pdfPackingList', 255)->default('');
+			$table->timestamps();
         });
     }
 

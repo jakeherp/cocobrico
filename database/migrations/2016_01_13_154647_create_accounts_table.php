@@ -14,7 +14,12 @@ class CreateAccountsTable extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+			$table->integer('customerId')->references('id')->on('customers')->onDelete('cascade');
+            $table->text('remark')->default('');
+			$table->double('amount',7,2);
+			$table->string('currency',3)->default('EUR');
+			$table->smallInteger('type')->default(0);
+			$table->timestamps();
         });
     }
 

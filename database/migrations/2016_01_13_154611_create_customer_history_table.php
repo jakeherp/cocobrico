@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCustomerHistoryTable extends Migration
+class CreateCustomersHistoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,11 @@ class CreateCustomerHistoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('customer_history', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('customers_history', function (Blueprint $table) {
+            $table->int('userID');
+			$table->integer('customerId')->references('id')->on('customers')->onDelete('cascade');
+			$table->text('remark')->default('');
+			$table->increments('id');
             $table->timestamps();
         });
     }
@@ -25,6 +28,6 @@ class CreateCustomerHistoryTable extends Migration
      */
     public function down()
     {
-        Schema::drop('customer_history');
+        Schema::drop('customers_history');
     }
 }

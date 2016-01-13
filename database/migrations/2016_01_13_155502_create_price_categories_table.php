@@ -14,7 +14,10 @@ class CreatePriceCategoriesTable extends Migration
     {
         Schema::create('price_categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+			$table->double('weight',8,2)->default(1.00);
+            $table->string('unit',10)->default('kg');
+			
+			$table->timestamps();
         });
     }
 

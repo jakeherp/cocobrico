@@ -14,6 +14,16 @@ class CreatePalletsTable extends Migration
     {
         Schema::create('pallets', function (Blueprint $table) {
             $table->increments('id');
+			$table->integer('customerReference');
+			$table->integer('customerId')->references('id')->on('customers')->onDelete('cascade');
+			$table->integer('priceId')->references('id')->on('prices')->onDelete('cascade');
+			$table->date('loadingDate');
+			// ORDER, CONFIRMED
+			$table->string('pdfInvoiceCBE')->default('');
+			$table->integer('status',2)->default(0);
+			$table->tinyInteger('pickup')->default(0);
+			$table->string('warehouseReference', 10)->default('');
+			$table->integer('warehouseId');
             $table->timestamps();
         });
     }
