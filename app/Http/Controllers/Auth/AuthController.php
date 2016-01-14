@@ -7,6 +7,8 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
+use App\Http\Requests\CheckEmailRequest;
 
 class AuthController extends Controller
 {
@@ -69,4 +71,15 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+	
+	/**
+	 * Checks if the entered email adress is already in the database. If yes, it will show the login form. If not, it will view the register form.
+	 *
+	 * @param  Request  $request
+	 * @return Customer
+	 */
+	public function checkEmail(CheckEmailRequest $request){
+		
+		return view('auth/email');
+	}
 }

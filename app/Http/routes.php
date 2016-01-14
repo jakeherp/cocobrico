@@ -11,12 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('login');
-});
+Route::get('/', function () { return view('auth.email'); });
+Route::get('about', 'PagesController@about' );
 
-/*
-|--------------------------------------------------------------------------
+
+// Authentication Routes
+Route::post('auth/email', 'Auth\AuthController@checkEmail');
+
+
+/*|--------------------------------------------------------------------------
 | Application Routes
 |--------------------------------------------------------------------------
 |
@@ -27,5 +30,6 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+    
+
 });
