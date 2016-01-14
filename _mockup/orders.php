@@ -1,53 +1,16 @@
-<!doctype html>
-<html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cocobrico Commercial</title>
-    <link rel="stylesheet" href="css/foundation.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/app.css" />
-  </head>
-  <body>
-
-    <header class="top-bar">
-      <div class="top-bar-left">
-        <ul class="menu">
-          <li class="menu-text"><img src="img/logo.svg" alt="Cocobrico"></li>
-          <li><a href="dashboard.html">Dashboard</a></li>
-          <li><a href="orders.html">Orders</a></li>
-          <li><a href="downloads.html">Downloads</a></li>
-        </ul>
-      </div>
-      <div class="top-bar-right">
-        <ul class="dropdown menu" data-dropdown-menu>
-          <li>Welcome back, Mr. Reichmuth</li>
-          <li class="has-submenu">
-            <a href="#"><i class="fa fa-user"></i> Account</a>
-            <ul class="submenu menu vertical" data-submenu>
-              <li><a href="profile.html"><i class="fa fa-credit-card"></i> My Profile</a></li>
-              <li><a href="orders.html"><i class="fa fa-shopping-cart"></i> My Orders</a></li>
-              <li><a href="settings.html"><i class="fa fa-cog"></i> Settings</a></li>
-              <li class="divider"></li>
-              <li><a href="index.html"><i class="fa fa-sign-out"></i> Logout</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </header>
-    
+<?php
+	require('inc/header.php');
+?>
     <section class="row" id="content">
 
-	  <div class="large-12 column">
-        <ul class="dropdown menu pull-right" data-dropdown-menu>
-          <li class="has-submenu"><a href="#" class="button success dropdown" data-dropdown-menu><i class="fa fa-plus"></i> New order</a>
-            <ul class="submenu menu vertical" data-submenu>
-              <li><a href="order_container.html">Order Container</a></li>
-              <li><a href="order_pallets.html">Order Pallets</a></li>
-            </ul>
-          </li>
+	  <div class="large-12 column">        
+        
+        <button class="button success dropdown pull-right" type="button" data-toggle="orderDropdown"><i class="fa fa-plus"></i> New order</button>
+        <ul class="dropdown-pane" id="orderDropdown" data-dropdown data-close-on-click="true">
+          <li><a href="order_options.php">Order Container</a></li>
+          <li><a href="order_pallets.php">Order Pallets</a></li>
         </ul>
+        
       	<h1><i class="fa fa-truck"></i> Orders</h1>
       </div>
 
@@ -250,16 +213,6 @@
 
     </section>
     
-    <footer class="row">
-      <div class="large-12 columns text-center">
-    	&copy; 2016 Cocobrico Europe Ltd
-      </div>
-    </footer>
-
-
-    <script src="js/vendor/jquery.min.js"></script>
-    <script src="js/vendor/what-input.min.js"></script>
-    <script src="js/foundation.min.js"></script>
-    <script src="js/app.js"></script>
-  </body>
-</html>
+<?php
+	require('inc/footer.php');
+?>
