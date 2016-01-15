@@ -14,21 +14,23 @@
       	<h1><i class="fa fa-truck"></i> Orders</h1>
       </div>
 
-      <div class="large-12 columns">
-      
+      <div class="large-12 column">
         <h4>All previous orders <span class="secondary label">37</span></h4>
+      </div>
       
-		<table class="scroll">
+      <div class="large-12 column full-width">
+
+		<table class="scroll" style="width: 100%; padding:0px !important; margin: 0px !important;">
           <thead>
             <tr>
-              <th>Order Date</th>
-              <th>Order No.</th>
-              <th width="5%">Container</th>
-              <th width="5%">1kg</th>
-              <th width="5%">3kg</th>
-              <th width="5%">10kg</th>
-              <th width="30%">Status</th>
-              <th width="20%">Options</th>
+              <th style="min-width: 150px;">Order Date</th>
+              <th style="min-width: 150px;">Order No.</th>
+              <th style="min-width: 100px;">Container</th>
+              <th style="min-width: 100px;">1kg</th>
+              <th style="min-width: 100px;">3kg</th>
+              <th style="min-width: 100px;">10kg</th>
+              <th style="min-width: 260px;">Status</th>
+              <th style="min-width: 150px;">Options</th>
             </tr>
           </thead>
           <tbody>
