@@ -40,7 +40,7 @@
             </tr>
             <tr>
               <td>31.12.2016</td>
-              <td>Container Ordered</td>
+              <td>Option Used</td>
               <td>Debit</td>
               <td></td>
               <td style="color: #FF0004">&euro;-16.000,00</td>
@@ -56,10 +56,10 @@
             </tr>
             <tr>
               <td>31.12.2016</td>
-              <td>Container Ordered</td>
+              <td>Option Used</td>
               <td>Debit</td>
               <td></td>
-              <td style="color: #FF0004">&euro;-16.000,00</td>
+              <td style="color: #FF0004">&euro;-13.000,00</td>
               <td>&euro;0,00</td>
             </tr>
             <tr>
@@ -72,7 +72,7 @@
             </tr>
             <tr>
               <td>31.12.2016</td>
-              <td>Container Ordered</td>
+              <td>Option Used</td>
               <td>Debit</td>
               <td></td>
               <td style="color: #FF0004">&euro;-16.000,00</td>
@@ -88,7 +88,7 @@
             </tr>
             <tr>
               <td>31.12.2016</td>
-              <td>Container Ordered</td>
+              <td>Option Used</td>
               <td>Debit</td>
               <td></td>
               <td style="color: #FF0004">&euro;-16.000,00</td>
@@ -116,41 +116,65 @@
               <td>01.01.2016</td>
               <td>Option Paid</td>
               <td>Credit</td>
-              <td>1</td>
+              <td>&euro;16.000,00</td>
               <td></td>
-              <td>3</td>
+              <td>&euro;32.000,00</td>
             </tr>
             <tr>
               <td>31.12.2016</td>
-              <td>Container Ordered</td>
+              <td>Option Paid</td>
+              <td>Credit</td>
+              <td>&euro;16.000,00</td>
+              <td style="color: #FF0004">&nbsp;</td>
+              <td>&euro;16.000,00</td>
+            </tr>
+            <tr>
+              <td>31.12.2016</td>
+              <td>Option Used</td>
               <td>Debit</td>
               <td></td>
-              <td style="color: #FF0004">-1</td>
-              <td>2</td>
+              <td style="color: #FF0004">&euro;-16.000,00</td>
+              <td>&euro;0,00</td>
             </tr>
             <tr>
               <td>01.01.2016</td>
               <td>Option Paid</td>
               <td>Credit</td>
-              <td>2</td>
+              <td>&euro;16.000,00</td>
               <td></td>
-              <td>2</td>
+              <td>&euro;16.000,00</td>
             </tr>
             <tr>
               <td>31.12.2016</td>
-              <td>Container Ordered</td>
+              <td>Option Used</td>
               <td>Debit</td>
               <td></td>
-              <td style="color: #FF0004">-1</td>
-              <td>0</td>
+              <td style="color: #FF0004">&euro;-16.000,00</td>
+              <td>&euro;0,00</td>
             </tr>
             <tr>
               <td>01.01.2016</td>
               <td>Option Paid</td>
               <td>Credit</td>
-              <td>1</td>
+              <td>&euro;16.000,00</td>
               <td></td>
-              <td>1</td>
+              <td>&euro;16.000,00</td>
+            </tr>
+            <tr>
+              <td>31.12.2016</td>
+              <td>Option Used</td>
+              <td>Debit</td>
+              <td></td>
+              <td style="color: #FF0004">&euro;-16.000,00</td>
+              <td>&euro;0,00</td>
+            </tr>
+            <tr>
+              <td>01.01.2016</td>
+              <td>Option Paid</td>
+              <td>Credit</td>
+              <td>&euro;16.000,00</td>
+              <td></td>
+              <td>&euro;16.000,00</td>
             </tr>
           </tbody>
         </table>

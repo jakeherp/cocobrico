@@ -21,27 +21,20 @@
       <div class="large-6 small-12 large-centered columns">
         <div class="callout large">
           <h3>Sign in</h3>
-          <div class="success callout" data-closable>
-          	Welcome back, Mr. Reichmuth! Please enter your password to continue.
-          </div>
+          <p>Please enter your email address to get started.</p>
 
-            <form action="dashboard.html">
+            <form action="login.php">
               <div class="row">
                 <div class="large-12 columns">
-
+                
                   <div class="input-group">
                     <span class="input-group-label"><i class="fa fa-envelope"></i></span>
-                    <input class="input-group-field" type="email" placeholder="Email Address" value="info@cocobrico.com" disabled>
+                    <input class="input-group-field" type="email" placeholder="Email Address">
+                    <div class="input-group-button">
+                      <input type="submit" class="button alert" value="Validate">
+                    </div>
                   </div>  
-                  <div class="input-group">
-                    <span class="input-group-label"><i class="fa fa-lock"></i></span>
-                    <input class="input-group-field" type="password" placeholder="Password">
-                  </div>  
-
-                  <button class="button alert" type="submit">Login</button>
-                  <div class="float-right text-right">
-                  	<a href="#" class="text-right">Did you forget your password?</a>
-                  </div>
+                                
                 </div>
               </div>
             </form>

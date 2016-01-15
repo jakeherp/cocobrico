@@ -20,41 +20,28 @@
     <section class="row" id="login">
       <div class="large-6 small-12 large-centered columns">
         <div class="callout large">
-          <h3>Sign up</h3>
-          
-          <div class="alert progress" role="progressbar" tabindex="0" aria-valuenow="20" aria-valuemin="0" aria-valuetext="25 percent" aria-valuemax="100">
-            <span class="progress-meter" style="width: 33%">
-            </span>
+          <h3>Sign in</h3>
+          <div class="success callout" data-closable>
+          	Welcome back, Mr. Reichmuth! Please enter your password to continue.
           </div>
-          
-            <form action="login.html">
+
+            <form action="dashboard.php">
               <div class="row">
                 <div class="large-12 columns">
-                
-                
+
                   <div class="input-group">
                     <span class="input-group-label"><i class="fa fa-envelope"></i></span>
                     <input class="input-group-field" type="email" placeholder="Email Address" value="info@cocobrico.com" disabled>
                   </div>  
-                  <label>Please choose a new password
-                    <div class="input-group">
-                      <span class="input-group-label"><i class="fa fa-lock"></i></span>
-                      <input class="input-group-field" type="password" placeholder="Password">
-                    </div>  
-                    <div class="input-group">
-                      <span class="input-group-label"><i class="fa fa-unlock"></i></span>
-                      <input class="input-group-field" type="password" placeholder="Repeat Password">
-                    </div>  
-                
-                    <label>Your business
-                      <select>
-                        <option value="wholesale">Wholesale</option>
-                        <option value="retail">Retail</option>
-                        <option value="lounge">Lounge / Bar</option>
-                        <option value="other">Other</option>
-                      </select>
-                    </label>
-                  <button class="button alert" type="submit">Continue &raquo;</button>
+                  <div class="input-group">
+                    <span class="input-group-label"><i class="fa fa-lock"></i></span>
+                    <input class="input-group-field" type="password" placeholder="Password">
+                  </div>  
+
+                  <button class="button alert" type="submit">Login</button>
+                  <div class="float-right text-right">
+                  	<a href="#" class="text-right">Did you forget your password?</a>
+                  </div>
                 </div>
               </div>
             </form>
