@@ -6,7 +6,7 @@
       <div class="large-6 small-12 large-centered columns">
         <div class="callout large">
           <h3>Sign in</h3>
-          <p>Please enter your email address to get started.</p>
+          <p>Welcome back {{ $user->firstname }}!</p>
 
           @if ($errors->any())
               @foreach ($errors->all() as $error)
