@@ -72,14 +72,46 @@ class AuthController extends Controller
         ]);
     }
 	
+    /**
+     * Shows the email insert form.
+     *
+     * @return Response
+     */
+    public function insertEmail(){
+        return view('auth/email');   
+    }
+
 	/**
-	 * Checks if the entered email adress is already in the database. If yes, it will show the login form. If not, it will view the register form.
+	 * Checks if the entered email adress is already in the database. 
+     * If yes, it will show the login form. 
+     * If not, it will view the register form.
 	 *
 	 * @param  Request  $request
 	 * @return Customer
 	 */
 	public function checkEmail(CheckEmailRequest $request){
-		
-		return view('auth/email');
+
+        $user = User::where('email', '=', $request->email)->firstOrFail();
+
+        if ($user == null) {
+            // user doesn't exist
+            return redirect()->back()->with('error', 'User not exist.');
+        }
+        else{
+            // user exist
+            return view('auth/login', compact('user'));
+        }
+
+        return view('auth/email');
+        
 	}
+
+    /**
+     * Shows the login form.
+     *
+     * @return Response
+     */
+    public function login(){
+        return view('auth/login');   
+    }
 }

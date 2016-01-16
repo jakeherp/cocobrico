@@ -11,13 +11,6 @@
 |
 */
 
-Route::get('/', function () { return view('auth.email'); });
-Route::get('about', 'PagesController@about' );
-
-
-// Authentication Routes
-Route::post('auth/email', 'Auth\AuthController@checkEmail');
-
 
 /*|--------------------------------------------------------------------------
 | Application Routes
@@ -30,6 +23,10 @@ Route::post('auth/email', 'Auth\AuthController@checkEmail');
 */
 
 Route::group(['middleware' => ['web']], function () {
-    
+    Route::get('/', 'Auth\AuthController@insertEmail');
 
+	// Authentication Routes
+	Route::get('email', 'Auth\AuthController@insertEmail');
+	Route::get('login', 'Auth\AuthController@login');
+	Route::post('login', 'Auth\AuthController@checkEmail');
 });

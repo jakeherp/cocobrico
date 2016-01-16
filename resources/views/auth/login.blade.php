@@ -16,13 +16,14 @@
               @endforeach
           @endif
 
-            {!! Form::open(['action' => 'Auth\AuthController@checkEmail']) !!}
+            {!! Form::open(['action' => 'Auth\AuthController@login']) !!}
               <div class="row">
                 <div class="large-12 columns">
                 
                   <div class="input-group">
                     <span class="input-group-label"><i class="fa fa-envelope"></i></span>
-                    {!! Form::email('email', null, ['class' => 'input-group-field', 'placeholder' => 'Email Address']) !!}
+                    {!! Form::email('email', $user->email, ['class' => 'input-group-field', 'placeholder' => 'Email Address', 'disabled' => true]) !!}
+                    {!! Form::password('password', null, ['class' => 'input-group-field', 'placeholder' => 'Password']) !!}
                     <div class="input-group-button">
                       {!! Form::submit('Validate', ['class' => 'button alert']) !!}
                     </div>
