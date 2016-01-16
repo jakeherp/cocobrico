@@ -20,12 +20,19 @@
               <div class="row">
                 <div class="large-12 columns">
                 
-                  <div class="input-group">
+				  <div class="input-group">
                     <span class="input-group-label"><i class="fa fa-envelope"></i></span>
                     {!! Form::email('email', $user->email, ['class' => 'input-group-field', 'placeholder' => 'Email Address', 'disabled' => true]) !!}
+                  </div>  
+                  <div class="input-group">
+                    <span class="input-group-label"><i class="fa fa-lock"></i></span>
                     {!! Form::password('password', null, ['class' => 'input-group-field', 'placeholder' => 'Password']) !!}
-                    <div class="input-group-button">
-                      {!! Form::submit('Validate', ['class' => 'button alert']) !!}
+                  </div>  
+                  {!! Form::submit('Login', ['class' => 'button alert']) !!}
+                  <div class="float-right text-right">
+                  	<a href="#" class="text-right">Did you forget your password?</a>
+                  </div>
+
                     </div>
                   </div>
                                 
