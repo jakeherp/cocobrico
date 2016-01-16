@@ -23,17 +23,17 @@
 
       <div class="top-bar-left" id="main-nav">
         <ul class="menu">
-          <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> {{ trans('global.dashboard') }}</a></li>
-          <li><a href="orders.php"><i class="fa fa-truck"></i> {{ trans('global.orders') }}</a></li>
-          <li><a href="accounts.php"><i class="fa fa-usd"></i> {{ trans('global.accounts') }}</a></li>
-          <li><a href="downloads.php"><i class="fa fa-download"></i> {{ trans('global.downloads') }}</a></li>
-          <li><a href="settings.php"><i class="fa fa-cog"></i> {{ trans('global.settings') }}</a></li>
+          <li><a href="/dashboard"><i class="fa fa-dashboard"></i> {{ trans('global.dashboard') }}</a></li>
+          <li><a href="/orders/overview"><i class="fa fa-truck"></i> {{ trans('global.orders') }}</a></li>
+          <li><a href="/accounts"><i class="fa fa-usd"></i> {{ trans('global.accounts') }}</a></li>
+          <li><a href="/downloads"><i class="fa fa-download"></i> {{ trans('global.downloads') }}</a></li>
+          <li><a href="/settings"><i class="fa fa-cog"></i> {{ trans('global.settings') }}</a></li>
         </ul>
       </div>
       <div class="top-bar-right">
         <ul class="dropdown menu" data-dropdown-menu>
           <li>{{ trans('global.welcome') }}</li>
-          <li class="logout"><a href="index.php"><i class="fa fa-sign-out"></i> {{ trans('global.logout') }}</a></li>
+          <li class="logout"><a href="/logout"><i class="fa fa-sign-out"></i> {{ trans('global.logout') }}</a></li>
         </ul>
       </div>
     </header>
