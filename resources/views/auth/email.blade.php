@@ -18,7 +18,7 @@
                     <div class="input-group-button">
                       <input type="submit" class="button alert" value="Validate">
                     </div>
-                  </div>  
+                  </div>
                                 
                 </div>
               </div>
