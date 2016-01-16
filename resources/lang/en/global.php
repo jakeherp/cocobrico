@@ -16,5 +16,6 @@ return [
     'downloads'			=> 'Downloads',
     'settings'			=> 'Settings',
     'logout'				=> 'Logout',
+    'welcome'			=> 'Welcome back',
 
 ];
