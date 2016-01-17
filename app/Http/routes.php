@@ -29,4 +29,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('email', 'Auth\AuthController@insertEmail');
 	Route::get('login', 'Auth\AuthController@login');
 	Route::post('login', 'Auth\AuthController@checkEmail');
+	Route::get('register', 'Auth\AuthController@register');
+
+	Route::get('register/{token}', 'Auth\TempUserController@create');
 });

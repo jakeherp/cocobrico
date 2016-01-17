@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\TempUser;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -95,7 +96,14 @@ class AuthController extends Controller
 
         if ($user == null) {
             // user doesn't exist
-            return redirect()->back()->with('error', 'User not exist.');
+            $token = str_random(30);
+
+            Mail::send('emails/verifyEmail', [$token], function ($m) {
+                $m->from('noreply@cocobrico.com', 'Cocobrico Europe Ltd.');
+                $m->to($request->email, $request->email)->subject('Verify your email adress!');
+            });
+
+            return view('auth/verifyEmail');
         }
         else{
             // user exist
@@ -113,5 +121,14 @@ class AuthController extends Controller
      */
     public function login(){
         return view('auth/login');   
+    }
+
+    /**
+     * Shows the register form.
+     *
+     * @return Response
+     */
+    public function register(){
+        return view('auth/register');   
     }
 }
