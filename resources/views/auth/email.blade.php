@@ -10,7 +10,7 @@
 
           @include ('errors.list')
 
-            {!! Form::open(array('url' => 'email', 'method' => 'post')) !!}
+            {!! Form::open(array('url' => 'login', 'method' => 'post')) !!}
               <div class="row">
                 <div class="large-12 columns">
                 

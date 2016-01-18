@@ -10,7 +10,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CheckEmailRequest;
 
 use App\TempUser;
+use App\User;
+use App\Customer;
 use Mail;
+use DB;
 
 class TempUserController extends Controller
 {
@@ -35,11 +38,46 @@ class TempUserController extends Controller
     }
 
     /**
+     * Verifies the email
+     *
+     * @param string $token
+     * @return Response
+     */
+    public function verify($token){
+        $tempUser = TempUser::where('token', '=', $token)->firstOrFail();
+
+        DB::table('temp_users')
+            ->where('token', $token)
+            ->update(['confirmed' => 1]);
+
+        return view('auth.register', compact('tempUser'));
+    }
+
+    /**
+     * Shows message, that user has to verify his email.
+     *
+     * @return Response
+     */
+    public function verifymsg($tempUser){
+        $email = $tempUser->email;
+        return view('auth/verifyEmail', compact('email'));
+    }
+
+    /**
+     * Shows form to create a new user.
+     *
+     * @return Response
+     */
+    public function user($tempUser){
+        return view('auth.register', compact('tempUser'));
+    }
+
+    /**
      * Shows the email formular.
      *
      * @return Response
      */
-    public function insert(){
-    	return view('auth.email');
+    public function email(){
+        return view('auth.email');
     }
 }
