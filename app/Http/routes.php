@@ -24,6 +24,7 @@
 
 Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'Auth\TempUserController@insert');
+    Route::post('/', 'Auth\TempUserController@create');
 
 	// Authentication Routes
 	Route::get('email', 'Auth\TempUserController@insert');
@@ -31,6 +32,4 @@ Route::group(['middleware' => ['web']], function () {
 	
 	Route::get('register/{token}', 'Auth\AuthController@index');
 	Route::post('register/{token}', 'Auth\AuthController@create');
-	//Route::get('register', 'Auth\AuthController@create');
-	//Route::post('register', 'Auth\AuthController@create');
 });

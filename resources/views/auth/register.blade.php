@@ -10,7 +10,7 @@
 
           @include ('errors.list')
 
-            {!! Form::open([action('Auth\AuthController@create', $tempUser->token)]) !!}
+            {!! Form::open(array('url' => 'register/{{ $token }}', 'method' => 'post'),$tempUser->token) !!}
               <div class="row">
                 <div class="large-12 columns">
                 

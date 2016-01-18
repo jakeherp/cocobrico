@@ -10,7 +10,7 @@
 
           @include ('errors.list')
 
-            {!! Form::open([action('Auth\TempUserController@create')]) !!}
+            {!! Form::open(array('url' => 'email', 'method' => 'post')) !!}
               <div class="row">
                 <div class="large-12 columns">
                 
