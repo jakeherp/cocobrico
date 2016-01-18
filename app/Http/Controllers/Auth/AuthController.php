@@ -10,6 +10,8 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
 
+use App\Http\Requests\CreateCustomerRequest;
+
 class AuthController extends Controller
 {
     /*
@@ -63,12 +65,29 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
+    public function create(CreateCustomerRequest $request)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'username' => $request['email'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password_1'])
         ]);
+    }
+
+    /**
+     * Shows the register form.
+     *
+     * @param  string  $token
+     * @return Response
+     */
+    public function index($token)
+    {
+        $tempUser = TempUser::where('token', '=', $token)->firstOrFail();
+        return view('auth.register', compact('tempUser'));
+    }
+
+    public function test()
+    {
+        return 'HELLO WORLD!';
     }
 }

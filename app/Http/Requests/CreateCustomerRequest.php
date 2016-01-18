@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class CheckEmailRequest extends Request
+class CreateCustomerRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,8 @@ class CheckEmailRequest extends Request
     public function rules()
     {
         return [
-            'email' => ['required', 'max:100','email','unique:temp_users','unique:users']
+            'email' => ['required', 'max:100','email','unique:users'],
+            'password_1' => ['required', 'min:8', 'max:100','same:password_2']
         ];
     }
 }
