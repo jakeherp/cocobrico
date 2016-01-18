@@ -23,13 +23,12 @@
 */
 
 Route::group(['middleware' => ['web']], function () {
-    Route::get('/', 'Auth\AuthController@insertEmail');
+    Route::get('/', 'Auth\TempUserController@insert');
 
 	// Authentication Routes
-	Route::get('email', 'Auth\AuthController@insertEmail');
-	Route::get('login', 'Auth\AuthController@login');
-	Route::post('login', 'Auth\AuthController@checkEmail');
-	Route::get('register', 'Auth\AuthController@register');
-
-	Route::get('register/{token}', 'Auth\TempUserController@create');
+	Route::get('email', 'Auth\TempUserController@insert');
+	Route::post('email', 'Auth\TempUserController@create');
+	
+	//Route::get('register', 'Auth\AuthController@register');
+	//Route::get('register/{token}', 'Auth\TempUserController@create');
 });

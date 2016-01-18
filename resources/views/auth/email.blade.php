@@ -8,15 +8,9 @@
           <h3>Sign in</h3>
           <p>Please enter your email address to get started.</p>
 
-          @if ($errors->any())
-              @foreach ($errors->all() as $error)
-                <div class="callout alert">
-                  {{ $error }}
-                </div>
-              @endforeach
-          @endif
+          @include ('errors.list')
 
-            {!! Form::open(['action' => 'Auth\AuthController@checkEmail']) !!}
+            {!! Form::open(['method' => 'POST', action('Auth\TempUserController@create')]) !!}
               <div class="row">
                 <div class="large-12 columns">
                 

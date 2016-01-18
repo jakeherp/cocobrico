@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Temp_User extends Model
+class TempUser extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,7 +12,7 @@ class Temp_User extends Model
      * @var array
      */
     protected $fillable = [
-        'email', 'confirmed'
+        'email', 'token', 'confirmed'
     ];
 
     /**
