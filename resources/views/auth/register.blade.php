@@ -10,7 +10,7 @@
 
           @include ('errors.list')
 
-            {!! Form::open(array('url' => 'register/{{ $token }}', 'method' => 'post'),$tempUser->token) !!}
+            {!! Form::open(['url' => 'register', 'method' => 'post']) !!}
               <div class="row">
                 <div class="large-12 columns">
                 
