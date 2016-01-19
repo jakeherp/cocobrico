@@ -17,7 +17,7 @@
               <div class="row">
                 <div class="large-12 columns">
                 
-				  <div class="input-group">
+				          <div class="input-group">
                     <span class="input-group-label"><i class="fa fa-envelope"></i></span>
                     {!! Form::email('email', $tempUser->email, ['class' => 'input-group-field', 'placeholder' => 'Email Address', 'readonly']) !!}
                   </div>
@@ -35,10 +35,9 @@
                   
                   <label>
                   	Your business
-                    {!! Form::select('business', array('wholesale' => 'Wholesale', 'retail' => 'Retail', 'lounge' => 'Lounge / Bar', 'other' => 'Other'), 'wholesale');
+                    {!! Form::select('business', array('wholesale' => 'Wholesale', 'retail' => 'Retail', 'lounge' => 'Lounge / Bar', 'other' => 'Other'), 'wholesale') !!}
                   </label>
                   {!! Form::submit('Continue &raquo;', ['class' => 'button alert']) !!}
-
                     </div>
                   </div>
                                 

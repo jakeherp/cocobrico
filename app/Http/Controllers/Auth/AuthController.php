@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Customer;
 use App\TempUser;
+use Mail;
+use DB;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -11,6 +14,7 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\CreateCustomerRequest;
+use App\Http\Requests\CheckEmailRequest;
 
 class AuthController extends Controller
 {
@@ -67,11 +71,12 @@ class AuthController extends Controller
      */
     public function create(CreateCustomerRequest $request)
     {
-        return User::create([
+        User::create([
             'username' => $request['email'],
             'email' => $request['email'],
             'password' => bcrypt($request['password_1'])
         ]);
+        return view('auth.customer', compact('user'));
     }
 
     /**
@@ -80,14 +85,55 @@ class AuthController extends Controller
      * @param  string  $token
      * @return Response
      */
-    public function index($token)
+    public function verify($token)
     {
         $tempUser = TempUser::where('token', '=', $token)->firstOrFail();
+        if($tempUser != null){
+            DB::table('temp_users')->where('id', $tempUser->id)->update(['verified' => 1]);
+        }
         return view('auth.register', compact('tempUser'));
     }
 
-    public function test()
+    public function loginControl(CheckEmailRequest $request)
     {
-        return 'HELLO WORLD!';
+        $email = $request->email;
+        $customer = Customer::where('billingEmail', '=', $email)->first();
+        if($customer != null){
+            return view('auth.login', compact('email'));
+        }
+        else{
+            $user = User::where('email', '=', $email)->first();
+            if($user != null){
+                return view('auth.customer', compact('user'));
+            }
+            else{
+                $tempUser = TempUser::where('email', '=', $email)->first();
+                if($tempUser != null){
+                    if($tempUser->verified){
+                        // Show User form.
+                        return view('auth.register', compact('tempUser'));
+                    }
+                    else{
+                        // Show Message: Email not verified.
+                        return view('auth.verifyEmail', compact('email'));
+                    }
+                }
+                else{
+                    // Create new TempUser
+                    $token = str_random(40);
+                    TempUser::create([
+                        'email' => $email,
+                        'token' => $token,
+                        'verified' => 0
+                    ]);
+                    Mail::send('emails.verifyEmail', compact('token'), function ($m) use ($email) {
+                        $m->from('noreply@cocobrico.com', 'Cocobrico Europe Ltd.');
+                        $m->to($email,$email)->subject('Verify your email adress!');
+                    });
+                    return view('auth.verifyEmail', compact('email'));
+                }
+            }
+        }
+
     }
 }

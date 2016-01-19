@@ -12,7 +12,7 @@ class TempUser extends Model
      * @var array
      */
     protected $fillable = [
-        'email', 'token', 'confirmed'
+        'email', 'token', 'verified'
     ];
 
     /**

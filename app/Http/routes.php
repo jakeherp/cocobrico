@@ -27,12 +27,17 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/', 'Auth\TempUserController@create');
 
 	// Authentication Routes
-	Route::get('email', 'Auth\TempUserController@insert');
-	Route::post('email', 'Auth\TempUserController@create');
+	Route::get('login', function() { return view('auth.email'); });
+	Route::post('login', 'Auth\AuthController@loginControl');
 	
-	Route::post('register', 'Auth\AuthController@create');
 	Route::get('register', function(){ return view('errors.404'); });
-	Route::get('register/{token}', 'Auth\AuthController@index');
+	Route::post('register', 'Auth\AuthController@create');
+
+	Route::get('new-customer', function(){ return view('errors.404'); });
+	Route::post('new-customer', 'CustomerController@create');
+
+	Route::get('verify', function(){ return view('errors.404'); });
+	Route::get('verify/{token}', 'Auth\AuthController@verify');
 
 	
 });

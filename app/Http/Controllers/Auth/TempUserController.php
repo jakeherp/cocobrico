@@ -33,13 +33,4 @@ class TempUserController extends Controller
         });
         return view('auth/verifyEmail', compact('email'));
     }
-
-    /**
-     * Shows the email formular.
-     *
-     * @return Response
-     */
-    public function insert(){
-    	return view('auth.email');
-    }
 }

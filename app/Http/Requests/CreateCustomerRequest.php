@@ -24,8 +24,7 @@ class CreateCustomerRequest extends Request
     public function rules()
     {
         return [
-            'email' => ['required', 'max:100','email','unique:users'],
-            'password_1' => ['required', 'min:8', 'max:100','same:password_2']
+
         ];
     }
 }

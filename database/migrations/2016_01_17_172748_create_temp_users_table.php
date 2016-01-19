@@ -16,7 +16,7 @@ class CreateTempUsersTable extends Migration
             $table->increments('id');
             $table->string('email')->unique();
             $table->string('token');
-            $table->boolean('confirmed')->default(0);
+            $table->boolean('verified')->default(0);
             $table->timestamps();
         });
     }
