@@ -23,8 +23,8 @@
 */
 
 Route::group(['middleware' => ['web']], function () {
-    Route::get('/', 'Auth\TempUserController@insert');
-    Route::post('/', 'Auth\TempUserController@create');
+    Route::get('/', function() { return view('auth.email'); });
+    Route::post('/', function() { return view('auth.email'); });
 
 	// Authentication Routes
 	Route::get('login', function() { return view('auth.email'); });
