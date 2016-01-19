@@ -24,7 +24,7 @@ class CheckEmailRequest extends Request
     public function rules()
     {
         return [
-            'email' => ['required', 'max:100','email']
+            'email' => ['required', 'max:100','email','unique:temp_users','unique:users']
         ];
     }
 }

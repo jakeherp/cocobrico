@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\User;
+use App\TempUser;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -9,11 +11,6 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\CreateCustomerRequest;
-use App\Http\Requests\CheckEmailRequest;
-
-use App\TempUser;
-use App\User;
-use App\Customer;
 
 class AuthController extends Controller
 {
@@ -78,22 +75,19 @@ class AuthController extends Controller
     }
 
     /**
-     * Shows form to create a new customer.
+     * Shows the register form.
      *
+     * @param  string  $token
      * @return Response
      */
-    public function customer($user)
+    public function index($token)
     {
-        return view('auth.customer', compact('user'));
+        $tempUser = TempUser::where('token', '=', $token)->firstOrFail();
+        return view('auth.register', compact('tempUser'));
     }
 
-    /**
-     * Shows the login form.
-     *
-     * @return Response
-     */
-    public function login($customer)
+    public function test()
     {
-        return view('auth.login', compact('customer'));
+        return 'HELLO WORLD!';
     }
 }
