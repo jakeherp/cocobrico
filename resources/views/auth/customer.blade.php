@@ -13,7 +13,7 @@
 
           @include ('errors.list')
 
-            {!! Form::open(['url' => 'new-customer', 'method' => 'post', 'files' => true]) !!}
+            {!! Form::open(['url' => 'register/step3', 'method' => 'post', 'files' => true]) !!}
               <div class="row">
                 <div class="large-12 columns">
 

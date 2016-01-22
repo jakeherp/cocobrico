@@ -8,10 +8,6 @@
           <h3>Sign in</h3>
           <p>Welcome back {{ $user->firstname }}!</p>
 
-          @if ($message)
-            <p>{{ $message }}</p>
-          @endif
-
           @if ($errors->any())
               @foreach ($errors->all() as $error)
                 <div class="callout alert">
@@ -20,7 +16,7 @@
               @endforeach
           @endif
 
-            {!! Form::open(['action' => 'Auth\AuthController@login']) !!}
+            {!! Form::open(['url' => 'login', 'method' => 'post']) !!}
               <div class="row">
                 <div class="large-12 columns">
                 

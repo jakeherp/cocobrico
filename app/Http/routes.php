@@ -23,21 +23,19 @@
 */
 
 Route::group(['middleware' => ['web']], function () {
-    Route::get('/', function() { return view('auth.email'); });
-    Route::post('/', function() { return view('auth.email'); });
+	Route::get('/', 'Auth\AuthController@showEmailForm');
 
-	// Authentication Routes
-	Route::get('login', function() { return view('auth.email'); });
-	Route::post('login', 'Auth\AuthController@loginControl');
-	
-	Route::get('register', function(){ return view('errors.404'); });
-	Route::post('register', 'Auth\AuthController@create');
+	Route::post('auth', 'Auth\AuthController@authRoute');
 
-	Route::get('new-customer', function(){ return view('errors.404'); });
-	Route::post('new-customer', 'CustomerController@create');
+	Route::get('login', 'Auth\AuthController@showLoginForm');
+	Route::post('login', 'Auth\AuthController@login');
+	Route::get('logout', 'Auth\AuthController@logout');
 
-	Route::get('verify', function(){ return view('errors.404'); });
-	Route::get('verify/{token}', 'Auth\AuthController@verify');
+	Route::post('password/email', 'Auth\AuthController@login');
+	Route::post('password/reset', 'Auth\AuthController@login');
+	Route::get('password/reset/{token?}', 'Auth\AuthController@logout');
 
-	
+    // Register User
+	Route::get('register/step1/{token}', 'Auth\AuthController@showUserForm');
+    Route::post('register/step2/', 'Auth\AuthController@registerUser');
 });

@@ -24,7 +24,17 @@ class CreateCustomerRequest extends Request
     public function rules()
     {
         return [
-
+            'company' => ['required', 'max:100'],
+            'firstName' => ['required', 'max:100'],
+            'lastName' => ['required', 'max:100'],
+            'taxId' => ['max:100'],
+            'address1' => ['required','max:100'],
+            'address2' => ['max:100'],
+            'city' => ['required','max:100'],
+            'postCode' => ['required','max:100'],
+            'country' => ['required','max:100'],
+            'phone' => ['max:100'],
+            'fax' => ['max:100']
         ];
     }
 }

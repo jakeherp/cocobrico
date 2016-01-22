@@ -13,19 +13,20 @@
 
           @include ('errors.list')
 
-            {!! Form::open(['url' => 'register', 'method' => 'post']) !!}
+            {!! Form::open(['url' => 'register/step2', 'method' => 'post']) !!}
+            
               <div class="row">
                 <div class="large-12 columns">
                 
 				          <div class="input-group">
                     <span class="input-group-label"><i class="fa fa-envelope"></i></span>
-                    {!! Form::email('email', $tempUser->email, ['class' => 'input-group-field', 'placeholder' => 'Email Address', 'readonly']) !!}
+                    {!! Form::email('email', $user->email, ['class' => 'input-group-field', 'placeholder' => 'Email Address', 'readonly']) !!}
                   </div>
                   <label>
                   	Please choose a password
                     <div class="input-group">
                       <span class="input-group-label"><i class="fa fa-lock"></i></span>
-                      {!! Form::password('password_1', null, ['class' => 'input-group-field', 'placeholder' => 'Password']) !!}
+                      {!! Form::password('password', null, ['class' => 'input-group-field', 'placeholder' => 'Password']) !!}
                     </div>
                     <div class="input-group">
                       <span class="input-group-label"><i class="fa fa-lock"></i></span>
