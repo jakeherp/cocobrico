@@ -5,9 +5,14 @@
 	<section class="row" id="login">
       <div class="large-6 small-12 large-centered columns">
         <div class="callout large">
-          <h3>Verify your Email Adress</h3>
-          <p>We sent an email to {{ $email }}. Please verify it by clicking on the link it contains. If you
-          	havn't got a email, click this LINK to send a new one.</p>
+          <h3>{{ trans('auth.signup') }}</h3>
+
+          <div class="alert progress" role="progressbar" tabindex="0" aria-valuenow="20" aria-valuemin="0" aria-valuetext="25 percent" aria-valuemax="100">
+            <span class="progress-meter" style="width: 33%"></span>
+          </div>
+
+          <h4>{{ trans('auth.activateemail') }}</h4>
+          <p>{{ trans('auth.activateemaildesc') }}</p>
           <p>
            <a href="register/step1/{{ $token }}">TEST</a>
           </p> 

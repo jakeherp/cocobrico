@@ -4,21 +4,21 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cocobrico Commercial</title>
-	<link rel="stylesheet" href="{{ URL::asset('css/foundation.css') }}" />
+    <title>{{ trans('global.title') }}</title>
+  	<link rel="stylesheet" href="{{ URL::asset('css/foundation.css') }}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="{{ URL::asset('css/app.css') }}" />
-	<link rel="apple-touch-icon" href="{{ URL::asset('img/touch-icon-iphone.png') }}">
+  	<link rel="stylesheet" href="{{ URL::asset('css/app.css') }}" />
+  	<link rel="apple-touch-icon" href="{{ URL::asset('img/touch-icon-iphone.png') }}">
     <link rel="apple-touch-icon" sizes="76x76" href="{{ URL::asset('img/touch-icon-ipad.png') }}">
     <link rel="apple-touch-icon" sizes="120x120" href="{{ URL::asset('img/touch-icon-iphone-retina.png') }}">
     <link rel="apple-touch-icon" sizes="152x152" href="{{ URL::asset('img/touch-icon-ipad-retina.png') }}">
-	<link rel="shortcut icon" href="{{ URL::asset('img/favicon.png') }}" type="image/png">
+  	<link rel="shortcut icon" href="{{ URL::asset('img/favicon.png') }}" type="image/png">
   </head>
   <body>
 
     <header class="row">
       <div class="large-12 columns text-center">
-        <h1><img src="{{ URL::asset('img/logo.svg') }}" alt="Cocobrico">Commercial Customers</h1>
+        <h1><img src="{{ URL::asset('img/logo.svg') }}" alt="Cocobrico">{{ trans('global.commercialcustomers') }}</h1>
       </div>
     </header>
 
@@ -26,7 +26,7 @@
 	    
     <footer class="row">
       <div class="large-12 columns text-center">
-    	&copy; 2016 Cocobrico Europe Ltd
+        &copy; <?php echo date("Y"); ?> {{ trans('global.company') }}
       </div>
     </footer>
 	
