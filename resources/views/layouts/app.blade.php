@@ -48,7 +48,7 @@
 	    
     <footer class="row">
       <div class="large-12 columns text-center">
-    	&copy; <?php echo date("Y"); ?> Cocobrico Europe Ltd
+        &copy; <?php echo date("Y"); ?> Cocobrico Europe Ltd
       </div>
     </footer>
 
