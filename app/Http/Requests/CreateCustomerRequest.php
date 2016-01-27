@@ -24,17 +24,17 @@ class CreateCustomerRequest extends Request
     public function rules()
     {
         return [
-            'company' => ['required', 'max:100'],
-            'firstName' => ['required', 'max:100'],
-            'lastName' => ['required', 'max:100'],
+            'billingCompanyName' => ['required', 'max:100'],
+            'billingFirstName' => ['required', 'max:100'],
+            'billingLastName' => ['required', 'max:100'],
             'taxId' => ['max:100'],
-            'address1' => ['required','max:100'],
-            'address2' => ['max:100'],
-            'city' => ['required','max:100'],
-            'postCode' => ['required','max:100'],
-            'country' => ['required','max:100'],
-            'phone' => ['max:100'],
-            'fax' => ['max:100']
+            'billingAddress1' => ['required','max:100'],
+            'billingAddress2' => ['max:100'],
+            'billingCity' => ['required','max:100'],
+            'billingPostCode' => ['required','max:100'],
+            'billingCountry' => ['required','max:100'],
+            'billingPhone' => ['max:100'],
+            'billingFax' => ['max:100']
         ];
     }
 }

@@ -77,7 +77,7 @@ class UserController extends Controller
     public function register(CheckPasswordRequest $request){
     	$user = User::where('email', '=', $request->email)->where('register_token', '=', $request->register_token)->firstOrFail();
     	if ($user != null) {
-		   	$user->password = Hash::make($request->password_1);
+		   	$user->password = Hash::make($request->password);
 			$user->save();
 			// User logged in!
 			return $this->authenticate($request);	
@@ -122,6 +122,9 @@ class UserController extends Controller
 	        	// Show the dashboard, if the user has a customer
 	        	return redirect('dashboard');
 	        }
+        }
+        else{
+        	return redirect()->back()->withInput();
         }
     }
 

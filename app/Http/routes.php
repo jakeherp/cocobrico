@@ -23,10 +23,6 @@
 |
 */
 
-Route::group(['middleware' => ['auth']], function () {
-    
-});
-
 Route::group(['middleware' => ['web']], function () {
     Route::get('/', function () { return view('auth.email'); });
 
@@ -40,7 +36,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('login', 'UserController@login');
     Route::get('login', function () { return view('auth.login'); });
 
-    Route::get('dashboard', 'PagesController@index');
+    Route::get('dashboard', 'PagesController@dashboard');
     
     Route::get('customer/create', 'CustomerController@creationForm');
     Route::post('customer/create', 'CustomerController@create');

@@ -39,7 +39,7 @@
       <div class="top-bar-right">
         <ul class="dropdown menu" data-dropdown-menu>
           <li>{{ trans('global.welcome') }}</li>
-          <li class="logout"><a href="index.php"><i class="fa fa-sign-out"></i> {{ trans('global.logout') }}</a></li>
+          <li class="logout"><i class="fa fa-sign-out"></i>{!! link_to('logout', $title = trans('global.logout'), $attributes = array(), $secure = null); !!}</li>
         </ul>
       </div>
     </header>

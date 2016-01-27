@@ -27,7 +27,7 @@
                   	Please choose a password
                     <div class="input-group">
                       <span class="input-group-label"><i class="fa fa-lock"></i></span>
-                      {!! Form::password('password_1', null, ['class' => 'input-group-field', 'placeholder' => 'Password']) !!}
+                      {!! Form::password('password', null, ['class' => 'input-group-field', 'placeholder' => 'Password']) !!}
                     </div>
                     <div class="input-group">
                       <span class="input-group-label"><i class="fa fa-lock"></i></span>
