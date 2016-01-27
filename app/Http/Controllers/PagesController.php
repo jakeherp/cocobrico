@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Auth;
+
 class PagesController extends Controller
 {
     public function __construct(){
@@ -19,6 +21,7 @@ class PagesController extends Controller
 	 * @return Response
 	 */
     public function dashboard(){
-    	return view('pages.dashboard');
+    	$user = Auth::user();
+    	return view('pages.dashboard', compact('user'));
 	}
 }

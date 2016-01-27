@@ -29,7 +29,7 @@
 
       <div class="top-bar-left" id="main-nav">
         <ul class="menu">
-          <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> {{ trans('global.dashboard') }}</a></li>
+          <li><a href="{{ url('dashboard') }}"><i class="fa fa-dashboard"></i> {{ trans('global.dashboard') }}</a></li>
           <li><a href="orders.php"><i class="fa fa-truck"></i> {{ trans('global.orders') }}</a></li>
           <li><a href="accounts.php"><i class="fa fa-usd"></i> {{ trans('global.accounts') }}</a></li>
           <li><a href="downloads.php"><i class="fa fa-download"></i> {{ trans('global.downloads') }}</a></li>
@@ -38,8 +38,8 @@
       </div>
       <div class="top-bar-right">
         <ul class="dropdown menu" data-dropdown-menu>
-          <li>{{ trans('global.welcome') }}</li>
-          <li class="logout"><i class="fa fa-sign-out"></i>{!! link_to('logout', $title = trans('global.logout'), $attributes = array(), $secure = null); !!}</li>
+          <li>{{ trans('global.welcome') }} {{ $user->firstname }}</li>
+          <li class="logout"><a href="{{ url('logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
         </ul>
       </div>
     </header>

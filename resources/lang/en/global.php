@@ -15,7 +15,7 @@ return [
     'accounts'			    => 'Accounts',
     'downloads'			    => 'Downloads',
     'settings'			    => 'Settings',
-    'logout'				=> 'Logout',
+    'logout'				=> '<i class="fa fa-sign-out"></i>Logout',
     'welcome'			    => 'Welcome back',
     'commercialcustomers'   => 'Commercial Customers',
     'company'               => 'Cocobrico Europe Ltd',
