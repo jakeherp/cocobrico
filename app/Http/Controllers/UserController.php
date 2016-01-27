@@ -80,7 +80,7 @@ class UserController extends Controller
 		   	$user->password = Hash::make($request->password_1);
 			$user->save();
 			// User logged in!
-			return $this->authenticate($user);	
+			return $this->authenticate($request);	
 		}
     }
 
