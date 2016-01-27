@@ -27,8 +27,11 @@ trait AuthenticatesUsers
      */
     public function showLoginForm()
     {
-        if (view()->exists('auth.authenticate')) {
-            return view('auth.authenticate');
+        $view = property_exists($this, 'loginView')
+                    ? $this->loginView : 'auth.authenticate';
+
+        if (view()->exists($view)) {
+            return view($view);
         }
 
         return view('auth.login');
@@ -96,7 +99,7 @@ trait AuthenticatesUsers
         }
 
         if (method_exists($this, 'authenticated')) {
-            return $this->authenticated($request, Auth::user());
+            return $this->authenticated($request, Auth::guard($this->getGuard())->user());
         }
 
         return redirect()->intended($this->redirectPath());

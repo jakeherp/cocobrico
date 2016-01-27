@@ -1,5 +1,3 @@
-<p>Dear customer,</p>
-
-<p>Please verify your email address to continue the sign up process at Cocobrico:</p>
+<p>Please verify your Emailadress to register at cocobrico.com:</p>
 
 <a href="#">VERIFY {{ $token }}</a>

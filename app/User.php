@@ -7,12 +7,19 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password', 'register_token', 'verified'
+        'username', 'email', 'password', 'register_token'
     ];
 
     /**
@@ -25,23 +32,39 @@ class User extends Authenticatable
     ];
 
     /**
-     * Creates a new user only with his email and a randome token.
+     * Gives back, if the user has a given permission.
      *
-     * @param  string $email
-     * @return string $token
+     * @param  string  $slug
+     * @return boolean $permission
      */
-    public function registerEmail($email){
-        $token = str_random(40);
-        User::create([
-            'username' => $email,
-            'email' => $email,
-            'verified' => 0,
-            'register_token' => $token
-        ]);
-        /*Mail::send('emails.verifyEmail', compact('token'), function ($m) use ($email) {
-            $m->from('noreply@cocobrico.com', 'Cocobrico Europe Ltd.');
-            $m->to($email,$email)->subject('Verify your email adress!');
-        });*/
-        return $token;
+    public function has($slug)
+    {
+        $check = $this->permissions()->where('slug', $slug);
+        if(count($check) == 1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    /**
+     * Relations to other models:
+     */
+
+    /**
+     * Get the customers associated with the user.
+     */
+    public function customers()
+    {
+        return $this->belongsToMany('App\Customer');
+    }
+
+    /**
+     * Get the permissions associated with the user.
+     */
+    public function permissions()
+    {
+        return $this->belongsToMany('App\Permission');
     }
 }

@@ -16,8 +16,9 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('username', 100)->unique();
             $table->string('email', 100)->unique();
-            $table->string('password', 100);
-			$table->integer('role')->default(0);
+			$table->string('firstname', 100)->default('');
+			$table->string('lastname', 100)->default('');
+            $table->string('password', 100)->default('');
 			$table->integer('loginCounter')->default(0);
 			$table->integer('failedLoginCounter')->default(0);
             $table->boolean('verified')->default(0);

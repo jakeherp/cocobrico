@@ -6,7 +6,7 @@
     "homepage":          "https://github.com/doctrine/instantiator",
     "keywords":          [
         "instantiate",
-        "constructor" 
+        "constructor"
     ],
     "authors": [
         {

@@ -8,16 +8,14 @@ return [
     |--------------------------------------------------------------------------
 	*/
 
-    'title'			      	=> 'Cocobrico Commercial',
-    'menu'			       	=> 'Menu',
-    'dashboard'		       	=> 'Dashboard',
+    'title'				=> 'Cocobrico Commercial',
+    'menu'				=> 'Menu',
+    'dashboard'			=> 'Dashboard',
     'orders'				=> 'Orders',
-    'accounts'	     		=> 'Accounts',
-    'downloads'		       	=> 'Downloads',
-    'settings'		    	=> 'Settings',
+    'accounts'			=> 'Accounts',
+    'downloads'			=> 'Downloads',
+    'settings'			=> 'Settings',
     'logout'				=> 'Logout',
-    'welcome'		     	=> 'Welcome back',
-    'commercialcustomers'   => 'Commercial Customers',
-    'company'               => 'Cocobrico Europe Ltd',
+    'welcome'			=> 'Welcome back',
 
 ];

@@ -6,37 +6,29 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
+	/**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'customers';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-    	'billingCompanyName',
-    	'billingFirstName',
-    	'billingLastName',
-    	'billingAddress1',
-    	'billingAddress2',
-    	'billingCity',
-    	'billingPostCode',
-    	'billingCountry',
-    	'billingPhone',
-    	'billingFax',
-    	'billingEmail',
-    	'taxID',
-    	'standardPriceID',
-    	'currency',
-    	'active',
-    	'warehouseID',
-    	'hotRemark',
-    	'remark'
+        'billingCompanyName', 'billingFirstName', 'billingLastName', 'billingAddress1',
+        'billingAddress2', 'billingCity', 'billingPostCode', 'billingCountry',
+        'billingPhone', 'billingFax', 'billingEmail', 'taxID'
     ];
 
     /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
+     * Get the users associated with the customer.
      */
-    protected $hidden = [
-    ];
+    public function user()
+    {
+        return $this->belongsToMany('App\User');
+    }
 }

@@ -5,8 +5,8 @@
 	<section class="row" id="login">
       <div class="large-6 small-12 large-centered columns">
         <div class="callout large">
-          <h3>{{ trans('auth.signin') }}</h3>
-          <p>{{ trans('auth.welcomeback') }}, {{ $user->firstname }}!</p>
+          <h3>Sign in</h3>
+          <p>Welcome back!</p>
 
           @if ($errors->any())
               @foreach ($errors->all() as $error)
@@ -22,22 +22,26 @@
                 
 				          <div class="input-group">
                     <span class="input-group-label"><i class="fa fa-envelope"></i></span>
-                    {!! Form::email('email', $user->email, ['class' => 'input-group-field', 'placeholder' => '{{ trans('auth.email') }}', 'disabled' => true]) !!}
+                    {!! Form::email('email', session('email'), ['class' => 'input-group-field', 'placeholder' => 'Email Address']) !!}
                   </div>  
                   <div class="input-group">
                     <span class="input-group-label"><i class="fa fa-lock"></i></span>
-                    {!! Form::password('password', null, ['class' => 'input-group-field', 'placeholder' => '{{ trans('auth.password') }}']) !!}
+                    {!! Form::password('password', null, ['class' => 'input-group-field', 'placeholder' => 'Password']) !!}
                   </div>  
-                  {!! Form::submit('{{ trans('auth.login') }}', ['class' => 'button alert']) !!}
+                  {!! Form::submit('Login', ['class' => 'button alert']) !!}
                   <div class="float-right text-right">
-                  	<a href="#" class="text-right">{{ trans('auth.forgotpassword') }}</a>
+                  	<a href="#" class="text-right">Did you forget your password?</a>
                   </div>
 
                 </div>
-              </div>
+               </div>
             {!! Form::close() !!}              
+                </div>
+              </div>
+            
+            
         </div>
       </div>
-  </section>
+    </section>
 	
 @endsection
