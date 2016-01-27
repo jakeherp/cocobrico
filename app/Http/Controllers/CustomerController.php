@@ -47,7 +47,7 @@ class CustomerController extends Controller
 		$customer->billingEmail = $user->email;
 		$customer->taxID = $request->taxID;
 		$user->customers()->save($customer);
-		return view('pages.dashboard');
+		return view('pages.dashboard',compact('user'));
 	}
 
 	/**
