@@ -24,8 +24,8 @@
 */
 
 Route::group(['middleware' => ['web']], function () {
-    Route::get('/', function () { return view('auth.email'); });
-
+    Route::get('/', 'PagesController@index');
+    
     Route::post('identify', 'UserController@identify');
     Route::get('identify', function () { return redirect('/'); });
 

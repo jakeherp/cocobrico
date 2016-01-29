@@ -12,7 +12,21 @@ use Auth;
 class PagesController extends Controller
 {
     public function __construct(){
-		$this->middleware('auth');
+		$this->middleware('auth', ['only' => 'dashboard']);
+	}
+
+	/**
+	 * Shows the index page.
+	 *
+	 * @return Response
+	 */
+    public function index(){
+    	if (Auth::check()) {
+	    	return redirect('dashboard');
+		}
+		else{
+			return view('auth.email');
+		}
 	}
 
 	/**

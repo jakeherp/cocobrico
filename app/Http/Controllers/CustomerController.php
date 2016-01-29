@@ -33,6 +33,13 @@ class CustomerController extends Controller
     	$user->firstName = $request->billingFirstName;
     	$user->lastName = $request->billingLastName;
     	$user->save();
+
+    	if ($request->hasFile('proofOfIncorporation')) {
+    		if ($request->file('proofOfIncorporation')->isValid()) {
+    			//$request->file('proofOfIncorporation')->move('/files/user_'.$user->id);
+			}
+		}
+
 		$customer = new Customer();
 		$customer->billingCompanyName = $request->billingCompanyName;
 		$customer->billingFirstName = $request->billingFirstName;
@@ -47,7 +54,7 @@ class CustomerController extends Controller
 		$customer->billingEmail = $user->email;
 		$customer->taxID = $request->taxID;
 		$user->customers()->save($customer);
-		return view('pages.dashboard',compact('user'));
+		return redirect('dashboard');
 	}
 
 	/**
