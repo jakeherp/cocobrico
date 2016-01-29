@@ -37,6 +37,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('login', function () { return view('auth.login'); });
 
     Route::get('dashboard', 'PagesController@dashboard');
+    Route::get('accounts', 'PagesController@accounts');
+    Route::get('orders', 'PagesController@orders');
+    Route::get('downloads', 'PagesController@downloads');
+    Route::get('settings', 'PagesController@settings');
     
     Route::get('customer/create', 'CustomerController@creationForm');
     Route::post('customer/create', 'CustomerController@create');

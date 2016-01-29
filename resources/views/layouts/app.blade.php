@@ -30,10 +30,10 @@
       <div class="top-bar-left" id="main-nav">
         <ul class="menu">
           <li><a href="{{ url('dashboard') }}"><i class="fa fa-dashboard"></i> {{ trans('global.dashboard') }}</a></li>
-          <li><a href="orders.php"><i class="fa fa-truck"></i> {{ trans('global.orders') }}</a></li>
-          <li><a href="accounts.php"><i class="fa fa-usd"></i> {{ trans('global.accounts') }}</a></li>
-          <li><a href="downloads.php"><i class="fa fa-download"></i> {{ trans('global.downloads') }}</a></li>
-          <li><a href="settings.php"><i class="fa fa-cog"></i> {{ trans('global.settings') }}</a></li>
+          <li><a href="{{ url('orders') }}"><i class="fa fa-truck"></i> {{ trans('global.orders') }}</a></li>
+          <li><a href="{{ url('accounts') }}"><i class="fa fa-usd"></i> {{ trans('global.accounts') }}</a></li>
+          <li><a href="{{ url('downloads') }}"><i class="fa fa-download"></i> {{ trans('global.downloads') }}</a></li>
+          <li><a href="{{ url('settings') }}"><i class="fa fa-cog"></i> {{ trans('global.settings') }}</a></li>
         </ul>
       </div>
       <div class="top-bar-right">

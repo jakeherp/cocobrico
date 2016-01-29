@@ -12,7 +12,7 @@ use Auth;
 class PagesController extends Controller
 {
     public function __construct(){
-		$this->middleware('auth', ['only' => 'dashboard']);
+		$this->middleware('auth', ['except' => ['index']]);
 	}
 
 	/**
@@ -37,5 +37,45 @@ class PagesController extends Controller
     public function dashboard(){
     	$user = Auth::user();
     	return view('pages.dashboard', compact('user'));
+	}
+
+	/**
+	 * Shows the users orders page.
+	 *
+	 * @return Response
+	 */
+    public function orders(){
+    	$user = Auth::user();
+    	return view('pages.orders', compact('user'));
+	}
+
+	/**
+	 * Shows the users accounts page.
+	 *
+	 * @return Response
+	 */
+    public function accounts(){
+    	$user = Auth::user();
+    	return view('pages.accounts', compact('user'));
+	}
+
+	/**
+	 * Shows the users downloads page.
+	 *
+	 * @return Response
+	 */
+    public function downloads(){
+    	$user = Auth::user();
+    	return view('pages.downloads', compact('user'));
+	}
+
+	/**
+	 * Shows the users settings page.
+	 *
+	 * @return Response
+	 */
+    public function settings(){
+    	$user = Auth::user();
+    	return view('pages.settings', compact('user'));
 	}
 }
