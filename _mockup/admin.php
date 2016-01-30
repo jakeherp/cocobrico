@@ -74,27 +74,37 @@
     
     <section class="row" id="content">
 
-	  <div class="large-12 column">
-
-        <div class="alert callout" data-closable>
-          <h5>Warning: Counterfeit Products found in Europe</h5>
-          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et.</p>
-          <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-            <span aria-hidden="true">&times;</span>
-          </button>
+	  <div class="large-4 medium-6 small-12 column">
+      	<div class="callout secondary">
+        	<h4>Total Orders</h4>
+            <div class="pull-left lg"><i class="fa fa-tags"></i></div>
+            <div class="pull-right lg">2.912</div>
+            <div class="clearfix"></div>
+            <a href="#">See more details &raquo;</a>
         </div>
-
-        <div class="success callout" data-closable>
-          <h5>New pallet size for 1kg</h5>
-          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et.</p>
-          <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        
       </div>
 
-      <div class="large-6 small-12 columns">
+	  <div class="large-4 medium-6 small-12 column">
+      	<div class="callout secondary">
+        	<h4>Total Sales</h4>
+            <div class="pull-left lg"><i class="fa fa-eur"></i></div>
+            <div class="pull-right lg">2.9m</div>
+            <div class="clearfix"></div>
+            <a href="#">See more details &raquo;</a>
+        </div>
+      </div>
+
+	  <div class="large-4 medium-6 small-12 column">
+      	<div class="callout secondary">
+        	<h4>Total Customers</h4>
+            <div class="pull-left lg"><i class="fa fa-user"></i></div>
+            <div class="pull-right lg">503</div>
+            <div class="clearfix"></div>
+            <a href="#">See more details &raquo;</a>
+        </div>
+      </div>
+
+      <div class="large-6 small-12 column">
       
         <h4>Statistics</h4>
       
@@ -140,7 +150,7 @@
       </div>
 
 
-      <div class="large-6 small-12 columns">
+      <div class="large-6 small-12 column">
       
         <h4>Recent orders</h4>
       

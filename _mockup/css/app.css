@@ -177,3 +177,12 @@ table.datatable td {
 		display: none;
 	}
 }
+
+.lg{
+	font-size: 3em;
+	opacity: 0.5;
+	transition: .3s;
+}
+div:hover > .lg{
+	opacity: 1;
+}
