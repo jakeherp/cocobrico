@@ -14,7 +14,7 @@
       	<div class="callout">
           @foreach($categories as $category)
              <label>
-               {{$category->weight}}kg: {{$category->length}} x {{$category->width}} x {{$category->weight}}kg ({{$category->priceperkg}} EUR/kg)
+               {{$category->weight}}kg: {{$category->unitsperbox}} x {{$category->boxesperpallet}} x {{$category->weight}}kg ({{$category->priceperkg}} EUR/kg)
              <input type="number" value="0" min="0" max="100">
             </label>
           @endforeach

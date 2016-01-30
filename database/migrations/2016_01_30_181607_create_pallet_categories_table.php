@@ -14,8 +14,8 @@ class CreatePalletCategoriesTable extends Migration
     {
          Schema::create('pallet_categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->double('weight');
-            $table->double('lenght');
+            $table->integer('unitsperbox');
+            $table->integer('boxesperpallet');
             $table->double('width');
             $table->double('priceperkg');
             $table->timestamp('created_at');
