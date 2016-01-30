@@ -147,6 +147,9 @@ table.datatable td {
 .off-canvas a:hover{
 	color: #ee1d23
 }
+.off-canvas-content{
+	min-height: 90vh;
+}
 .menu.vertical > li.title{
 	padding: 20px 15px 0;
     color: #ee1d23;
@@ -172,9 +175,6 @@ table.datatable td {
 		display: block;
 		text-align: center;
 		margin-top: -15px;
-	}
-	.title-bar-right{
-		display: none;
 	}
 }
 
