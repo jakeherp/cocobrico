@@ -132,3 +132,48 @@ table.datatable td {
 .reveal, .tabs-content {
 	color: #000;
 }
+
+
+
+.off-canvas-content, .off-canvas-content{
+	background: inherit;
+}
+.off-canvas{
+	background: inherit;
+}
+.off-canvas a{
+	color: #fff;
+}
+.off-canvas a:hover{
+	color: #ee1d23
+}
+.menu.vertical > li.title{
+	padding: 20px 15px 0;
+    color: #ee1d23;
+	opacity: .75;
+	font-size: .9em;
+}
+
+.menu.vertical > li.user{
+	padding: 20px 15px;
+}
+.menu.vertical > li.user > em{
+	font-size: 0.75em;
+	color: #ccc;
+	display: block;
+	margin-top: -2px;
+}
+
+@media screen and (min-width: 0em) and (max-width: 39.9375em) {
+	.top-bar-left img{
+		margin-top: -1em;
+	}
+	.top-bar-left span{
+		display: block;
+		text-align: center;
+		margin-top: -15px;
+	}
+	.title-bar-right{
+		display: none;
+	}
+}
