@@ -16,6 +16,7 @@ class PagesController extends Controller
 {
     public function __construct(){
 		$this->middleware('auth', ['except' => ['index']]);
+		// <---- Middleware für is_customer (User wurde von Admin freigeschaltet) -> if not is_user -> redirect to message
 	}
 
 	/**

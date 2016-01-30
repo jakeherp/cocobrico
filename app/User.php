@@ -37,10 +37,10 @@ class User extends Authenticatable
      * @param  string  $slug
      * @return boolean $permission
      */
-    public function has($slug)
+    public function hasPermission($slug)
     {
-        $check = $this->permissions()->where('slug', $slug);
-        if(count($check) == 1){
+        $check = $this->permissions()->where('slug', $slug)->get();
+        if(count($check) === 1){
             return true;
         }
         else{
@@ -65,6 +65,6 @@ class User extends Authenticatable
      */
     public function permissions()
     {
-        return $this->belongsToMany('App\Permission');
+        return $this->hasMany('App\Permission');
     }
 }

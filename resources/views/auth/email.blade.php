@@ -10,6 +10,14 @@
 
           @include ('errors.list')
 
+          @if(session()->has('messages'))
+                @foreach (session('messages') as $message)
+                    <div class="callout success">
+                        {{ $message }}
+                    </div>
+                @endforeach
+          @endif
+
             {!! Form::open(array('url' => 'identify', 'method' => 'post')) !!}
               <div class="row">
                 <div class="large-12 columns">

@@ -46,7 +46,12 @@ class UserController extends Controller
 		   $regUser = User::where('email', '=', $request->email)->where('password', '!=', '')->first();
 		   if ($regUser != null) {
 		   		// User is already registered
-		   		return redirect('login')->with('email', $request->email);
+		   		if($regUser->hasPermission('is_customer') || count($regUser->customers()->get()) == 0){
+		   			return redirect('login')->with('email', $request->email);
+		   		}
+		   		else{
+		   			return redirect()->back()->withErrors([' Your account has not been activated yet. A member of staff will check your entered details and will get in touch with you shortly.']);
+		   		}   		
 		   }
 		   else{
 		   		// User is not registered yet
@@ -82,6 +87,31 @@ class UserController extends Controller
 			// User logged in!
 			return $this->authenticate($request);	
 		}
+    }
+
+	/**
+	 * Shows the login form.
+	 *
+	 * @return Response
+	 */
+    public function showLoginForm(){
+    	if(session()->has('errors')){
+    		return view('auth.login'); 
+    	}
+    	else{
+    	if(session()->has('email')){
+    		$email = session('email');
+    		$user = User::where('email', '=', session('email'))->first();
+    		if($user->hasPermission('is_customer') || count($user->customers()->get()) == 0){
+		   		return view('auth.login'); 
+		   	}
+		   	else{
+		   		return redirect('/')->withErrors([' Your account has not been activated yet. A member of staff will check your entered details and will get in touch with you shortly.']);
+		   	} 
+    	}
+		else{
+			return redirect('/');
+		}}
     }
 
     /**
@@ -124,7 +154,7 @@ class UserController extends Controller
 	        }
         }
         else{
-        	return redirect()->back()->withInput();
+        	return redirect()->back()->withInput()->withErrors(['The password is wrong!']);
         }
     }
 

@@ -54,7 +54,13 @@ class CustomerController extends Controller
 		$customer->billingEmail = $user->email;
 		$customer->taxID = $request->taxID;
 		$user->customers()->save($customer);
-		return redirect('dashboard');
+		if($user->hasPermission('is_customer')){
+			return redirect('dashboard');
+		}
+		else{
+			Auth::logout();
+			return redirect('/')->with('messages', ['You have successfully submitted your company details. A member of staff will check your entered details and will get in touch with you shortly.']);
+		}
 	}
 
 	/**

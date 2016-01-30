@@ -34,7 +34,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::put('register', 'UserController@register');
 
     Route::post('login', 'UserController@login');
-    Route::get('login', function () { return view('auth.login'); });
+    Route::get('login', 'UserController@showLoginForm'); 
 
     Route::get('dashboard', 'PagesController@dashboard');
     Route::get('accounts', 'PagesController@accounts');
