@@ -49,11 +49,14 @@
 		<li><a href="#"><i class="fa fa-tags"></i> Orders</a></li>
 		<li><a href="#"><i class="fa fa-user"></i> Customers</a></li>
 		<li><a href="#"><i class="fa fa-building"></i> Warehouses</a></li>
+		<li><a href="#"><i class="fa fa-globe"></i> Exclusivities</a></li>
+		<li><a href="#"><i class="fa fa-bar-chart"></i> Statistics</a></li>
 
 		<li class="title"><i class="fa fa-cog"></i> Settings</li>
-        <li><a href="#">Announcements</a></li>
-        <li><a href="#">Users</a></li>
-        <li><a href="#">Prices</a></li>
+        <li><a href="#"><i class="fa fa-warning"></i> Announcements</a></li>
+        <li><a href="#"><i class="fa fa-user-secret"></i> Users</a></li>
+        <li><a href="#"><i class="fa fa-users"></i> User Roles</a></li>
+        <li><a href="#"><i class="fa fa-usd"></i> Prices</a></li>
 
       </ul>
 
