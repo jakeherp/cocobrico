@@ -39,6 +39,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('dashboard', 'PagesController@dashboard');
     Route::get('accounts', 'PagesController@accounts');
     Route::get('orders', 'PagesController@orders');
+    Route::get('orders/pallets', 'PagesController@orderPallets');
+    Route::get('orders/container', 'PagesController@orderContainer');
     Route::get('downloads', 'PagesController@downloads');
     Route::get('settings', 'PagesController@settings');
     

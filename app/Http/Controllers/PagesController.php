@@ -9,6 +9,9 @@ use App\Http\Controllers\Controller;
 
 use Auth;
 
+use App\PalletCategory;
+use App\Warehouse;
+
 class PagesController extends Controller
 {
     public function __construct(){
@@ -47,6 +50,29 @@ class PagesController extends Controller
     public function orders(){
     	$user = Auth::user();
     	return view('pages.orders', compact('user'));
+	}
+
+	/**
+	 * Shows the users orders page.
+	 *
+	 * @return Response
+	 */
+    public function orderPallets(){
+    	$user = Auth::user();
+    	$customers = $user->customers()->get();
+    	$warehouses = Warehouse::all();
+    	$categories = PalletCategory::all();
+    	return view('pages.orders.pallets', compact('user','warehouses','categories','customers'));
+	}
+
+	/**
+	 * Shows the users orders page.
+	 *
+	 * @return Response
+	 */
+    public function orderContainer(){
+    	$user = Auth::user();
+    	return view('pages.orders.container', compact('user'));
 	}
 
 	/**

@@ -8,8 +8,8 @@
         
         <button class="button success dropdown pull-right" type="button" data-toggle="orderDropdown"><i class="fa fa-plus"></i> New order</button>
         <ul class="dropdown-pane" id="orderDropdown" data-dropdown data-close-on-click="true">
-          <li><a href="order_options.php">Order Container</a></li>
-          <li><a href="order_pallets.php">Order Pallets</a></li>
+          <li><a href="{{ url('orders/container') }}">Order Container</a></li>
+          <li><a href="{{ url('orders/pallets') }}">Order Pallets</a></li>
         </ul>
         
       	<h1><i class="fa fa-truck"></i> Orders</h1>
