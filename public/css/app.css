@@ -133,6 +133,56 @@ table.datatable td {
 	color: #000;
 }
 
-[type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'], textarea {
-	margin: 0;
+
+
+.off-canvas-content, .off-canvas-content{
+	background: inherit;
+}
+.off-canvas{
+	background: inherit;
+}
+.off-canvas a{
+	color: #fff;
+}
+.off-canvas a:hover{
+	color: #ee1d23
+}
+.off-canvas-content{
+	min-height: 90vh;
+}
+.menu.vertical > li.title{
+	padding: 20px 15px 0;
+    color: #ee1d23;
+	opacity: .75;
+	font-size: .9em;
+}
+
+.menu.vertical > li.user{
+	padding: 20px 15px;
+}
+.menu.vertical > li.user > em{
+	font-size: 0.75em;
+	color: #ccc;
+	display: block;
+	margin-top: -2px;
+}
+
+@media screen and (min-width: 0em) and (max-width: 39.9375em) {
+	.top-bar-left img{
+		margin-top: -1em;
+	}
+	.top-bar-left span{
+		display: block;
+		text-align: center;
+		margin-top: -15px;
+	}
+}
+
+.lg{
+	font-size: 3em;
+	opacity: 0.5;
+	transition: .3s;
+}
+div:hover > .lg{
+	opacity: 1;
 }
