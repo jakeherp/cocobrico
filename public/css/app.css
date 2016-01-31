@@ -16,6 +16,10 @@ h1 > img{
 	margin: 0 auto;
 }
 
+.fa{
+	width: 1em;
+}
+
 section#login{
 	margin: 3em auto;
 }

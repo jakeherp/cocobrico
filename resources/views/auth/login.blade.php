@@ -26,7 +26,7 @@
                   </div>  
                   <div class="input-group">
                     <span class="input-group-label"><i class="fa fa-lock"></i></span>
-                    {!! Form::password('password', null, ['class' => 'input-group-field', 'placeholder' => 'Password']) !!}
+                    {!! Form::password('password', ['class' => 'input-group-field', 'placeholder' => 'Password']) !!}
                   </div>  
                   {!! Form::submit('Login', ['class' => 'button alert']) !!}
                   <div class="float-right text-right">
