@@ -48,4 +48,11 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('customer/create', 'CustomerController@create');
 
     Route::get('logout', 'UserController@logout');
+
+    // Admin login
+    Route::get('admin', 'AdminController@index');
+    Route::post('admin', 'AdminController@login');
+
+    Route::get('admin/dashboard', 'AdminController@dashboard');
+    Route::get('admin/logout', 'AdminController@logout');
 });
