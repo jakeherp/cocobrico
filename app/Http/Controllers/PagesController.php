@@ -15,8 +15,8 @@ use App\Warehouse;
 class PagesController extends Controller
 {
     public function __construct(){
+    	$this->middleware('customer', ['except' => ['index']]);
 		$this->middleware('auth', ['except' => ['index']]);
-		// <---- Middleware für is_customer (User wurde von Admin freigeschaltet) -> if not is_user -> redirect to message
 	}
 
 	/**
@@ -25,9 +25,23 @@ class PagesController extends Controller
 	 * @return Response
 	 */
     public function index(){
+  		// User is logged in
     	if (Auth::check()) {
-	    	return redirect('dashboard');
+    		$user = Auth::user();
+    		// User has been activated and created a customer
+    		if($user->hasPermission('is_customer') && count($user->customers()->get()) > 0){
+	    		return redirect('dashboard');
+	    	}
+	    	// User has no customer created
+	    	elseif(count($user->customers()->get()) == 0){
+	    		return redirect('customer/create');
+	    	}
+	    	// User has created a customer, but is not activated yet
+	    	else{
+	    		return view('auth.email');
+	    	}
 		}
+		// User is not logged in
 		else{
 			return view('auth.email');
 		}

@@ -55,9 +55,11 @@ class CustomerController extends Controller
 		$customer->taxID = $request->taxID;
 		$user->customers()->save($customer);
 		if($user->hasPermission('is_customer')){
+			// If the user has already been activated, he will be redirected to the dashboard.
 			return redirect('dashboard');
 		}
 		else{
+			// If the user has not been activated yet, he will be looged out and get a message.
 			Auth::logout();
 			return redirect('/')->with('messages', ['You have successfully submitted your company details. A member of staff will check your entered details and will get in touch with you shortly.']);
 		}

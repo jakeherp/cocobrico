@@ -20,12 +20,13 @@ class UserController extends Controller
 {
     
 	public function __construct(){
+		$this->middleware('customer', ['only' => ['showRegisterForm','register']]);
 		$this->middleware('auth', ['only' => 'logout']);
 	}
 
 	/**
 	 * Checks if the emailadress is already in the database. If it is, it will show the login form. If not, 
-	 * it will send an verification email to this adress. 
+	 * it will send an verification email to this address. 
 	 *
 	 * @param  CheckEmailRequest $request
 	 * @return Response
@@ -47,9 +48,11 @@ class UserController extends Controller
 		   if ($regUser != null) {
 		   		// User is already registered
 		   		if($regUser->hasPermission('is_customer') || count($regUser->customers()->get()) == 0){
+		   			// User is activated or has no customer created yet
 		   			return redirect('login')->with('email', $request->email);
 		   		}
 		   		else{
+		   			// User has created a customer but is not activated yet
 		   			return redirect()->back()->withErrors([' Your account has not been activated yet. A member of staff will check your entered details and will get in touch with you shortly.']);
 		   		}   		
 		   }
@@ -90,7 +93,7 @@ class UserController extends Controller
     }
 
 	/**
-	 * Shows the login form.
+	 * Shows the login form if the user is activated or has no customer created.
 	 *
 	 * @return Response
 	 */
@@ -99,19 +102,22 @@ class UserController extends Controller
     		return view('auth.login'); 
     	}
     	else{
-    	if(session()->has('email')){
-    		$email = session('email');
-    		$user = User::where('email', '=', session('email'))->first();
-    		if($user->hasPermission('is_customer') || count($user->customers()->get()) == 0){
-		   		return view('auth.login'); 
-		   	}
-		   	else{
-		   		return redirect('/')->withErrors([' Your account has not been activated yet. A member of staff will check your entered details and will get in touch with you shortly.']);
-		   	} 
-    	}
-		else{
-			return redirect('/');
-		}}
+	    	if(session()->has('email')){
+	    		$email = session('email');
+	    		$user = User::where('email', '=', session('email'))->first();
+	    		if($user->hasPermission('is_customer') || count($user->customers()->get()) == 0){
+	    			// Show the login form, if the user is either activated or has no customer yet
+			   		return view('auth.login'); 
+			   	}
+			   	else{
+			   		// Show the email form, with an error message, that the user has not been activated yet
+			   		return redirect('/')->withErrors([' Your account has not been activated yet. A member of staff will check your entered details and will get in touch with you shortly.']);
+			   	} 
+	    	}
+			else{
+				return redirect('/');
+			}
+		}
     }
 
     /**
@@ -136,7 +142,9 @@ class UserController extends Controller
     }
 
     /**
-     * Handle an authentication attempt.
+     * Handle an authentication attempt. If the user is already activated, he will be redirected to the dashboard.
+     * If her is not activated and has no customer, he will be redirected to the customer formular. If he has
+     * already registered a customer, but is not activated yet, he will be redirected to the homepage.
      *
      * @return Response
      */
