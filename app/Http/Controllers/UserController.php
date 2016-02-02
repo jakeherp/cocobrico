@@ -15,6 +15,7 @@ use App\User;
 
 use Auth;
 use Hash;
+use Mail;
 
 class UserController extends Controller
 {
@@ -40,7 +41,14 @@ class UserController extends Controller
 		   $user->email = $request->email;
 		   $user->register_token = str_random(40);
 		   $user->save();
-		   return view('auth.verifyEmail', compact('user'));
+
+		    // Verification-Email is send to user.
+			Mail::send('emails.verifyEmail', ['user' => $user], function ($m) use ($user) {
+        		$m->from('noreply@cb.pcserve.eu', 'Cocobrico');
+        		$m->to($user->email, $user->email)->subject('Verify your Email.');
+        	});
+
+		    return view('auth.verifyEmail', compact('user'));
 		}
 		else{
 		   // User is existing in the database
