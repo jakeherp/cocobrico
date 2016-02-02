@@ -15,7 +15,7 @@
           @foreach($categories as $category)
              <label>
                {{$category->weight}}kg: {{$category->unitsperbox}} x {{$category->boxesperpallet}} x {{$category->weight}}kg ({{$category->priceperkg}} EUR/kg)
-             <input type="number" value="0" min="0" max="100">
+             <input type="number" value="0" min="0" max="100" class="orderPalletOption" unitsperbox="{{$category->unitsperbox}}" boxesperpallet="{{$category->boxesperpallet}}" mass="{{$category->weight}}" price="{{$category->priceperkg}}">
             </label>
           @endforeach
         </div>
@@ -43,11 +43,11 @@
   
           <label>
             Total:
-            <strong>€ 3.958,00</strong> plus Shipping &amp; VAT
+            <strong>€ <span id="priceTotal">0,00</span></strong> plus Shipping &amp; VAT
           </label>
 
       	  <div class="expanded button-group">
-            <a class="button success"><i class="fa fa-check"></i> Place order</a>
+            <a class="button success" id="test"><i class="fa fa-check"></i> Place order</a>
           </div>
         </div>
     
@@ -152,5 +152,20 @@
 
 
     </section>
-    
+
+    <script>
+      $(document).ready(function(){
+        
+
+        $('.orderPalletOption').bind('click keyup', function(){
+          var sum = 0;
+          $('.orderPalletOption').each(function() {
+              sum += $(this).val() * Number($(this).attr('unitsperbox')) * Number($(this).attr('boxesperpallet')) * Number($(this).attr('mass')) * Number($(this).attr('price'));
+          });
+          sum = sum.toFixed(2);
+          $('#priceTotal').text(sum);
+        });
+      });
+    </script>
+
 @endsection

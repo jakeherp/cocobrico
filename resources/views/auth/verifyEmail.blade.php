@@ -7,10 +7,7 @@
         <div class="callout large">
           <h3>Verify your Email Adress</h3>
           <p>We sent an email to {{ $user->email }}. Please verify it by clicking on the link it contains. If you
-          	havn't got a email, click this LINK to send a new one.</p>
-          <p>
-           {!! link_to('register/'.$user->register_token, $title = 'TEST', $attributes = array(), $secure = null); !!}
-          </p> 
+          	havn't got a email, check your spam directory or click this LINK to send a new one.</p>
         </div>
       </div>
     </section>

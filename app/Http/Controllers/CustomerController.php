@@ -92,4 +92,13 @@ class CustomerController extends Controller
 			return redirect('dashboard');
 		}
 	}
+
+	/**
+	 * Creates a new pallet order.
+	 *
+	 * @return Response
+	 */
+    public function createOrderPallets(){
+    	
+	}
 }

@@ -14,6 +14,8 @@
     <link rel="apple-touch-icon" sizes="152x152" href="{{ URL::asset('img/touch-icon-ipad-retina.png') }}">
 	<link rel="shortcut icon" href="{{ URL::asset('img/favicon.png') }}" type="image/png">
 
+  <script type="text/javascript" src="{{ URL::asset('js/vendor/jquery.min.js') }}"></script>
+
   </head>
   <body>
 
@@ -53,7 +55,6 @@
     </footer>
 
 
-	<script type="text/javascript" src="{{ URL::asset('js/vendor/jquery.min.js') }}"></script>
 	<script type="text/javascript" src="{{ URL::asset('js/vendor/what-input.min.js') }}"></script>
 	<script type="text/javascript" src="{{ URL::asset('js/foundation.min.js') }}"></script>
 	<script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>

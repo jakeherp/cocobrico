@@ -40,6 +40,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('accounts', 'PagesController@accounts');
     Route::get('orders', 'PagesController@orders');
     Route::get('orders/pallets', 'PagesController@orderPallets');
+    Route::post('orders/pallets', 'CustomerController@createOrderPallets');
     Route::get('orders/container', 'PagesController@orderContainer');
     Route::get('downloads', 'PagesController@downloads');
     Route::get('settings', 'PagesController@settings');
