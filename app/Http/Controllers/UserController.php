@@ -40,7 +40,7 @@ class UserController extends Controller
 		   	$user->username = $request->email;
 		  	$user->email = $request->email;
 		   	$user->register_token = str_random(40);
-		   	//$user->save();
+		   	$user->save();
 
 		    // Verification-Email is send to user.
 			$sent = Mail::send('emails.verifyEmail', ['user' => $user], function ($m) use ($user) {
@@ -48,7 +48,7 @@ class UserController extends Controller
         		$m->to($user->email, $user->email)->subject('Verify your Email.');
         	});
 
-		    //return view('auth.verifyEmail', compact('user'));
+		    return view('auth.verifyEmail', compact('user'));
 		}
 		else{
 		   // User is existing in the database
