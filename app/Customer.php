@@ -27,8 +27,16 @@ class Customer extends Model
     /**
      * Get the users associated with the customer.
      */
-    public function user()
+    public function users()
     {
         return $this->belongsToMany('App\User');
+    }
+
+    /**
+     * Get the files associated with the customer.
+     */
+    public function files()
+    {
+        return $this->hasMany('App\File');
     }
 }
