@@ -11,6 +11,7 @@ use App\Http\Requests\CreateCustomerRequest;
 
 use App\Country;
 use App\Customer;
+use App\File;
 use App\User;
 
 use Auth;
@@ -34,12 +35,6 @@ class CustomerController extends Controller
     	$user->lastName = $request->billingLastName;
     	$user->save();
 
-    	if ($request->hasFile('proofOfIncorporation')) {
-    		if ($request->file('proofOfIncorporation')->isValid()) {
-    			//$request->file('proofOfIncorporation')->move('/files/user_'.$user->id);
-			}
-		}
-
 		$customer = new Customer();
 		$customer->billingCompanyName = $request->billingCompanyName;
 		$customer->billingFirstName = $request->billingFirstName;
@@ -54,6 +49,24 @@ class CustomerController extends Controller
 		$customer->billingEmail = $user->email;
 		$customer->taxID = $request->taxID;
 		$user->customers()->save($customer);
+
+		if ($request->hasFile('proofOfIncorporation')) {
+    		if ($request->file('proofOfIncorporation')->isValid()) {
+    			$file = $request->file('proofOfIncorporation');
+    			$destinationPath = '/files/customer_' . $customer->id;
+    			$upload = new File();
+    			if(!$upload->uploadFile($file, $destinationPath)){
+    				return redirect()->back()->withInput()->withErrors(['Dateiupload did not work!']);
+    			}
+    			else{
+    				$upload->slug = 'proofOfIncorporation';
+    				$upload->user_id = $user->id;
+    				$upload->customer_id = $customer->id;
+    				$upload->save();
+    			}
+			}
+		}
+
 		if($user->hasPermission('is_customer')){
 			// If the user has already been activated, he will be redirected to the dashboard.
 			return redirect('dashboard');

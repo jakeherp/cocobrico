@@ -67,4 +67,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Permission');
     }
+
+    /**
+     * Get the files associated with the user.
+     */
+    public function files()
+    {
+        return $this->hasMany('App\File');
+    }
 }

@@ -15,6 +15,7 @@ use App\User;
 
 use Auth;
 use Hash;
+use Mail;
 
 class UserController extends Controller
 {
@@ -34,13 +35,20 @@ class UserController extends Controller
     public function identify(CheckEmailRequest $request){
     	$user = User::where('email', '=', $request->email)->first();
 		if ($user === null) {
-		   // User is not existing in the database
-		   $user = new User();
-		   $user->username = $request->email;
-		   $user->email = $request->email;
-		   $user->register_token = str_random(40);
-		   $user->save();
-		   return view('auth.verifyEmail', compact('user'));
+		   	// User is not existing in the database
+		   	$user = new User();
+		   	$user->username = $request->email;
+		  	$user->email = $request->email;
+		   	$user->register_token = str_random(40);
+		   	$user->save();
+
+		    // Verification-Email is send to user.
+			$sent = Mail::send('emails.verifyEmail', ['user' => $user], function ($m) use ($user) {
+        		$m->from('noreply@cb.pcserve.eu', 'Cocobrico');
+        		$m->to($user->email, $user->email)->subject('Verify your Email.');
+        	});
+
+		    return view('auth.verifyEmail', compact('user'));
 		}
 		else{
 		   // User is existing in the database
