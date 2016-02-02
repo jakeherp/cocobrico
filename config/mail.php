@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => 'noreply@cb.pcserve.eu', 'name' => 'Cocobrico'],
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'password' => env('m037208c'),
+    'password' => env('dqtxtsg67kFCMdVJ'),
 
     /*
     |--------------------------------------------------------------------------
