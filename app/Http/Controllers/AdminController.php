@@ -79,4 +79,29 @@ class AdminController extends Controller
         	return redirect()->back()->withInput()->withErrors(['The username and/or password is wrong!']);
         }
     }
+
+    /**
+	 * Shows the users view.
+	 *
+	 * @return Response
+	 */
+    public function showUsers()
+    {
+    	$users = User::all();
+    	return view('admin.users', compact('users'));
+    }
+
+    /**
+	 * Shows the users view.
+	 *
+	 * @return Response
+	 */
+    public function activateUser(Request $request)
+    {
+    	$id = $request->userId;
+    	$user = User::find($id);
+    	$user->togglePermission('is_customer');
+    	$users = User::all();
+    	return view('admin.users', compact('users'));
+    }
 }

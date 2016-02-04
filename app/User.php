@@ -35,7 +35,7 @@ class User extends Authenticatable
      * Gives back, if the user has a given permission.
      *
      * @param  string  $slug
-     * @return boolean $permission
+     * @return boolean
      */
     public function hasPermission($slug)
     {
@@ -45,6 +45,24 @@ class User extends Authenticatable
         }
         else{
             return false;
+        }
+    }
+
+    /**
+     * Toggles a permission for a user.
+     *
+     * @param  string  $slug
+     * @return boolean
+     */
+    public function togglePermission($slug)
+    {
+        if($this->hasPermission($slug)){
+            DB::table('permissions')->where('user_id', '=', $this->id)->where('slug', '=', 'is_admin')->delete();
+        }
+        else{
+            $permission = new Permission();
+            $permission->slug = 'is_customer';
+            $this->permissions()->save($permission);
         }
     }
 

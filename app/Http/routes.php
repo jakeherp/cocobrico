@@ -55,5 +55,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('admin', 'AdminController@login');
 
     Route::get('admin/dashboard', 'AdminController@dashboard');
+    Route::get('admin/users', 'AdminController@showUsers');
+    Route::post('admin/users', 'AdminController@activateUser');
     Route::get('admin/logout', 'AdminController@logout');
 });

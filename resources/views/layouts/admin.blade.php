@@ -56,7 +56,7 @@
 
     <li class="title"><i class="fa fa-cog"></i> Settings</li>
         <li><a href="#"><i class="fa fa-warning"></i> Announcements</a></li>
-        <li><a href="#"><i class="fa fa-user-secret"></i> Users</a></li>
+        <li><a href="{{ url('admin/users') }}"><i class="fa fa-user-secret"></i> Users</a></li>
         <li><a href="#"><i class="fa fa-users"></i> User Roles</a></li>
         <li><a href="#"><i class="fa fa-usd"></i> Prices</a></li>
 
