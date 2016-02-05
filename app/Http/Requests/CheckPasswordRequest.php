@@ -24,7 +24,7 @@ class CheckPasswordRequest extends Request
     public function rules()
     {
         return [
-            'password'        =>  ['required','same:password_2','min:8'],
+            'password'        =>  ['required','same:password_2','min:8','regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/'],
             'password_2'        =>  ['required'],
             'register_token'    =>  ['required','exists:users,register_token'],
             'email'             =>  ['required','email','exists:users,email'], // Custom validation rule search for user with email and token!

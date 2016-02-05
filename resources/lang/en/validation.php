@@ -57,7 +57,7 @@ return [
     ],
     'not_in'               => 'The selected :attribute is invalid.',
     'numeric'              => 'The :attribute must be a number.',
-    'regex'                => 'The :attribute format is invalid.',
+    'regex'                => 'The :attribute format is invalid. It must conatin at least one small letter, one capital letter and one digit.',
     'required'             => 'The :attribute field is required.',
     'required_if'          => 'The :attribute field is required when :other is :value.',
     'required_unless'      => 'The :attribute field is required unless :other is in :values.',
