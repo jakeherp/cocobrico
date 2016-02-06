@@ -40,7 +40,7 @@
       </div>
       <div class="top-bar-right">
         <ul class="dropdown menu" data-dropdown-menu>
-          <li>{{ trans('global.welcome') }} {{ $user->firstname }}</li>
+          <li>{{ trans('global.welcome') }}, {{ $user->firstname }}</li>
           <li class="logout"><a href="{{ url('logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
         </ul>
       </div>
