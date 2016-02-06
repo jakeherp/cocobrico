@@ -1,5 +1,5 @@
 <body style="background: #000;">
-	<img src="{{ URL::asset('img/logo.png') }}" alt="Cocobrico" style="width: 90%; max-width: 300px; display: block; margin: 0 auto 30px">
+	<img src="{{ URL::asset('img/logo.png') }}" alt="Cocobrico" style="width: 90%; max-width: 300px; display: block; margin: 30px auto;">
 	<div style="background: #fff; color: #000; padding: 20px; width: 90%; margin: 20px auto;">
 		<p>Dear customer,</p>
 		<p>Please verify your email address to continue your registration with Cocobrico Commercial Customers:</p>
