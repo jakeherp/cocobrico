@@ -172,9 +172,6 @@ table.datatable td {
 }
 
 @media screen and (min-width: 0em) and (max-width: 39.9375em) {
-	.top-bar-left img{
-		margin-top: -1em;
-	}
 	.top-bar-left span{
 		display: block;
 		text-align: center;
