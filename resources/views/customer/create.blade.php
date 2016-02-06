@@ -22,11 +22,10 @@
                   <label>
                   	Company Details
                       <div class="input-group">{!! Form::text('billingCompanyName', '', ['class' => 'input-group-field', 'placeholder' => 'Company *']) !!}</div>
-
+                  </label>
                       <div class="input-group">{!! Form::text('billingFirstName', '', ['class' => 'input-group-field', 'placeholder' => 'First Name *']) !!}</div>
                       <div class="input-group">{!! Form::text('billingLastName', '', ['class' => 'input-group-field', 'placeholder' => 'Last Name *']) !!}</div>
                       <div class="input-group">{!! Form::text('taxID', '', ['class' => 'input-group-field', 'placeholder' => 'Tax ID']) !!}</div>
-                  </label>
                   <label>
                   	Proof of Incorporation
                       <div class="input-group">{!! Form::file('proofOfIncorporation') !!}</div>
@@ -34,16 +33,16 @@
                   <label>
 					Address
                       <div class="input-group">{!! Form::text('billingAddress1', '', ['class' => 'input-group-field', 'placeholder' => 'Address Line 1 *']) !!}</div>
+                  </label>
                       <div class="input-group">{!! Form::text('billingAddress2', '', ['class' => 'input-group-field', 'placeholder' => 'Address Line 2']) !!}</div>
                       <div class="input-group">{!! Form::text('billingCity', '', ['class' => 'input-group-field', 'placeholder' => 'City *']) !!}</div>
                       <div class="input-group">{!! Form::text('billingPostCode', '', ['class' => 'input-group-field', 'placeholder' => 'Post Code *']) !!}</div>
                       <div class="input-group">{!! Form::select('billingCountry', $countries) !!}</div>
-                  </label>
                   <label>
                   	Contact Details
                       <div class="input-group">{!! Form::text('billingPhone', '', ['class' => 'input-group-field', 'placeholder' => 'Telephone *']) !!}</div>
-                      <div class="input-group">{!! Form::text('billingFax', '', ['class' => 'input-group-field', 'placeholder' => 'Fax']) !!}</div>
                   </label>
+                      <div class="input-group">{!! Form::text('billingFax', '', ['class' => 'input-group-field', 'placeholder' => 'Fax']) !!}</div>
 
                   {!! Form::submit('Continue &raquo;', ['class' => 'button alert']) !!}
 

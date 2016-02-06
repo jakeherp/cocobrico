@@ -29,15 +29,15 @@
                       <span class="input-group-label"><i class="fa fa-lock"></i></span>
                       {!! Form::password('password', ['class' => 'input-group-field', 'placeholder' => 'Password']) !!}
                     </div>
+                  </label>
                     <div class="input-group">
                       <span class="input-group-label"><i class="fa fa-lock"></i></span>
                       {!! Form::password('password_2', ['class' => 'input-group-field', 'placeholder' => 'Password wiederholen']) !!}
                     </div>
-                  </label>
                   
                   <label>
-                  	Your business
-                    {!! Form::select('business', array('wholesale' => 'Wholesale', 'retail' => 'Retail', 'lounge' => 'Lounge / Bar', 'other' => 'Other'), 'wholesale') !!}
+                  	Your businessLounge / Bar
+                    {!! Form::select('business', array('wholesale' => 'Wholesale', 'retail' => 'Retail', 'lounge' => 'Lounge / Bar', 'staff' => 'Staff', 'other' => 'Other'), 'wholesale') !!}
                   </label>
                   {!! Form::submit('Continue &raquo;', ['class' => 'button alert']) !!}
                     </div>
