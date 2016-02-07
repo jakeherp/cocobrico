@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class Address extends Model
 {
-	/**
+    /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'customers';
+    protected $table = 'addresses';
 
     /**
      * The attributes that are mass assignable.
@@ -19,13 +19,13 @@ class Customer extends Model
      * @var array
      */
     protected $fillable = [
-        'billingCompanyName', 'billingFirstName', 'billingLastName', 'billingAddress1',
-        'billingAddress2', 'billingCity', 'billingPostCode', 'billingCountry',
-        'billingPhone', 'billingFax', 'billingEmail', 'taxID'
+        'companyName', 'firstName', 'lastName', 'address1',
+        'address2', 'city', 'postCode', 'country',
+        'phone', 'fax', 'email', 'taxID'
     ];
 
     /**
-     * Get the users associated with the customer.
+     * Get the users associated with the address.
      */
     public function users()
     {
@@ -33,7 +33,7 @@ class Customer extends Model
     }
 
     /**
-     * Get the files associated with the customer.
+     * Get the files associated with the address.
      */
     public function files()
     {

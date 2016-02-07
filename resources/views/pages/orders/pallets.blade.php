@@ -30,8 +30,8 @@
               @foreach($warehouses as $warehouse)
                 <option value="{{ $warehouse->id }}">Pick up from warehouse {{ $warehouse->name }}</option>
               @endforeach
-              @foreach($customers as $customer)
-                <option value="delivery{{ $customer->id }}">Delivery to {{ $customer->billingCompanyName }}, {{ $customer->billingAddress1 }} {{ $customer->billingAddress2 }}, {{ $customer->billingPostCode }} {{ $customer->billingCity }}, {{ $customer->billingCountry }}</option>
+              @foreach($addresses as $address)
+                <option value="delivery{{ $address->id }}">Delivery to {{ $address->companyName }}, {{ $address->address1 }} {{ $address->address2 }}, {{ $address->postCode }} {{ $address->city }}, {{ $address->country }}</option>
               @endforeach
             </select>
           </label>

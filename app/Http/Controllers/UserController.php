@@ -43,10 +43,10 @@ class UserController extends Controller
 		   	$user->save();
 
 		    // Verification-Email is send to user.
-			$sent = Mail::send('emails.verifyEmail', ['user' => $user], function ($m) use ($user) {
+			/*$sent = Mail::send('emails.verifyEmail', ['user' => $user], function ($m) use ($user) {
         		$m->from('noreply@cb.pcserve.eu', 'Cocobrico');
         		$m->to($user->email, $user->email)->subject('Verify your Email.');
-        	});
+        	});*/
 
 		    return view('auth.verifyEmail', compact('user'));
 		}
@@ -55,12 +55,12 @@ class UserController extends Controller
 		   $regUser = User::where('email', '=', $request->email)->where('password', '!=', '')->first();
 		   if ($regUser != null) {
 		   		// User is already registered
-		   		if($regUser->hasPermission('is_customer') || count($regUser->customers()->get()) == 0){
-		   			// User is activated or has no customer created yet
+		   		if($regUser->hasPermission('is_customer') || count($regUser->addresses) == 0){
+		   			// User is activated or has no address created yet
 		   			return redirect('login')->with('email', $request->email);
 		   		}
 		   		else{
-		   			// User has created a customer but is not activated yet
+		   			// User has created a address but is not activated yet
 		   			return redirect()->back()->withErrors([' Your account has not been activated yet. A member of staff will check your entered details and will get in touch with you shortly.']);
 		   		}   		
 		   }
@@ -78,9 +78,14 @@ class UserController extends Controller
 	 * @return Response
 	 */
     public function showRegisterForm($token){
-    	$user = User::where('register_token', '=', $token)->firstOrFail();
-    	if ($user != null) {
-		   	return view('auth.register',compact('user'));
+    	if($token != ''){
+	    	$user = User::where('register_token', '=', $token)->firstOrFail();
+	    	if ($user != null) {
+			   	return view('auth.register',compact('user'));
+			}
+		}
+		else{
+			return redirect('/');
 		}
     }
 
@@ -94,14 +99,15 @@ class UserController extends Controller
     	$user = User::where('email', '=', $request->email)->where('register_token', '=', $request->register_token)->firstOrFail();
     	if ($user != null) {
 		   	$user->password = Hash::make($request->password);
+		   	$user->register_token = '';
 			$user->save();
 			// User logged in!
-			return $this->authenticate($request);	
+			return $this->authenticate($request);
 		}
     }
 
 	/**
-	 * Shows the login form if the user is activated or has no customer created.
+	 * Shows the login form if the user is activated or has no address created.
 	 *
 	 * @return Response
 	 */
@@ -113,8 +119,8 @@ class UserController extends Controller
 	    	if(session()->has('email')){
 	    		$email = session('email');
 	    		$user = User::where('email', '=', session('email'))->first();
-	    		if($user->hasPermission('is_customer') || count($user->customers()->get()) == 0){
-	    			// Show the login form, if the user is either activated or has no customer yet
+	    		if($user->hasPermission('is_customer') || count($user->addresses) == 0){
+	    			// Show the login form, if the user is either activated or has no address yet
 			   		return view('auth.login'); 
 			   	}
 			   	else{
@@ -151,8 +157,8 @@ class UserController extends Controller
 
     /**
      * Handle an authentication attempt. If the user is already activated, he will be redirected to the dashboard.
-     * If her is not activated and has no customer, he will be redirected to the customer formular. If he has
-     * already registered a customer, but is not activated yet, he will be redirected to the homepage.
+     * If her is not activated and has no address, he will be redirected to the address creation formular. If he has
+     * already registered an address, but is not activated yet, he will be redirected to the homepage.
      *
      * @return Response
      */
@@ -160,12 +166,12 @@ class UserController extends Controller
     {
     	if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = Auth::user();
-            if(count($user->customers) == 0){
-        		// Show the customer form, if the user has no customer yet
-        		return redirect('customer/create');
+            if(count($user->addresses) == 0){
+        		// Show the address creation form, if the user has no address yet
+        		return redirect('address');
 	        }
 	        else{
-	        	// Show the dashboard, if the user has a customer
+	        	// Show the dashboard, if the user has an address
 	        	return redirect('dashboard');
 	        }
         }

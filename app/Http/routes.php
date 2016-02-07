@@ -40,22 +40,19 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('accounts', 'PagesController@accounts');
     Route::get('orders', 'PagesController@orders');
     Route::get('orders/pallets', 'PagesController@orderPallets');
-    Route::post('orders/pallets', 'CustomerController@createOrderPallets');
+    Route::post('orders/pallets', 'OrdersContainer@createOrderPallets');
     Route::get('orders/container', 'PagesController@orderContainer');
     Route::get('downloads', 'PagesController@downloads');
     Route::get('settings', 'PagesController@settings');
     
-    Route::get('customer/create', 'CustomerController@creationForm');
-    Route::post('customer/create', 'CustomerController@create');
+    Route::get('address', 'AddressController@creationForm');
+    Route::post('address', 'AddressController@create');
 
     Route::get('logout', 'UserController@logout');
 
-    // Admin login
+    // Admin area
     Route::get('admin', 'AdminController@index');
-    Route::post('admin', 'AdminController@login');
-
     Route::get('admin/dashboard', 'AdminController@dashboard');
     Route::get('admin/users', 'AdminController@showUsers');
     Route::post('admin/users', 'AdminController@activateUser');
-    Route::get('admin/logout', 'AdminController@logout');
 });

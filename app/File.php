@@ -19,7 +19,7 @@ class File extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'customer_id', 'slug', 'filename'
+        'user_id', 'address_id', 'slug', 'filename', 'name', 'description'
     ];
 
 	/**
@@ -37,7 +37,7 @@ class File extends Model
     		return false;
     	}
     	else{
-    		return true;
+    		return $this->filename;
     	}
     }
 }

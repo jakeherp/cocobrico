@@ -28,15 +28,15 @@ class PagesController extends Controller
   		// User is logged in
     	if (Auth::check()) {
     		$user = Auth::user();
-    		// User has been activated and created a customer
-    		if($user->hasPermission('is_customer') && count($user->customers()->get()) > 0){
+    		// User has been activated and created a address
+    		if($user->hasPermission('is_customer') && count($user->addresses) > 0){
 	    		return redirect('dashboard');
 	    	}
 	    	// User has no customer created
-	    	elseif(count($user->customers()->get()) == 0){
-	    		return redirect('customer/create');
+	    	elseif(count($user->addresses) == 0){
+	    		return redirect('address');
 	    	}
-	    	// User has created a customer, but is not activated yet
+	    	// User has created a address, but is not activated yet
 	    	else{
 	    		return view('auth.email');
 	    	}
@@ -74,10 +74,10 @@ class PagesController extends Controller
 	 */
     public function orderPallets(){
     	$user = Auth::user();
-    	$customers = $user->customers()->get();
+    	$addresses = $user->addresses()->get();
     	$warehouses = Warehouse::all();
     	$categories = PalletCategory::all();
-    	return view('pages.orders.pallets', compact('user','warehouses','categories','customers'));
+    	return view('pages.orders.pallets', compact('user','warehouses','categories','addresses'));
 	}
 
 	/**
@@ -107,7 +107,8 @@ class PagesController extends Controller
 	 */
     public function downloads(){
     	$user = Auth::user();
-    	return view('pages.downloads', compact('user'));
+    	$files = $user->files;
+    	return view('pages.downloads', compact('user','files'));
 	}
 
 	/**

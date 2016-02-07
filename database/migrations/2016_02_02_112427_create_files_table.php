@@ -17,7 +17,9 @@ class CreateFilesTable extends Migration
             $table->integer('user_id')->default(0);
             $table->integer('customer_id')->default(0);
             $table->string('slug', 100)->default('');
-            $table->string('filename', 100)->default('');
+            $table->string('filename', 200)->default('');
+            $table->string('name',200)->default('');
+            $table->text('description')->default('');
             $table->timestamp('created_at');
         });
     }

@@ -10,7 +10,7 @@
 
       <div class="large-12 columns">
       
-        <h4>The following documents are available for download <span class="secondary label">37</span></h4>
+        <h4>The following documents are available for download <span class="secondary label">{{ count($user->files) }}</span></h4>
       
 		<table class="scroll datatable">
           <thead>
@@ -21,31 +21,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><i class="fa fa-file-pdf-o"></i> Contract 1</td>
-              <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</td>
-              <td><a class="alert button pull-right" href="#"><i class="fa fa-download"></i></a></td>
-            </tr>
-            <tr>
-              <td><i class="fa fa-file-pdf-o"></i> Contract 2</td>
-              <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</td>
-              <td><a class="alert button pull-right" href="#"><i class="fa fa-download"></i></a></td>
-            </tr>
-            <tr>
-              <td><i class="fa fa-file-pdf-o"></i> Contract 3</td>
-              <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</td>
-              <td><a class="alert button pull-right" href="#"><i class="fa fa-download"></i></a></td>
-            </tr>
-            <tr>
-              <td><i class="fa fa-file-pdf-o"></i> Contract 4</td>
-              <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</td>
-              <td><a class="alert button pull-right" href="#"><i class="fa fa-download"></i></a></td>
-            </tr>
-            <tr>
-              <td><i class="fa fa-file-pdf-o"></i> Contract 5</td>
-              <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</td>
-              <td><a class="alert button pull-right" href="#"><i class="fa fa-download"></i></a></td>
-            </tr>
+            @foreach($files as $file)
+                <tr>
+                <td><i class="fa fa-file-pdf-o"></i> {{ $file->name }}</td>
+                <td>{{ $file->description }}</td>
+                <td><a class="alert button pull-right" href="../storage/files/{{ $file->filename }}"><i class="fa fa-download"></i></a></td>
+              </tr>
+            @endforeach
           </tbody>
         </table>  
 

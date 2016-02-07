@@ -28,8 +28,11 @@ class AdminController extends Controller
     	if (Auth::check() && Auth::user()->hasPermission('is_admin')) {
     		return redirect('admin/dashboard');
     	}
+    	else if (Auth::check()){
+    		return redirect('dashboard');
+    	}
     	else{
-    		return view('admin.login');
+    		return redirect('identify');
     	}
 	}
 
@@ -41,27 +44,6 @@ class AdminController extends Controller
     public function dashboard(){
     	return view('admin.dashboard');
 	}
-
-	/**
-	 * Logs the user in.
-	 *
-	 * @param  CheckPasswordRequest $request
-	 * @return Response
-	 */
-    public function login(AdminLoginRequest $request){
-		return $this->authenticate($request);
-    }
-
-    /**
-	 * Logs the user out.
-	 *
-	 * @param  CheckPasswordRequest $request
-	 * @return Response
-	 */
-    public function logout(){
-		Auth::logout();
-		return redirect('admin');
-    }
 
 	/**
 	 * Handle an authentication attempt.

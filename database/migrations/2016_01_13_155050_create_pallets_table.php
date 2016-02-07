@@ -15,7 +15,7 @@ class CreatePalletsTable extends Migration
         Schema::create('pallets', function (Blueprint $table) {
             $table->increments('id');
 			$table->integer('customerReference');
-			$table->integer('customerId')->references('id')->on('customers')->onDelete('cascade');
+			$table->integer('addressId')->references('id')->on('addresses')->onDelete('cascade');
 			$table->integer('priceId')->references('id')->on('prices')->onDelete('cascade');
 			$table->date('loadingDate');
 			// ORDER, CONFIRMED
