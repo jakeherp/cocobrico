@@ -5,7 +5,7 @@
 		<p>Please verify your email address to continue your registration with Cocobrico Commercial Customers:</p>
 
 		<p style="text-align: center; margin: 30px 0;">
-			<span style="background: #ee1d23; padding: 10px; color: #fff; font-size: 1.25em;">
+			<span style="border: 2px solid #ee1d23; padding: 10px; color: #ee1d23; font-size: 1.25em;">
 				{!! link_to('http://cb.pcserve.eu/register/'.$user->register_token, $title = 'Click here to verify your email address', $attributes = array(), $secure = null); !!}
 			</span>
 		</p>
