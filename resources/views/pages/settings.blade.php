@@ -13,14 +13,14 @@
         <h4>Addresses</h4>
       </div>
 
-    @foreach($customers as $customer)
+    @foreach($user->addresses as $address)
       <div class="large-4 medium-6 small-12 columns">
-        <strong>{{ $customer->billingCompanyName }}</strong><br>
-        {{ $customer->billingAddress1 }}<br>
-        {{ $customer->billingAddress2 }}<br>
-        {{ $customer->billingCity }}<br>
-        {{ $customer->billingPostCode }}<br>
-        {{ $customer->billingCountry }}
+        <strong>{{ $address->companyName }}</strong><br>
+        {{ $address->address1 }}<br>
+        {{ $address->address2 }}<br>
+        {{ $address->city }}<br>
+        {{ $address->postCode }}<br>
+        {{ $address->country }}
       </div>
     @endforeach
 

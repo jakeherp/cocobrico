@@ -74,10 +74,9 @@ class PagesController extends Controller
 	 */
     public function orderPallets(){
     	$user = Auth::user();
-    	$addresses = $user->addresses()->get();
     	$warehouses = Warehouse::all();
     	$categories = PalletCategory::all();
-    	return view('pages.orders.pallets', compact('user','warehouses','categories','addresses'));
+    	return view('pages.orders.pallets', compact('user','warehouses','categories'));
 	}
 
 	/**
@@ -107,8 +106,7 @@ class PagesController extends Controller
 	 */
     public function downloads(){
     	$user = Auth::user();
-    	$files = $user->files;
-    	return view('pages.downloads', compact('user','files'));
+    	return view('pages.downloads', compact('user'));
 	}
 
 	/**

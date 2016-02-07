@@ -88,14 +88,9 @@ class AddressController extends Controller
 	 * @return Response
 	 */
     public function creationForm(){
-    	if(count(Auth::user()->addresses) == 0){
-			$countries = Country::getForView();
-			$user = Auth::user();
-			return view('pages.address',compact('user','countries'));
-		}
-		else{
-			return redirect('dashboard');
-		}
+		$countries = Country::getForView();
+		$user = Auth::user();
+		return view('pages.address',compact('user','countries'));
 	}
 
 	/**

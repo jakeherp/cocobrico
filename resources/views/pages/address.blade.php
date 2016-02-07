@@ -1,9 +1,4 @@
-
-@if(count($user->addresses) == 0)
-  @extends('layouts.auth')
-@else
-  @extends('layouts.app')
-@endif
+@extends('layouts.auth')
 
 @section('content')
 
