@@ -16,7 +16,7 @@ class CreatePermissionsTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('slug', 20)->default('')->unique();
-            $table->timestamp('created_at');
+            $table->timestamps();
         });
     }
 

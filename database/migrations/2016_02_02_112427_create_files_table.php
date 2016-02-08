@@ -23,7 +23,7 @@ class CreateFilesTable extends Migration
             $table->text('description')->default('');
             $table->boolean('downloadable')->default('0');
             $table->integer('downloads')->default('0');
-            $table->timestamp('created_at');
+            $table->timestamps();
         });
     }
 

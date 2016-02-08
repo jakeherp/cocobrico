@@ -18,7 +18,7 @@ class CreatePalletCategoriesTable extends Migration
             $table->integer('boxesperpallet');
             $table->double('width');
             $table->double('priceperkg');
-            $table->timestamp('created_at');
+            $table->timestamps();
         });
     }
 
