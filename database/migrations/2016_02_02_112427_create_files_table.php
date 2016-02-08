@@ -21,6 +21,8 @@ class CreateFilesTable extends Migration
             $table->string('filename', 200)->default('');
             $table->string('name',200)->default('');
             $table->text('description')->default('');
+            $table->boolean('downloadable')->default('0');
+            $table->integer('downloads')->default('0');
             $table->timestamp('created_at');
         });
     }

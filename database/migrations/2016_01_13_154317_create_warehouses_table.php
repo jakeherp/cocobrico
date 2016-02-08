@@ -16,6 +16,8 @@ class CreateWarehousesTable extends Migration
             $table->increments('id');
 			$table->string('name', 50);
 			$table->string('location', 50);
+            $table->integer('physicalStock')->default(0);
+            $table->integer('sellableStock')->default(0);
             $table->timestamps();
         });
     }
