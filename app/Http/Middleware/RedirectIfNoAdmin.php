@@ -20,11 +20,11 @@ class RedirectIfNoAdmin
         if (Auth::check()) {
             $user = Auth::user();
             if(!$user->hasPermission('is_admin')){
-                return redirect('admin')->withErrors(['You dont have the permissions to view this website!']);
+                return redirect('/')->withErrors(['You dont have the permissions to view this website!']);
             }
         }
         else{
-           return redirect('admin')->withErrors(['You dont have the permissions to view this website!']);
+           return redirect('/')->withErrors(['You dont have the permissions to view this website!']);
         }
 
         return $next($request);

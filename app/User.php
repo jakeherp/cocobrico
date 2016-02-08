@@ -71,11 +71,11 @@ class User extends Authenticatable
      */
 
     /**
-     * Get the customers associated with the user.
+     * Get the identities associated with the user.
      */
-    public function addresses()
+    public function identities()
     {
-        return $this->belongsToMany('App\Address');
+        return $this->belongsToMany('App\Identity','user_identity');
     }
 
     /**

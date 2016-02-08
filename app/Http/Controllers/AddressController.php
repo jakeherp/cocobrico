@@ -12,6 +12,7 @@ use App\Http\Requests\CreateAddressRequest;
 use App\Country;
 use App\Address;
 use App\File;
+use App\Identity;
 use App\User;
 
 use Auth;
@@ -31,9 +32,16 @@ class AddressController extends Controller
 	 */
     public function create(CreateAddressRequest $request){
     	$user = Auth::user();
-    	$user->firstName = $request->firstName;
-    	$user->lastName = $request->lastName;
-    	$user->save();
+
+    	if(count($user->identities) == 0){
+    		$user->firstName = $request->firstName;
+    		$user->lastName = $request->lastName;
+    		$user->save();
+    	}
+
+    	$identity = new Identity();
+    	$identity->taxID = $request->taxID;
+    	$user->identities()->save($identity);
 
 		$address = new Address();
 		$address->companyName = $request->companyName;
@@ -47,8 +55,7 @@ class AddressController extends Controller
 		$address->phone = $request->phone;
 		$address->fax = $request->fax;
 		$address->email = $user->email;
-		$address->taxID = $request->taxID;
-		$user->addresses()->save($address);
+		$identity->addresses()->save($address);
 
 		if ($request->hasFile('proofOfIncorporation')) {
     		if ($request->file('proofOfIncorporation')->isValid()) {
@@ -62,6 +69,7 @@ class AddressController extends Controller
     			else{
     				$upload->slug = 'proofOfIncorporation';
     				$upload->user_id = $user->id;
+    				$upload->identity_id = $identity->id;
     				$upload->address_id = $address->id;
     				$upload->name = 'Proof of Incorporation - ' . $address->companyName;
     				$upload->description = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.';

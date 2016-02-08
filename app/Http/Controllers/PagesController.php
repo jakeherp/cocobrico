@@ -29,11 +29,11 @@ class PagesController extends Controller
     	if (Auth::check()) {
     		$user = Auth::user();
     		// User has been activated and created a address
-    		if($user->hasPermission('is_customer') && count($user->addresses) > 0){
+    		if($user->hasPermission('is_customer') && count($user->identities) > 0){
 	    		return redirect('dashboard');
 	    	}
 	    	// User has no customer created
-	    	elseif(count($user->addresses) == 0){
+	    	elseif(count($user->identities) == 0){
 	    		return redirect('address');
 	    	}
 	    	// User has created a address, but is not activated yet

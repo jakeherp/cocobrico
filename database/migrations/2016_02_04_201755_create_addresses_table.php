@@ -27,12 +27,8 @@ class CreateAddressesTable extends Migration
             $table->string('fax', 255)->default('');
             $table->string('email', 255)->default('');
             
-            $table->integer('standardPriceID')->default(0);
-            $table->string('taxID', 255)->default('');
-
             $table->string('currency', 3)->default('EUR');
             $table->boolean('active')->default(true);
-            $table->integer('warehouseID')->default(0);
 
             $table->timestamps();
         });

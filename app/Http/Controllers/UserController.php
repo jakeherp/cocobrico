@@ -37,7 +37,6 @@ class UserController extends Controller
 		if ($user === null) {
 		   	// User is not existing in the database
 		   	$user = new User();
-		   	$user->username = $request->email;
 		  	$user->email = $request->email;
 		   	$user->register_token = str_random(40);
 		   	$user->save();
@@ -55,12 +54,12 @@ class UserController extends Controller
 		   $regUser = User::where('email', '=', $request->email)->where('password', '!=', '')->first();
 		   if ($regUser != null) {
 		   		// User is already registered
-		   		if($regUser->hasPermission('is_customer') || count($regUser->addresses) == 0){
-		   			// User is activated or has no address created yet
+		   		if($regUser->hasPermission('is_admin') || $regUser->hasPermission('is_customer') || count($regUser->identities) == 0){
+		   			// User is activated, admin or belongs to no identity yet
 		   			return redirect('login')->with('email', $request->email);
 		   		}
 		   		else{
-		   			// User has created a address but is not activated yet
+		   			// User belongs to an identity but is not activated yet
 		   			return redirect()->back()->withErrors([' Your account has not been activated yet. A member of staff will check your entered details and will get in touch with you shortly.']);
 		   		}   		
 		   }
@@ -107,7 +106,7 @@ class UserController extends Controller
     }
 
 	/**
-	 * Shows the login form if the user is activated or has no address created.
+	 * Shows the login form if the user is activated or belongs to no identity yet.
 	 *
 	 * @return Response
 	 */
@@ -119,8 +118,8 @@ class UserController extends Controller
 	    	if(session()->has('email')){
 	    		$email = session('email');
 	    		$user = User::where('email', '=', session('email'))->first();
-	    		if($user->hasPermission('is_customer') || count($user->addresses) == 0){
-	    			// Show the login form, if the user is either activated or has no address yet
+	    		if($user->hasPermission('is_admin') || $user->hasPermission('is_customer') || count($user->identities) == 0){
+	    			// Show the login form, if the user is either activated / admin or belongs to no identity yet.
 			   		return view('auth.login'); 
 			   	}
 			   	else{
@@ -157,7 +156,7 @@ class UserController extends Controller
 
     /**
      * Handle an authentication attempt. If the user is already activated, he will be redirected to the dashboard.
-     * If her is not activated and has no address, he will be redirected to the address creation formular. If he has
+     * If her is not activated and has no identity, he will be redirected to the address creation formular. If he has
      * already registered an address, but is not activated yet, he will be redirected to the homepage.
      *
      * @return Response
@@ -166,12 +165,18 @@ class UserController extends Controller
     {
     	if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = Auth::user();
-            if(count($user->addresses) == 0){
-        		// Show the address creation form, if the user has no address yet
+            $user->loginCounter = $user->loginCounter + 1;
+            $user->save();
+            if($user->hasPermission('is_admin')){
+            	// If user is admin, he is going to be redirected to the admin panel.
+            	return redirect('admin');
+            }
+            else if(count($user->identities) == 0){
+        		// Show the address creation form, if the user has no address yet.
         		return redirect('address');
 	        }
 	        else{
-	        	// Show the dashboard, if the user has an address
+	        	// Show the dashboard, if the user has an address.
 	        	return redirect('dashboard');
 	        }
         }
