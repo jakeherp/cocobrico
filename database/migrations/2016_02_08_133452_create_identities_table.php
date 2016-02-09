@@ -16,7 +16,6 @@ class CreateIdentitiesTable extends Migration
             $table->increments('id');
             $table->string('customerReference', 255)->default('');
             $table->string('taxID', 255)->default('');
-            $table->integer('price_id')->default(0);
             $table->integer('warehouse_id')->default(0);
             $table->timestamps();
         });

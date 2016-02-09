@@ -67,8 +67,14 @@ class User extends Authenticatable
     }
 
     /**
-     * Relations to other models:
+     * Gives back the active identity of the user.
+     *
+     * @return Identity 
      */
+    public function getActiveIdentity()
+    {
+        return $this->identities()->where('active', '=', 1)->first();
+    }
 
     /**
      * Get the identities associated with the user.

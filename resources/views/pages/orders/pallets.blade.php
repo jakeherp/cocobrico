@@ -8,14 +8,14 @@
       	<h1><i class="fa fa-truck"></i> Order pallets</h1>
       </div>
 
-	<form>
+	{!! Form::open(['url' => 'orders/pallets', 'method' => 'post']) !!}
       <div class="large-6 small-12 columns">
       
       	<div class="callout">
           @foreach($categories as $category)
              <label>
                {{$category->weight}}kg: {{$category->unitsperbox}} x {{$category->boxesperpallet}} x {{$category->weight}}kg ({{$category->priceperkg}} EUR/kg)
-             <input type="number" value="0" min="0" max="100" class="orderPalletOption" unitsperbox="{{$category->unitsperbox}}" boxesperpallet="{{$category->boxesperpallet}}" mass="{{$category->weight}}" price="{{$category->priceperkg}}">
+             <input type="number" name="cat_{{ $category->id }}" value="0" min="0" max="100" class="orderPalletOption" unitsperbox="{{$category->unitsperbox}}" boxesperpallet="{{$category->boxesperpallet}}" mass="{{$category->weight}}" price="{{$category->priceperkg}}">
             </label>
           @endforeach
         </div>
@@ -26,23 +26,19 @@
       	<div class="callout">
         
           <label>Delivery Option
-            <select>
+            <select name="delivery">
               @foreach($warehouses as $warehouse)
-                <option value="{{ $warehouse->id }}">Pick up from warehouse {{ $warehouse->name }}</option>
+                <option value="w_{{ $warehouse->id }}">Pick up from warehouse {{ $warehouse->name }}</option>
               @endforeach
-              @foreach($user->identities as $identity)
-                @if($identity->pivot->active == 1)
-                  @foreach($identity->addresses as $address)
-                    <option value="delivery{{ $address->id }}">Delivery to {{ $address->companyName }}, {{ $address->address1 }} {{ $address->address2 }}, {{ $address->postCode }} {{ $address->city }}, {{ $address->country }}</option>
-                  @endforeach
-                @endif
+              @foreach($user->getActiveIdentity()->addresses as $address)
+                <option value="d_{{ $address->id }}">Delivery to {{ $address->companyName }}, {{ $address->address1 }} {{ $address->address2 }}, {{ $address->postCode }} {{ $address->city }}, {{ $address->country }}</option>
               @endforeach
             </select>
           </label>
   
           <label>
             Remark
-            <textarea placeholder="Do you have any comments regarding your order?" rows="2"></textarea>
+            <textarea name="remark" placeholder="Do you have any comments regarding your order?" rows="2"></textarea>
           </label>
   
           <label>
@@ -51,12 +47,12 @@
           </label>
 
       	  <div class="expanded button-group">
-            <a class="button success" id="test"><i class="fa fa-check"></i> Place order</a>
+            <button role="submit" class="button success" id="test"><i class="fa fa-check"></i> Place order</button>
           </div>
         </div>
     
       </div>
-    </form>
+    {!! Form::close() !!}
 
       <div class="small-12 columns">
       
