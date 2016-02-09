@@ -37,11 +37,13 @@ class AddressController extends Controller
     		$user->firstName = $request->firstName;
     		$user->lastName = $request->lastName;
     		$user->save();
-    	}
 
-    	$identity = new Identity();
-    	$identity->taxID = $request->taxID;
-    	$user->identities()->save($identity);
+    		$identity = new Identity();
+    		$identity->taxID = $request->taxID;
+    		$user->identities()->save($identity);
+
+    		$user->identities()->updateExistingPivot($identity->id, ['active' => 1, 'main' => 1]);
+    	}
 
 		$address = new Address();
 		$address->companyName = $request->companyName;

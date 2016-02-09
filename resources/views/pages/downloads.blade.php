@@ -21,7 +21,7 @@
             </tr>
           </thead>
           <tbody>
-            @foreach($user->files as $file)
+            @foreach($user->files->where('downloadable',1) as $file)
                 <tr>
                 <td><i class="fa fa-file-pdf-o"></i> {{ $file->name }}</td>
                 <td>{{ $file->description }}</td>

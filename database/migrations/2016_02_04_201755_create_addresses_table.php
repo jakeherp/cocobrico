@@ -28,7 +28,8 @@ class CreateAddressesTable extends Migration
             $table->string('email', 255)->default('');
             
             $table->string('currency', 3)->default('EUR');
-            $table->boolean('active')->default(true);
+
+            $table->integer('identity_id')->default(0); 
 
             $table->timestamps();
         });

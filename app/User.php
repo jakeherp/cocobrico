@@ -75,7 +75,7 @@ class User extends Authenticatable
      */
     public function identities()
     {
-        return $this->belongsToMany('App\Identity','user_identity');
+        return $this->belongsToMany('App\Identity','user_identity')->withPivot('active', 'main');
     }
 
     /**

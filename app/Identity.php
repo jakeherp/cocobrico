@@ -35,7 +35,7 @@ class Identity extends Model
      */
     public function users()
     {
-        return $this->belongsToMany('App\User','user_identity');
+        return $this->belongsToMany('App\User','user_identity')->withPivot('active', 'main');;
     }
 
     /**

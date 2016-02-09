@@ -16,6 +16,8 @@ class CreateUserIdentityTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->default(0);
             $table->integer('identity_id')->default(0);
+            $table->boolean('active')->default(0);
+            $table->boolean('main')->default(0);
             $table->timestamps();
         });
     }

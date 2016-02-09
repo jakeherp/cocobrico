@@ -30,8 +30,12 @@
               @foreach($warehouses as $warehouse)
                 <option value="{{ $warehouse->id }}">Pick up from warehouse {{ $warehouse->name }}</option>
               @endforeach
-              @foreach($user->addresses as $address)
-                <option value="delivery{{ $address->id }}">Delivery to {{ $address->companyName }}, {{ $address->address1 }} {{ $address->address2 }}, {{ $address->postCode }} {{ $address->city }}, {{ $address->country }}</option>
+              @foreach($user->identities as $identity)
+                @if($identity->pivot->active == 1)
+                  @foreach($identity->addresses as $address)
+                    <option value="delivery{{ $address->id }}">Delivery to {{ $address->companyName }}, {{ $address->address1 }} {{ $address->address2 }}, {{ $address->postCode }} {{ $address->city }}, {{ $address->country }}</option>
+                  @endforeach
+                @endif
               @endforeach
             </select>
           </label>

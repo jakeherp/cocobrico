@@ -27,7 +27,9 @@
                   	Please choose a password
                     <div class="input-group">
                       <span class="input-group-label"><i class="fa fa-lock"></i></span>
-                      {!! Form::password('password', ['class' => 'input-group-field', 'placeholder' => 'Password']) !!}
+                      {!! Form::password('password', ['id' => 'passwordInput', 'class' => 'input-group-field', 'placeholder' => 'Password']) !!}
+                    </div>
+                    <div id="test">
                     </div>
                   </label>
                     <div class="input-group">
@@ -36,7 +38,7 @@
                     </div>
                   
                   <label>
-                  	Your businessLounge / Bar
+                  	Your business
                     {!! Form::select('business', array('wholesale' => 'Wholesale', 'retail' => 'Retail', 'lounge' => 'Lounge / Bar', 'staff' => 'Staff', 'other' => 'Other'), 'wholesale') !!}
                   </label>
                   {!! Form::submit('Continue &raquo;', ['class' => 'button alert']) !!}
@@ -50,5 +52,27 @@
         </div>
       </div>
     </section>
+
+    <script>
+      $(document).ready(function(){
+        $('#passwordInput').on('input',function(e){
+          var val = $(this).val();
+          var error = '';
+          if(val.length < 8){
+            error = '<p>The Password must have at least 8 symbols.</p>';
+          }
+          if(!(val.match(/[A-Z]/))){
+            error = error + '<p>The Password must contain at least one capital letter.</p>';
+          }
+          if(!(val.match(/[a-z]/))){
+            error = error + '<p>The Password must contain at least one lower letter.</p>';
+          }
+          if(!(val.match(/\d/))){
+            error = error + '<p>The Password must contain at least one number.</p>';
+          }
+          $('#test').html(error);
+        });
+      });
+    </script>
 	
 @endsection
