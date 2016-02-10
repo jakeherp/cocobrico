@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePalletCategoriesTable extends Migration
+class CreateRemarksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,13 @@ class CreatePalletCategoriesTable extends Migration
      */
     public function up()
     {
-         Schema::create('pallet_categories', function (Blueprint $table) {
+        Schema::create('remarks', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('unitsperbox')->default(0);
-            $table->integer('boxesperpallet')->default(0);
-            $table->double('weight')->default(0.0);
+            $table->string('slug',20)->default('');
+            $table->integer('slug_id')->default(0);
+            $table->string('headline',20)->default('');
+            $table->text('body')->default('');
+            $table->boolean('hot')->default(0);
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreatePalletCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('pallet_categories');
+        Schema::drop('remarks');
     }
 }

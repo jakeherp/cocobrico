@@ -15,9 +15,11 @@ class CreatePricesTable extends Migration
         Schema::create('prices', function (Blueprint $table) {
             $table->increments('id');
 			$table->string('name')->default('');
-			$table->text('description')->default('');
-			$table->integer('categorieId')->references('id')->on('price_categories')->onDelete('cascade');
-			$table->tinyInteger('type')->default(0);
+			$table->text('description')->default('');	
+            $table->boolean('standard')->default(0); // default price for this category
+			$table->tinyInteger('type')->default(0); // 0 = Pallets, 1 = Container
+            $table->integer('category_id')->default(0);
+            $table->double('priceperkg')->default(0); // Price in EUR
             $table->timestamps();
         });
     }

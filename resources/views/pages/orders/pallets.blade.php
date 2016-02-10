@@ -13,9 +13,15 @@
       
       	<div class="callout">
           @foreach($categories as $category)
+            <?php $price = $user->getActiveIdentity()->getPalletPrice($category->id, 'EUR'); ?>
              <label>
-               {{$category->weight}}kg: {{$category->unitsperbox}} x {{$category->boxesperpallet}} x {{$category->weight}}kg ({{$category->priceperkg}} EUR/kg)
-             <input type="number" name="cat_{{ $category->id }}" value="0" min="0" max="100" class="orderPalletOption" unitsperbox="{{$category->unitsperbox}}" boxesperpallet="{{$category->boxesperpallet}}" mass="{{$category->weight}}" price="{{$category->priceperkg}}">
+               {{$category->weight}}kg: {{$category->unitsperbox}} x {{$category->boxesperpallet}} x {{$category->weight}}kg 
+               ( 
+                  {{ $price->priceperkg }} 
+                  EUR/kg
+               )
+             <input type="number" name="cat_{{ $category->id }}" value="0" min="0" max="100" class="orderPalletOption" unitsperbox="{{$category->unitsperbox}}" boxesperpallet="{{$category->boxesperpallet}}" mass="{{$category->weight}}" 
+             price="{{ $price->priceperkg }}">
             </label>
           @endforeach
         </div>

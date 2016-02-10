@@ -39,4 +39,12 @@ class Address extends Model
     {
         return $this->hasMany('App\File');
     }
+
+    /**
+     * Get all of the pallet orders for this address.
+     */
+    public function palletOrders()
+    {
+        return $this->hasMany('App\Pallet');
+    }
 }

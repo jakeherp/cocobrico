@@ -15,15 +15,15 @@ class CreatePalletsTable extends Migration
         Schema::create('pallets', function (Blueprint $table) {
             $table->increments('id');
 			$table->integer('customerReference');
-			$table->integer('addressId')->references('id')->on('addresses')->onDelete('cascade');
+            $table->integer('identity_id')->references('id')->on('identities')->onDelete('cascade');
+			$table->integer('address_id')->references('id')->on('addresses')->onDelete('cascade');
 			$table->integer('priceId')->references('id')->on('prices')->onDelete('cascade');
-			$table->date('loadingDate');
-			// ORDER, CONFIRMED
+			$table->timestamp('loadingDate')->default('0000-00-00 00:00:00');
 			$table->string('pdfInvoiceCBE')->default('');
 			$table->integer('status')->default(0);
 			$table->tinyInteger('pickup')->default(0);
 			$table->string('warehouseReference', 10)->default('');
-			$table->integer('warehouseId');
+			$table->integer('warehouseId')->default(0);
             $table->timestamps();
         });
     }

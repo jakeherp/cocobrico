@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use DB;
+
 class Identity extends Model
 {
     /**
@@ -44,5 +46,33 @@ class Identity extends Model
     public function warehouse()
     {
         return $this->belongsToOne('App\Warehouse');
+    }
+
+    /**
+     * Get the price for a special pallet category for the identity.
+     */
+    public function getPalletPrice($category_id, $currency)
+    {
+        $query = DB::table('identity_prices')
+            ->select('price_id')
+            ->where('identity_id', '=', $this->id)
+            ->where('type', '=', 0)
+            ->where('category_id', '=', $category_id)->first();
+        if($query){
+            $price = Price::find($query->price_id);
+        }
+        else{
+            // There is no special price for the identity:
+            $price = Price::where('category_id','=', $category_id)->where('standard','=', 1)->first();
+        }
+        return $price;
+    }
+
+    /**
+     * Get all of the prices for the identity.
+     */
+    public function prices()
+    {
+        return $this->belongsToMany('App\Price', 'identity_prices');
     }
 }

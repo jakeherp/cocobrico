@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePriceCategoriesTable extends Migration
+class CreateIdentityPricesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,12 @@ class CreatePriceCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('price_categories', function (Blueprint $table) {
+        Schema::create('identity_prices', function (Blueprint $table) {
             $table->increments('id');
-			$table->double('weight',8,2)->default(1.00);
-            $table->string('unit',10)->default('kg');
-			
-			$table->timestamps();
+            $table->integer('identity_id')->default(0);
+            $table->integer('pallet_category_id')->default(0);
+            $table->integer('price_id')->default(0);
+            $table->timestamps();
         });
     }
 
@@ -28,6 +28,6 @@ class CreatePriceCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('price_categories');
+        Schema::drop('identity_prices');
     }
 }
