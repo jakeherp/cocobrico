@@ -13,4 +13,11 @@ class Pallet extends Model
      */
     protected $table = 'pallets';
 
+    /**
+     * Get the pallet orders associated with the pallet.
+     */
+    public function palletOrders()
+    {
+        return $this->hasMany('App\PalletOrder');
+    }
 }

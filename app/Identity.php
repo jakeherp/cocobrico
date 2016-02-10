@@ -75,4 +75,12 @@ class Identity extends Model
     {
         return $this->belongsToMany('App\Price', 'identity_prices');
     }
+
+    /**
+     * Get all of the pallets ordered by the identity.
+     */
+    public function pallets()
+    {
+        return $this->hasMany('App\Pallet');
+    }
 }

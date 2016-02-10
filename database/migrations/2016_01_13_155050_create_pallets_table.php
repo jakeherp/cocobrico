@@ -14,10 +14,9 @@ class CreatePalletsTable extends Migration
     {
         Schema::create('pallets', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('customerReference');
-            $table->integer('identity_id')->references('id')->on('identities')->onDelete('cascade');
-			$table->integer('address_id')->references('id')->on('addresses')->onDelete('cascade');
-			$table->integer('priceId')->references('id')->on('prices')->onDelete('cascade');
+			$table->string('customerReference',20)->default('');
+            $table->integer('identity_id')->default(0)->references('id')->on('identities')->onDelete('cascade');
+			$table->integer('address_id')->default(0)->references('id')->on('addresses')->onDelete('cascade');
 			$table->timestamp('loadingDate')->default('0000-00-00 00:00:00');
 			$table->string('pdfInvoiceCBE')->default('');
 			$table->integer('status')->default(0);
