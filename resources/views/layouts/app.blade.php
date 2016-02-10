@@ -41,10 +41,10 @@
 
       <div class="top-bar-right">
         <ul class="dropdown menu" data-dropdown-menu>
+          <li><a href="{{ url('settings') }}" class="iconlink" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Settings"><i class="fa fa-cog"></i></a></li>
+          <li><a href="{{ url('messages') }}" class="iconlink" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Messages"><i class="fa fa-envelope"></i><span class="alert label">2</span></a></li>
+          <li><a href="{{ url('logout') }}" class="iconlink" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Logout ({{ $user->firstname }})"><i class="fa fa-sign-out"></i></a></li>
           <li>{{ trans('global.welcome') }}, {{ $user->firstname }}</li>
-          <li data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Settings"><a href="{{ url('settings') }}"><i class="fa fa-cog"></i></a></li>
-          <li data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Messages"><a href="{{ url('messages') }}"><i class="fa fa-envelope"></i></a></li>
-          <li data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Logout ({{ $user->firstname }})"><a href="{{ url('logout') }}"><i class="fa fa-sign-out"></i></a></li>
         </ul>
       </div>
     </header>
