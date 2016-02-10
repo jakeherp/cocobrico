@@ -35,7 +35,6 @@
           <li><a href="{{ url('orders') }}"><i class="fa fa-truck"></i> {{ trans('global.orders') }}</a></li>
           <li><a href="{{ url('accounts') }}"><i class="fa fa-usd"></i> {{ trans('global.accounts') }}</a></li>
           <li><a href="{{ url('downloads') }}"><i class="fa fa-download"></i> {{ trans('global.downloads') }}</a></li>
-          <li><a href="{{ url('settings') }}"><i class="fa fa-cog"></i> {{ trans('global.settings') }}</a></li>
         </ul>
       </div>
 

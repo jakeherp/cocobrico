@@ -195,3 +195,17 @@ div:hover > .lg{
 #password p{
 	margin-bottom: 0.5rem;
 }
+
+sup.alert.label{
+    font-size: 0.5em;
+    padding: 3px;
+    margin-left: -7px;
+    border-radius: 50%;
+    width: 1.5em;
+    height: 1.5em;
+    text-align: center;
+    line-height: 0.8em;	
+}
+.iconlink{
+	padding: 0.7rem 0.5em;
+}
