@@ -187,3 +187,10 @@ table.datatable td {
 div:hover > .lg{
 	opacity: 1;
 }
+
+#password{
+	margin-top: -17px;
+}
+#password p{
+	margin-bottom: 0.5rem;
+}

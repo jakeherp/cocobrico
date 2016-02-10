@@ -29,7 +29,7 @@
                       <span class="input-group-label"><i class="fa fa-lock"></i></span>
                       {!! Form::password('password', ['id' => 'passwordInput', 'class' => 'input-group-field', 'placeholder' => 'Password']) !!}
                     </div>
-                    <div id="test">
+                    <div id="password" class="callout warning">
                     </div>
                   </label>
                     <div class="input-group">
@@ -70,7 +70,7 @@
           if(!(val.match(/\d/))){
             error = error + '<p>The Password must contain at least one number.</p>';
           }
-          $('#test').html(error);
+          $('#password').html(error);
         });
       });
     </script>
