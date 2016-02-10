@@ -60,16 +60,16 @@
           var error = '';
           if((val.length < 8) || !(val.match(/[A-Z]/)) || !(val.match(/[a-z]/)) || !(val.match(/\d/))){
             if(val.length < 8){
-              error = '<p>The Password must have at least 8 symbols.</p>';
+              error = '<p>The password must have at least 8 characters.</p>';
             }
             if(!(val.match(/[A-Z]/))){
-              error = error + '<p>The Password must contain at least one capital letter.</p>';
+              error = error + '<p>The password must contain at least one capital letter.</p>';
             }
             if(!(val.match(/[a-z]/))){
-              error = error + '<p>The Password must contain at least one lower letter.</p>';
+              error = error + '<p>The password must contain at least one lowercase letter.</p>';
             }
             if(!(val.match(/\d/))){
-              error = error + '<p>The Password must contain at least one number.</p>';
+              error = error + '<p>The password must contain at least one number.</p>';
             }
             $('#password').show('slow');
           }
