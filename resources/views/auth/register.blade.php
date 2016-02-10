@@ -58,17 +58,23 @@
         $('#passwordInput').on('input',function(e){
           var val = $(this).val();
           var error = '';
-          if(val.length < 8){
-            error = '<p>The Password must have at least 8 symbols.</p>';
+          if((val.length < 8) || !(val.match(/[A-Z]/)) || !(val.match(/[a-z]/)) || !(val.match(/\d/))){
+            if(val.length < 8){
+              error = '<p>The Password must have at least 8 symbols.</p>';
+            }
+            if(!(val.match(/[A-Z]/))){
+              error = error + '<p>The Password must contain at least one capital letter.</p>';
+            }
+            if(!(val.match(/[a-z]/))){
+              error = error + '<p>The Password must contain at least one lower letter.</p>';
+            }
+            if(!(val.match(/\d/))){
+              error = error + '<p>The Password must contain at least one number.</p>';
+            }
+            $('#password').show('slow');
           }
-          if(!(val.match(/[A-Z]/))){
-            error = error + '<p>The Password must contain at least one capital letter.</p>';
-          }
-          if(!(val.match(/[a-z]/))){
-            error = error + '<p>The Password must contain at least one lower letter.</p>';
-          }
-          if(!(val.match(/\d/))){
-            error = error + '<p>The Password must contain at least one number.</p>';
+          else{
+             $('#password').hide('slow');
           }
           $('#password').html(error);
         });

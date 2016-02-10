@@ -190,6 +190,7 @@ div:hover > .lg{
 
 #password{
 	margin-top: -17px;
+	display: none;
 }
 #password p{
 	margin-bottom: 0.5rem;
