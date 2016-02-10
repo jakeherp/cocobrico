@@ -42,7 +42,9 @@
       <div class="top-bar-right">
         <ul class="dropdown menu" data-dropdown-menu>
           <li>{{ trans('global.welcome') }}, {{ $user->firstname }}</li>
-          <li class="logout"><a href="{{ url('logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
+          <li data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Settings"><a href="{{ url('settings') }}"><i class="fa fa-cog"></i></a></li>
+          <li data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Messages"><a href="{{ url('messages') }}"><i class="fa fa-envelope"></i></a></li>
+          <li data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Logout ({{ $user->firstname }})"><a href="{{ url('logout') }}"><i class="fa fa-sign-out"></i></a></li>
         </ul>
       </div>
     </header>
