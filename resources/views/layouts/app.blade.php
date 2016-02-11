@@ -7,7 +7,7 @@
 
     <title>{{ trans('global.title') }}</title>
 
-    <link rel="stylesheet" href="{{ URL::asset('css/foundation.min.css') }}" />
+    <link rel="stylesheet" href="{{ URL::asset('css/foundation.css') }}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}" />
     <link rel="apple-touch-icon" href="{{ URL::asset('img/touch-icon-iphone.png') }}">
