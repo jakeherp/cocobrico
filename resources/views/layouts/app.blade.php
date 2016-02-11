@@ -7,7 +7,7 @@
 
     <title>{{ trans('global.title') }}</title>
 
-    <link rel="stylesheet" href="{{ URL::asset('css/foundation.css') }}" />
+    <link rel="stylesheet" href="{{ URL::asset('css/foundation.min.css') }}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}" />
     <link rel="apple-touch-icon" href="{{ URL::asset('img/touch-icon-iphone.png') }}">
@@ -43,11 +43,11 @@
           <li><a href="{{ url('settings') }}" class="iconlink" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Settings"><i class="fa fa-cog"></i></a></li>
           <li><a href="{{ url('messages') }}" class="iconlink" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Messages"><i class="fa fa-envelope"></i><sup class="alert label">2</sup></a></li>
           <li>
-            <a href="{{ url('logout') }}" class="iconlink" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Logout"><i class="fa fa-sign-out"></i></a>
+            <a href="javascript:;" class="iconlink" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Logout"><i class="fa fa-sign-out"></i></a>
             <ul class="dropdown menu" data-dropdown-menu>
               <li><a href="#">Switch to Cocobrico Europe Ltd</a></li>
               <li><a href="#">Switch to Cocobrico Deutschland GmbH</a></li>
-              <li><a href="#">Logout</a></li>
+              <li><a href="{{ url('logout') }}">Logout</a></li>
             </ul>
           </li>
           <li>{{ trans('global.welcome') }}, {{ $user->firstname }}</li>
