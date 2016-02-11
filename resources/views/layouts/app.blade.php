@@ -66,7 +66,7 @@
 
 
 	<script type="text/javascript" src="{{ URL::asset('js/vendor/what-input.min.js') }}"></script>
-	<script type="text/javascript" src="{{ URL::asset('js/foundation.min.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::asset('js/foundation.js') }}"></script>
 	<script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
   </body>
 </html>
