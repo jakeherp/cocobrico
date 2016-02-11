@@ -209,3 +209,9 @@ sup.alert.label{
 .iconlink{
 	padding: 0.7rem 0.5em;
 }
+
+.dropdown.menu:not(.vertical) .is-dropdown-submenu.first-sub {
+    top: 100%;
+    left: auto;
+    right: 0;
+}
