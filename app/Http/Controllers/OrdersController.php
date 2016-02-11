@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Identity;
 use App\PalletCategory;
 use App\Price;
+use App\Remark;
 use App\User;
 use App\Pallet;
 use App\PalletOrder;
@@ -35,6 +36,18 @@ class OrdersController extends Controller
         $pallet->customerReference = Auth::user()->getActiveIdentity()->customerReference;
         $pallet->identity_id = $identity->id;
 
+      // Check if there are orders at all:
+        $categories = PalletCategory::all();
+        $sum = 0;
+        foreach($categories as $category){
+            $sum += (int)$request['cat_' . $category->id];
+        }
+
+        if($sum == 0){
+            return redirect()->back()->withInput()->withErrors(['The total amount of pallets must be greater than zero!']);
+        }
+
+      // Delivery Options:
         if (strpos($delivery, 'w_') !== false) {
             // Pick up from warehouse
             $pallet->pickup = 1;
@@ -48,15 +61,24 @@ class OrdersController extends Controller
 
         $pallet->save();
 
-        $categories = PalletCategory::all();
+      // Amounts of the different Pallet Categories:
         foreach($categories as $category){
             // look through all categories and save the amount, the users offered from this
             $palletOrder = new PalletOrder();
             $palletOrder->pallet_category_id = $category->id;
             $palletOrder->price_id = $identity->getPalletPrice($category->id, 'EUR')->priceperkg;
             $palletOrder->amount = (int)$request['cat_' . $category->id];
-            //return $palletOrder;
             $pallet->palletOrders()->save($palletOrder);
+        }
+
+      // Customer Remark:
+        if($request->remark != ''){
+            $remark = new Remark();
+            $remark->slug = 'pallet';
+            $remark->slug_id = $pallet->id;
+            $remark->headline = 'Customer Remark';
+            $remark->body = $request->remark;
+            $remark->save();
         }
 
     	return redirect('orders/pallets');

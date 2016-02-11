@@ -52,6 +52,8 @@
             <strong>€ <span id="priceTotal">0,00</span></strong> plus Shipping &amp; VAT
           </label>
 
+          @include ('errors.list')
+
       	  <div class="expanded button-group">
             <button role="submit" class="button success" id="test"><i class="fa fa-check"></i> Place order</button>
           </div>
