@@ -45,8 +45,10 @@
           <li>
             <a href="javascript:;"><i class="fa fa-user"></i> {{ $user->firstname }}</a>
             <ul class="dropdown menu" data-dropdown-menu data-click-open="true">
-              <li><a href="#">Cocobrico Europe Ltd <i class="fa fa-check"></i></strong></li>
+              <li class="header">Your companies</li>
+              <li><a href="#">Cocobrico Europe Ltd <i class="fa fa-check"></i></a></li>
               <li><a href="#">Cocobrico Deutschland GmbH</a></li>
+              <li class="divider"></li>
               <li><a href="#">Logout</a></li>
             </ul>
           </li>
