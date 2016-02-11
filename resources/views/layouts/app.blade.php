@@ -49,7 +49,7 @@
               <li><a href="#">Cocobrico Europe Ltd <i class="fa fa-check"></i></a></li>
               <li><a href="#">Cocobrico Deutschland GmbH</a></li>
               <li class="divider"></li>
-              <li><a href="#">Logout</a></li>
+              <li><a href="{{ url('logout') }}">Logout</a></li>
             </ul>
           </li>
         </ul>
