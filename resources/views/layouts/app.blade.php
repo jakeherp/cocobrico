@@ -43,9 +43,9 @@
           <li><a href="{{ url('settings') }}" class="iconlink" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Settings"><i class="fa fa-cog"></i></a></li>
           <li><a href="{{ url('messages') }}" class="iconlink" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Messages"><i class="fa fa-envelope"></i><sup class="alert label">2</sup></a></li>
           <li>
-            <i class="fa fa-user"></i> {{ $user->firstname }}
+            <a href="javascript:;"><i class="fa fa-user"></i> {{ $user->firstname }}</a>
             <ul class="dropdown menu" data-dropdown-menu data-click-open="true">
-              <li><strong>Cocobrico Europe Ltd <i class="fa fa-check"></i></strong></li>
+              <li><a href="#">Cocobrico Europe Ltd <i class="fa fa-check"></i></strong></li>
               <li><a href="#">Cocobrico Deutschland GmbH</a></li>
               <li><a href="#">Logout</a></li>
             </ul>
