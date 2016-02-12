@@ -17,11 +17,11 @@
              <label>
                {{$category->weight}}kg: {{$category->unitsperbox}} x {{$category->boxesperpallet}} x {{$category->weight}}kg 
                ( 
-                  {{ $price->priceperkg }} 
+                  {{ $price->price_per_kg }} 
                   EUR/kg
                )
              <input type="number" name="cat_{{ $category->id }}" value="0" min="0" max="100" class="orderPalletOption" unitsperbox="{{$category->unitsperbox}}" boxesperpallet="{{$category->boxesperpallet}}" mass="{{$category->weight}}" 
-             price="{{ $price->priceperkg }}">
+             price="{{ $price->price_per_kg }}">
             </label>
           @endforeach
         </div>
@@ -86,8 +86,12 @@
               <tr>
                 <td>{{ $pallet->created_at }}</td>
                 <td>{{ $pallet->customerReference }}</td>
-                @foreach($pallet->palletOrders as $order)
-                  <td>{{ $order->amount }}</td>
+                @foreach($categories as $category)
+                  @if($order = $pallet->palletOrders()->where('pallet_category_id','=',$category->id)->first())
+                    <td>{{ $order->amount }}</td>
+                  @else
+                    <td>0</td>
+                  @endif
                 @endforeach
                 <td>
                   <span class="@if($pallet->status >= 0) success  @else secondary @endif  label round"><i class="fa fa-question"></i></span>
@@ -100,7 +104,7 @@
                   </div>
                 </td>
                 <td>
-                  <a href="#" class="tiny button primary has-tip" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="View Order"><i class="fa fa-search"></i></a>
+                  <a href="{{ url('orders/pallets/'.$pallet->customerReference) }}" class="tiny button primary has-tip" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="View Order"><i class="fa fa-search"></i></a>
                   <a href="#" class="tiny button warning has-tip" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Edit Order"><i class="fa fa-pencil"></i></a>
                   <a href="#" class="tiny button success has-tip" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Copy Order"><i class="fa fa-clone"></i></a>
                   <a href="#" class="tiny button alert has-tip" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Cancel Order"><i class="fa fa-trash"></i></a>

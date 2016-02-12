@@ -33,6 +33,14 @@ class Identity extends Model
     }
 
     /**
+     * Get the billing address of the identity.
+     */
+    public function getBillingAddress()
+    {
+        return $this->addresses()->where('type','=',1)->first();
+    }
+
+    /**
      * Get the users associated with the identity.
      */
     public function users()
@@ -59,7 +67,7 @@ class Identity extends Model
             ->where('type', '=', 0)
             ->where('category_id', '=', $category_id)->first();
         if($query){
-            $price = Price::find($query->price_id);
+            $price = 5; //Price::find($query->price_id);
         }
         else{
             // There is no special price for the identity:

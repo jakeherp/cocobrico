@@ -22,7 +22,7 @@ class CreatePalletsTable extends Migration
 			$table->integer('status')->default(0);
 			$table->tinyInteger('pickup')->default(0);
 			$table->string('warehouseReference', 10)->default('');
-			$table->integer('warehouseId')->default(0);
+			$table->integer('warehouse_id')->default(0);
             $table->timestamps();
         });
     }

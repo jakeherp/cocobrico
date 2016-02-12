@@ -33,14 +33,17 @@ class OrdersController extends Controller
     	$remark = $request->remark;
         $delivery = $request->delivery;
 
-        $pallet->customerReference = Auth::user()->getActiveIdentity()->customerReference;
+        $pallet->customerReference = 'P' . date("y") . date("m") . sprintf("%02d",(count(Pallet::all())+1));
         $pallet->identity_id = $identity->id;
 
       // Check if there are orders at all:
         $categories = PalletCategory::all();
         $sum = 0;
-        foreach($categories as $category){
+        foreach($categories as $key => $category){
             $sum += (int)$request['cat_' . $category->id];
+            if((int)$request['cat_' . $category->id] == 0){
+                unset($categories[$key]);
+            }
         }
 
         if($sum == 0){
@@ -66,7 +69,7 @@ class OrdersController extends Controller
             // look through all categories and save the amount, the users offered from this
             $palletOrder = new PalletOrder();
             $palletOrder->pallet_category_id = $category->id;
-            $palletOrder->price_id = $identity->getPalletPrice($category->id, 'EUR')->priceperkg;
+            $palletOrder->price_id = $identity->getPalletPrice($category->id, 'EUR')->id;
             $palletOrder->amount = (int)$request['cat_' . $category->id];
             $pallet->palletOrders()->save($palletOrder);
         }
@@ -82,5 +85,31 @@ class OrdersController extends Controller
         }
 
     	return redirect('orders/pallets');
+    }
+
+    /**
+     * Shows the order details.
+     *
+     * @param  string $reference
+     * @return Response
+     */
+    public function viewOrder($reference)
+    {
+        $user = Auth::user();
+        $identity = $user->getActiveIdentity();
+        if (strpos($reference, 'P') !== false) {
+            // Pallet:
+            $pallet = Pallet::where('customerReference','=',$reference)->first();
+            if(count($pallet) > 0 AND $identity->id == $pallet->identity_id){
+                return view('pages.orders.view', compact('user','identity','pallet'));
+            }
+            else{
+                return redirect()->back();
+            }
+        }
+        else{
+            // Container:
+                return 'CONTAINER';
+        }
     }
 }
