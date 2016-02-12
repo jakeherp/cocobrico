@@ -21,7 +21,7 @@ class Price extends Model
      */
     public function getPricePerKgAttribute($value)
     {
-    	$value = number_format ($value , 2 , '.' , '&#39;' );
+    	//$value = number_format ($value , 2 , '.' , '&#39;' );
         return $value;
     }
 
