@@ -53,7 +53,7 @@ class AddressController extends Controller
 		$address->address2 = $request->address2;
 		$address->city = $request->city;
 		$address->postCode = $request->postCode;
-		$address->country = $request->country;
+		$address->country_id = $request->country;
 		$address->phone = $request->phone;
 		$address->fax = $request->fax;
 		$address->email = $user->email;

@@ -25,6 +25,14 @@ class Address extends Model
     ];
 
     /**
+     * Get the country associated with the address.
+     */
+    public function country()
+    {
+        return $this->belongsTo('App\Country');
+    }
+
+    /**
      * Get the users associated with the address.
      */
     public function users()

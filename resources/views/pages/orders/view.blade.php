@@ -16,7 +16,7 @@
             <strong>{{ $identity->getBillingAddress()->companyName }}</strong><br>
             {{ $identity->getBillingAddress()->address1 }}<br>
             {{ $identity->getBillingAddress()->postCode }} {{ $identity->getBillingAddress()->city }}<br>
-            {{ $identity->getBillingAddress()->country }}<br>
+            {{ $identity->getBillingAddress()->country->name }}<br>
             <br>
             Phone: {{ $identity->getBillingAddress()->phone }}<br>
             Email: {{ $identity->getBillingAddress()->email }}
@@ -27,7 +27,7 @@
               <strong>{{ $pallet->address->companyName }}</strong><br>
               {{ $pallet->address->address1 }}<br>
               {{ $pallet->address->postCode }} {{ $pallet->address->city }}<br>
-              {{ $pallet->address->country }}<br>
+              {{ $pallet->address->country->name }}<br>
               <br>
               Phone: {{ $pallet->address->phone }}<br>
               Email: {{ $pallet->address->email }}

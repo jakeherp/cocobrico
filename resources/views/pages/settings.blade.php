@@ -20,7 +20,7 @@
         {{ $address->address2 }}<br>
         {{ $address->city }}<br>
         {{ $address->postCode }}<br>
-        {{ $address->country }}
+        {{ $address->country->name }}
       </div>
     @endforeach
 
