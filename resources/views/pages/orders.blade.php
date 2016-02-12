@@ -6,11 +6,17 @@
 
 	  <div class="large-12 column">        
         
-        <button class="button success dropdown pull-right" type="button" data-toggle="orderDropdown"><i class="fa fa-plus"></i> New order</button>
+        <button type="button" data-toggle="orderDropdown"><i class="fa fa-plus"></i> New order</button>
         <ul class="dropdown-pane" id="orderDropdown" data-dropdown data-close-on-click="true">
           <li><a href="{{ url('orders/container') }}">Order Container</a></li>
           <li><a href="{{ url('orders/pallets') }}">Order Pallets</a></li>
         </ul>
+
+        <a href="javascript:;" class="button success dropdown pull-right"><i class="fa fa-plus"></i> New order</a>
+            <ul class="dropdown menu success" data-dropdown-menu data-click-open="true">
+              <li><a href="{{ url('orders/container') }}">Order Container</a></li>
+              <li><a href="{{ url('orders/pallets') }}">Order Pallets</a></li>
+            </ul>
         
       	<h1><i class="fa fa-truck"></i> Orders</h1>
       </div>
