@@ -1,7 +1,7 @@
 <body style="background: #000;">
 	<img src="{{ URL::asset('img/logo.png') }}" alt="{{ trans('global.cocobrico') }}" style="width: 90%; max-width: 300px; display: block; margin: 30px auto;">
 	<div style="background: #fff; color: #000; padding: 20px; width: 90%; margin: 20px auto;">
-		<p>{{ trans('auth.dear') }},</p>
+		<p>{{ trans('auth.dear') }}</p>
 		<p>{{ trans('auth.msgbody') }}</p>
 
 		<p style="text-align: center; margin: 30px 0;">
