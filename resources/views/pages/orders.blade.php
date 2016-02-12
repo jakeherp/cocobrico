@@ -207,12 +207,12 @@
         </table>  
 
         <ul class="pagination text-center" role="navigation" aria-label round="Pagination">
-          <li class="pagination-previous disabled">{{ trans('paginations.previous') }} <span class="show-for-sr">page</span></li>
-          <li class="current"><span class="show-for-sr">{{ trans('paginations.page') }}</span> 1</li>
+          <li class="pagination-previous disabled">{{ trans('pagination.previous') }} <span class="show-for-sr">page</span></li>
+          <li class="current"><span class="show-for-sr">{{ trans('pagination.page') }}</span> 1</li>
           <li><a href="#" aria-label round="Page 2">2</a></li>
           <li><a href="#" aria-label round="Page 3">3</a></li>
           <li><a href="#" aria-label round="Page 4">4</a></li>
-          <li class="pagination-next"><a href="#" aria-label round="Next page">{{ trans('paginations.next') }} <span class="show-for-sr">page</span></a></li>
+          <li class="pagination-next"><a href="#" aria-label round="Next page">{{ trans('pagination.next') }} <span class="show-for-sr">page</span></a></li>
         </ul>
 
       </div>
