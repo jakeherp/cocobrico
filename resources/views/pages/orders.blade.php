@@ -5,12 +5,15 @@
     <section class="row" id="content">
 
 	  <div class="large-12 column">        
-
-        <a href="javascript:;" class="button success dropdown pull-right"><i class="fa fa-plus"></i> New order</a>
-            <ul class="dropdown menu success" data-dropdown-menu data-click-open="true">
-              <li><a href="{{ url('orders/container') }}">Order Container</a></li>
-              <li><a href="{{ url('orders/pallets') }}">Order Pallets</a></li>
-            </ul>
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li>
+          <a href="javascript:;" class="button success dropdown pull-right"><i class="fa fa-plus"></i> New order</a>
+          <ul class="dropdown menu success" data-dropdown-menu data-click-open="true">
+            <li><a href="{{ url('orders/container') }}">Order Container</a></li>
+            <li><a href="{{ url('orders/pallets') }}">Order Pallets</a></li>
+          </ul>
+        </li>
+      </ul>
         
       	<h1><i class="fa fa-truck"></i> Orders</h1>
       </div>
