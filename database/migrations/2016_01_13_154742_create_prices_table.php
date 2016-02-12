@@ -19,7 +19,7 @@ class CreatePricesTable extends Migration
             $table->boolean('standard')->default(0); // default price for this category
 			$table->tinyInteger('type')->default(0); // 0 = Pallets, 1 = Container
             $table->integer('category_id')->default(0);
-            $table->double('priceperkg')->default(0); // Price in EUR
+            $table->double('price_per_kg')->default(0); // Price in EUR
             $table->timestamps();
         });
     }
