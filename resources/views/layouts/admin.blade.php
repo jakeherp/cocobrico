@@ -4,7 +4,11 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cocobrico Commercial</title>
+    <meta name="description" content="Order Cocobrico from Cocobrico Commercial as a wholesaler, retailer or other commercial customer.">
+    <meta name="keywords" content="Cocobrico, Charcoal, Coconut, Indonesia, Europe, Shisha, Hookah, Coal">
+    <meta name="publisher" content="Cocobrico Europe Ltd">
+    <meta name="author" content="PCServe Media Ltd">
+    <title>{{ trans('global.title') }}</title>
     <link rel="stylesheet" href="{{ URL::asset('css/foundation.css') }}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}" />
@@ -65,7 +69,7 @@
 
             <footer class="row">
               <div class="large-12 columns text-center">
-                &copy; 2016 Cocobrico Europe Ltd
+                &copy; <?=date("Y");?> {{ trans('global.company') }}
               </div>
             </footer>
 

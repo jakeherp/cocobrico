@@ -9,15 +9,19 @@ return [
 	*/
 
     'title'				    => 'Cocobrico Commercial',
+    'cocobrico'             => 'Cocobrico',
     'menu'				    => 'Menu',
     'dashboard'			    => 'Dashboard',
     'orders'				=> 'Orders',
     'accounts'			    => 'Accounts',
     'downloads'			    => 'Downloads',
     'settings'			    => 'Settings',
-    'logout'				=> '<i class="fa fa-sign-out"></i>Logout',
+    'logout'				=> '<i class="fa fa-sign-out"></i> Logout',
     'welcome'			    => 'Welcome back',
     'commercialcustomers'   => 'Commercial Customers',
     'company'               => 'Cocobrico Europe Ltd',
+    'companies'             => 'Your companies',
+    'settings'              => 'Settings',
+    'messages'              => 'Messages',
 
 ];

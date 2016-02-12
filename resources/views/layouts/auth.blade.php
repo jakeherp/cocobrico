@@ -4,8 +4,12 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Order Cocobrico from Cocobrico Commercial as a wholesaler, retailer or other commercial customer.">
+    <meta name="keywords" content="Cocobrico, Charcoal, Coconut, Indonesia, Europe, Shisha, Hookah, Coal">
+    <meta name="publisher" content="Cocobrico Europe Ltd">
+    <meta name="author" content="PCServe Media Ltd">
 
-    <title>Cocobrico Commercial</title>
+    <title>{{ trans('global.title') }}</title>
 
     <link rel="stylesheet" href="{{ URL::asset('css/foundation.css') }}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -22,7 +26,7 @@
 
     <header class="row">
       <div class="large-12 columns text-center">
-        <h1><img src="{{ URL::asset('img/logo.svg') }}" alt="Cocobrico">Commercial Customers</h1>
+        <h1><img src="{{ URL::asset('img/logo.svg') }}" alt="{{ trans('global.cocobrico') }}">{{ trans('global.commercialcustomers') }}</h1>
       </div>
     </header>
 
@@ -30,7 +34,7 @@
 	    
     <footer class="row">
       <div class="large-12 columns text-center">
-        &copy; <?=date("Y"); ?> Cocobrico Europe Ltd
+        &copy; <?=date("Y");?> {{ trans('global.company') }}
       </div>
     </footer>
 	
