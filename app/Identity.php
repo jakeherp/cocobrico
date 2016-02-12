@@ -33,6 +33,16 @@ class Identity extends Model
     }
 
     /**
+     * Get the main address of the identity.
+     *
+     * @return Address
+     */
+    public function get_main_address()
+    {
+        return Address::where('identity_id','=',$this->id)->where('type','=',1)->first();
+    }
+
+    /**
      * Get the billing address of the identity.
      */
     public function getBillingAddress()

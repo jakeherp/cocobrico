@@ -49,10 +49,19 @@
           <li>
             <a href="javascript:;"><i class="fa fa-user"></i> {{ $user->firstname }}</a>
             <ul class="dropdown menu" data-dropdown-menu data-click-open="true">
-              <li class="header">{{ trans('global.companies') }}</li>
-              <li><a href="#">Cocobrico Europe Ltd <i class="fa fa-check"></i></a></li>
-              <li><a href="#">Cocobrico Deutschland GmbH</a></li>
-              <li class="divider"></li>
+              @if(count($user->identities) > 1)
+                <li class="header">{{ trans('global.companies') }}</li>
+                @foreach($user->identities as $identity)
+                  <li>
+                    <a href="#">{{ $identity->get_main_address()->companyName }} 
+                      @if($user->getActiveIdentity()->id == $identity->id)
+                        <i class="fa fa-check"></i>
+                      @endif
+                    </a>
+                  </li>
+                @endforeach
+                <li class="divider"></li>
+              @endif
               <li><a href="{{ url('logout') }}">{!! trans('global.logout') !!}</a></li>
             </ul>
           </li>
