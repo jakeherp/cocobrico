@@ -31,20 +31,24 @@
       
       	<div class="callout">
         
-          <label>{{ trans('orders.deliveryoption') }}
-            <select name="delivery">
-              @foreach($warehouses as $warehouse)
-                <option value="w_{{ $warehouse->id }}">{{ trans('orders.pickup') }} {{ $warehouse->name }}</option>
-              @endforeach
-              @foreach($user->getActiveIdentity()->addresses as $address)
-                <option value="d_{{ $address->id }}">{{ trans('orders.deliverto') }} {{ $address->companyName }}, {{ $address->address1 }} {{ $address->address2 }}, {{ $address->postCode }} {{ $address->city }}, {{ $address->country }}</option>
-              @endforeach
-            </select>
-          </label>
+        <label>{{ trans('orders.deliveryoption') }}
+        <?php
+          $options = array();
+          foreach($warehouses as $warehouse){
+            $name = trans('orders.pickup').' '.$warehouse->name;
+            $options['w_'.$warehouse->id] = $name;
+          }
+          foreach($user->getActiveIdentity()->addresses as $address){
+            $name = trans('orders.deliverto') . ' ' . $address->companyName . ', ' . $address->address1 . ', ' . $address->city . ' ' . $address->postCode . ', ' . $address->country->name;
+            $options['d_'.$address->id] = $name;
+          }
+          echo Form::select('delivery', $options, null, []);
+        ?>
+        </label>
   
           <label>
             {{ trans('orders.remark') }}
-            <textarea name="remark" placeholder="{{ trans('orders.remarkdesc') }}" rows="2"></textarea>
+            {!! Form::textarea('remark', null, ['placeholder' => trans('orders.remarkdesc'), 'rows' => 2]) !!}
           </label>
   
           <label>
