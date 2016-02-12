@@ -64,7 +64,7 @@ return [
     // Verification Email
     'dear'                  =>  'Dear customer,',
     'msgbody'               =>  'Please verify your email address to continue your registration with Cocobrico Commercial Customers:',
-    'button'                =>  'Click here to verify your email address'
-    'troubleshooting'       =>  'If you have trouble activating your account, please contact us at info@cocobrico.com.'
+    'button'                =>  'Click here to verify your email address',
+    'troubleshooting'       =>  'If you have trouble activating your account, please contact us at info@cocobrico.com.',
 
 ];
