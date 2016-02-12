@@ -90,7 +90,7 @@
               <td>10</td>
               <td>12</td>
               <td>11</td>
-              <td><span class="success label round"><i class="fa fa-question"></i></span><span class="success label round"><i class="fa fa-check"></i></span><span class="success label round"><i class="fa fa-file-text-o"></i></span><span class="success label round"><i class="fa fa-usd"></i></span><span class="success label round"><i class="fa fa-truck"></i></span><div class="boxed-text">{{ trans('orders.{{ trans('orders.shipped') }}') }}</div></td>
+              <td><span class="success label round"><i class="fa fa-question"></i></span><span class="success label round"><i class="fa fa-check"></i></span><span class="success label round"><i class="fa fa-file-text-o"></i></span><span class="success label round"><i class="fa fa-usd"></i></span><span class="success label round"><i class="fa fa-truck"></i></span><div class="boxed-text">{{ trans('orders.shipped') }}</div></td>
               <td>
               	<a href="#" class="tiny button primary has-tip" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="{{ trans('orders.view') }}"><i class="fa fa-search"></i></a>
               	<a href="#" class="tiny button warning has-tip disabled" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="{{ trans('orders.edit') }}"><i class="fa fa-pencil"></i></a>
@@ -105,7 +105,7 @@
               <td>10</td>
               <td>12</td>
               <td>11</td>
-              <td><span class="success label round"><i class="fa fa-question"></i></span><span class="success label round"><i class="fa fa-check"></i></span><span class="success label round"><i class="fa fa-file-text-o"></i></span><span class="success label round"><i class="fa fa-usd"></i></span><span class="success label round"><i class="fa fa-truck"></i></span><div class="boxed-text">{{ trans('orders.{{ trans('orders.shipped') }}') }}</div></td>
+              <td><span class="success label round"><i class="fa fa-question"></i></span><span class="success label round"><i class="fa fa-check"></i></span><span class="success label round"><i class="fa fa-file-text-o"></i></span><span class="success label round"><i class="fa fa-usd"></i></span><span class="success label round"><i class="fa fa-truck"></i></span><div class="boxed-text">{{ trans('orders.shipped') }}</div></td>
               <td>
               	<a href="#" class="tiny button primary has-tip" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="{{ trans('orders.view') }}"><i class="fa fa-search"></i></a>
               	<a href="#" class="tiny button warning has-tip disabled" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="{{ trans('orders.edit') }}"><i class="fa fa-pencil"></i></a>
