@@ -5,7 +5,7 @@
     <section class="row" id="content">
 
 	  <div class="large-12 column">
-      	<h1><i class="fa fa-truck"></i> Order pallets</h1>
+      	<h1><i class="fa fa-truck"></i> {{ trans('orders.orderpallets') }}</h1>
       </div>
 
 	{!! Form::open(['url' => 'orders/pallets', 'method' => 'post']) !!}
@@ -31,31 +31,31 @@
       
       	<div class="callout">
         
-          <label>Delivery Option
+          <label>{{ trans('orders.deliveryoption') }}
             <select name="delivery">
               @foreach($warehouses as $warehouse)
-                <option value="w_{{ $warehouse->id }}">Pick up from warehouse {{ $warehouse->name }}</option>
+                <option value="w_{{ $warehouse->id }}">{{ trans('orders.pickup') }} {{ $warehouse->name }}</option>
               @endforeach
               @foreach($user->getActiveIdentity()->addresses as $address)
-                <option value="d_{{ $address->id }}">Delivery to {{ $address->companyName }}, {{ $address->address1 }} {{ $address->address2 }}, {{ $address->postCode }} {{ $address->city }}, {{ $address->country }}</option>
+                <option value="d_{{ $address->id }}">{{ trans('orders.deliverto') }} {{ $address->companyName }}, {{ $address->address1 }} {{ $address->address2 }}, {{ $address->postCode }} {{ $address->city }}, {{ $address->country }}</option>
               @endforeach
             </select>
           </label>
   
           <label>
-            Remark
-            <textarea name="remark" placeholder="Do you have any comments regarding your order?" rows="2"></textarea>
+            {{ trans('orders.remark') }}
+            <textarea name="remark" placeholder="{{ trans('orders.remarkdesc') }}" rows="2"></textarea>
           </label>
   
           <label>
-            Total:
-            <strong>€ <span id="priceTotal">0,00</span></strong> plus Shipping &amp; VAT
+            {{ trans('orders.total') }}:
+            <strong>&euro; <span id="priceTotal">0,00</span></strong> {!! trans('orders.plusshipping') !!}
           </label>
 
           @include ('errors.list')
 
       	  <div class="expanded button-group">
-            <button role="submit" class="button success" id="test"><i class="fa fa-check"></i> Place order</button>
+            <button role="submit" class="button success" id="test"><i class="fa fa-check"></i> {{ trans('orders.place') }}</button>
           </div>
         </div>
     
@@ -67,18 +67,18 @@
       <hr>
       
       @if(count($user->getActiveIdentity()->pallets) > 0)
-        <h4>Order History</h4>
+        <h4>{{ trans('orders.history') }}</h4>
         <div class="callout">
           <table class="scroll">
             <thead>
                <tr>
-                <th>Order Date</th>
-                <th>Order No.</th>
+                <th>{{ trans('orders.date') }}</th>
+                <th>{{ trans('orders.number') }}</th>
                 @foreach($categories as $category)
                   <th width="5%">{{ $category->weight }} kg</th>
                 @endforeach
-                <th width="30%">Status</th>
-                <th width="20%">Options</th>
+                <th width="30%">{{ trans('orders.status') }}</th>
+                <th width="20%">{{ trans('orders.options') }}</th>
               </tr>
             </thead>
             <tbody>
