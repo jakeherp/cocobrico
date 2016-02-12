@@ -19,6 +19,7 @@ return [
     'container'          =>  'Container',
 
     // Statuses
+    'status'             =>  'Order Status',
     'ordered'            =>  'Ordered',
     'confirmed'          =>  'Confirmed',
     'billed'             =>  'Billed',
