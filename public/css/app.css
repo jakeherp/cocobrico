@@ -239,3 +239,11 @@ sup.alert.label{
 	color: #fff;
 	font-size: 0.75em;
 }
+
+ul.dropdown.menu.success {
+    background: #3adb76;
+    border: #22bb5b 1px solid;
+}
+ul.dropdown.menu.success > li:hover {
+    background: #22bb5b;
+}

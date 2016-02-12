@@ -5,9 +5,9 @@
     <section class="row" id="content">
 
 	  <div class="large-12 column">        
-      <ul class="dropdown menu" data-dropdown-menu>
+      <ul class="dropdown menu pull-right" data-dropdown-menu>
         <li>
-          <a href="javascript:;" class="button success dropdown pull-right"><i class="fa fa-plus"></i> New order</a>
+          <a href="javascript:;" class="button success dropdown"><i class="fa fa-plus"></i> New order</a>
           <ul class="dropdown menu success" data-dropdown-menu data-click-open="true">
             <li><a href="{{ url('orders/container') }}">Order Container</a></li>
             <li><a href="{{ url('orders/pallets') }}">Order Pallets</a></li>
