@@ -24,9 +24,9 @@
                 
                   <div class="input-group">
                     <span class="input-group-label"><i class="fa fa-envelope"></i></span>
-                    {!! Form::email('email', null, ['class' => 'input-group-field', 'placeholder' => '{{ trans('auth.email') }}']) !!}
+                    {!! Form::email('email', null, ['class' => 'input-group-field', 'placeholder' => trans('auth.email')]) !!}
                     <div class="input-group-button">
-                      {!! Form::submit('{{ trans('auth.validate') }}', ['class' => 'button alert']) !!}
+                      {!! Form::submit(trans('auth.validate'), ['class' => 'button alert']) !!}
                     </div>
                   </div>
                                 

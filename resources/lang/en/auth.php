@@ -27,6 +27,7 @@ return [
     'forgotpassword'        =>  'Did you forget your password?',
 
     // Registration
+    'choosepassword'        =>  'Please choose a password:',
     'passwordrepeat'        =>  'Repeat Password',
     'business'              =>  'Your business',
     'wholesale'             =>  'Wholesale',
@@ -50,8 +51,20 @@ return [
     'fax'                   =>  'Fax',
     'continue'              =>  'Continue',
 
+    // Password Rules
+    'rule1'                 =>  'The password must have at least 8 characters.',
+    'rule2'                 =>  'The password must contain at least one capital letter.',
+    'rule3'                 =>  'The password must contain at least one lowercase letter.',
+    'rule4'                 =>  'The password must contain at least one number.',
+
     // Verify Email
-    'activateemail'         =>  'Activate your email address',
-    'activateemaildesc'     =>  'We have sent you an email to {{ $email }}. Please verify your email address by following the instructions in the email. In case you have not received the email, please click <a href="#">here</a> to resend the confirmation email.',
+    'activateemail'         =>  'Verify your email address',
+    'activateemaildesc'     =>  'We have sent a confirmation link to :email. Please verify your email address to proceed the registration process. In case you have not received an email, please check your junk folder or click <a href="#">here</a> to resend the confirmation email.',
+
+    // Verification Email
+    'dear'                  =>  'Dear customer,',
+    'msgbody'               =>  'Please verify your email address to continue your registration with Cocobrico Commercial Customers:',
+    'button'                =>  'Click here to verify your email address'
+    'troubleshooting'       =>  'If you have trouble activating your account, please contact us at info@cocobrico.com.'
 
 ];

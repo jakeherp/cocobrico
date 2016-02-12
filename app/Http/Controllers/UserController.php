@@ -120,7 +120,7 @@ class UserController extends Controller
 	    		$user = User::where('email', '=', session('email'))->first();
 	    		if($user->hasPermission('is_admin') || $user->hasPermission('is_customer') || count($user->identities) == 0){
 	    			// Show the login form, if the user is either activated / admin or belongs to no identity yet.
-			   		return view('auth.login'); 
+			   		return view('auth.login', compact('user'));
 			   	}
 			   	else{
 			   		// Show the email form, with an error message, that the user has not been activated yet

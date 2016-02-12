@@ -5,7 +5,7 @@
 	<section class="row" id="login">
       <div class="large-6 small-12 large-centered columns">
         <div class="callout large">
-          <h3>Register</h3>
+          <h3>{{ trans('auth.signup') }}</h3>
           
           <div class="alert progress" role="progressbar" tabindex="0" aria-valuenow="20" aria-valuemin="0" aria-valuetext="25 percent" aria-valuemax="100">
             <span class="progress-meter" style="width: 33%"></span>
@@ -21,27 +21,27 @@
                 
 				          <div class="input-group">
                     <span class="input-group-label"><i class="fa fa-envelope"></i></span>
-                    {!! Form::email('email', $user->email, ['class' => 'input-group-field', 'placeholder' => 'Email Address', 'readonly']) !!}
+                    {!! Form::email('email', $user->email, ['class' => 'input-group-field', 'placeholder' => trans('auth.email'), 'readonly']) !!}
                   </div>
                   <label>
-                  	Please choose a password
+                  	{{ trans('auth.choosepassword') }}
                     <div class="input-group">
                       <span class="input-group-label"><i class="fa fa-lock"></i></span>
-                      {!! Form::password('password', ['id' => 'passwordInput', 'class' => 'input-group-field', 'placeholder' => 'Password']) !!}
+                      {!! Form::password('password', ['id' => 'passwordInput', 'class' => 'input-group-field', 'placeholder' => trans('auth.password')]) !!}
                     </div>
                     <div id="password" class="callout warning">
                     </div>
                   </label>
                     <div class="input-group">
                       <span class="input-group-label"><i class="fa fa-lock"></i></span>
-                      {!! Form::password('password_2', ['class' => 'input-group-field', 'placeholder' => 'Password wiederholen']) !!}
+                      {!! Form::password('password_2', ['class' => 'input-group-field', 'placeholder' => trans('auth.passwordrepeat')]) !!}
                     </div>
                   
                   <label>
-                  	Your business
-                    {!! Form::select('business', array('wholesale' => 'Wholesale', 'retail' => 'Retail', 'lounge' => 'Lounge / Bar', 'staff' => 'Staff', 'other' => 'Other'), 'wholesale') !!}
+                  	{{ trans('auth.business') }}
+                    {!! Form::select('business', array('wholesale' => trans('auth.wholesale'), 'retail' => trans('auth.retail'), 'lounge' => trans('auth.lounge'), 'other' => trans('auth.other')), 'wholesale') !!}
                   </label>
-                  {!! Form::submit('Continue &raquo;', ['class' => 'button alert']) !!}
+                  {!! Form::submit(trans('auth.continue') . ' &raquo;', ['class' => 'button alert']) !!}
                     </div>
                   </div>
                                 
@@ -60,16 +60,16 @@
           var error = '';
           if((val.length < 8) || !(val.match(/[A-Z]/)) || !(val.match(/[a-z]/)) || !(val.match(/\d/))){
             if(val.length < 8){
-              error = '<p>The password must have at least 8 characters.</p>';
+              error = '<p>{{ trans('auth.rule1') }}</p>';
             }
             if(!(val.match(/[A-Z]/))){
-              error = error + '<p>The password must contain at least one capital letter.</p>';
+              error = error + '<p>{{ trans('auth.rule2') }}</p>';
             }
             if(!(val.match(/[a-z]/))){
-              error = error + '<p>The password must contain at least one lowercase letter.</p>';
+              error = error + '<p>{{ trans('auth.rule3') }}</p>';
             }
             if(!(val.match(/\d/))){
-              error = error + '<p>The password must contain at least one number.</p>';
+              error = error + '<p>{{ trans('auth.rule4') }}</p>';
             }
             $('#password').show('slow');
           }
