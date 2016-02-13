@@ -27,13 +27,13 @@
 		<table id="table" class="scroll" style="width: 100%; padding:0px !important; margin: 0px !important;">
           <thead>
             <tr>
-              <th style="min-width: 150px;">{{ trans('orders.date') }}</th>
-              <th style="min-width: 150px;">{{ trans('orders.number') }}</th>
-              <th style="min-width: 100px;">{{ trans('orders.container') }}</th>
-              <th style="min-width: 100px;">1kg</th>
-              <th style="min-width: 100px;">3kg</th>
-              <th style="min-width: 100px;">10kg</th>
-              <th style="min-width: 260px;">{{ trans('orders.status') }}</th>
+              <th style="min-width: 100px;">{{ trans('orders.date') }}</th>
+              <th style="min-width: 100px;">{{ trans('orders.number') }}</th>
+              <th style="min-width: 50px;">{{ trans('orders.container') }}</th>
+              <th style="min-width: 50px;">1kg</th>
+              <th style="min-width: 50px;">3kg</th>
+              <th style="min-width: 50px;">10kg</th>
+              <th style="min-width: 250px;">{{ trans('orders.status') }}</th>
               <th style="min-width: 150px;">{{ trans('orders.options') }}</th>
             </tr>
           </thead>
@@ -205,15 +205,6 @@
             </tr>
           </tbody>
         </table>  
-
-        <ul class="pagination text-center" role="navigation" aria-label round="Pagination">
-          <li class="pagination-previous disabled">{{ trans('pagination.previous') }} <span class="show-for-sr">page</span></li>
-          <li class="current"><span class="show-for-sr">{{ trans('pagination.page') }}</span> 1</li>
-          <li><a href="#" aria-label round="Page 2">2</a></li>
-          <li><a href="#" aria-label round="Page 3">3</a></li>
-          <li><a href="#" aria-label round="Page 4">4</a></li>
-          <li class="pagination-next"><a href="#" aria-label round="Next page">{{ trans('pagination.next') }} <span class="show-for-sr">page</span></a></li>
-        </ul>
 
       </div>
 
