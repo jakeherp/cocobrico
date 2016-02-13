@@ -79,13 +79,12 @@
     {!! Form::close() !!}
 
       <div class="small-12 columns">
-      
-      <hr>
-      
+            
       @if(count($user->getActiveIdentity()->pallets) > 0)
+      <hr>
+
         <h4>{{ trans('orders.history') }}</h4>
-        <div class="callout">
-          <table class="scroll">
+          <table class="scroll" id="table">
             <thead>
                <tr>
                 <th>{{ trans('orders.date') }}</th>
@@ -129,7 +128,6 @@
             @endforeach
             </tbody>
           </table>
-        </div>
       @endif
     
       </div>
