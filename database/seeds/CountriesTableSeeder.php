@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use App\Country;
+
 class CountriesTableSeeder extends Seeder
 {
     /**
@@ -11,7 +13,9 @@ class CountriesTableSeeder extends Seeder
      */
     public function run()
     {
-    	 $countries = [
+    	Country::truncate();
+
+    	$countries = [
     	 	['id' => 1, 'iso' => 'AF', 'name' => 'Afghanistan', 'exclusivity' => 0, 'notificationEmail' => 'info@cocobrico.com', 'active' => 1],
 			['id' => 2, 'iso' => 'AL', 'name' => 'Albania', 'exclusivity' => 0, 'notificationEmail' => 'info@cocobrico.com', 'active' => 1],
 			['id' => 3, 'iso' => 'DZ', 'name' => 'Algeria', 'exclusivity' => 0, 'notificationEmail' => 'info@cocobrico.com', 'active' => 1],

@@ -38,6 +38,14 @@ class Pallet extends Model
     }
 
     /**
+     * Get the first remark associated with the pallet.
+     */
+    public function get_customer_remark()
+    {
+        return Remark::where('slug','=','pallet')->where('slug_id','=',$this->id)->where('headline', '=', 'Customer Remark')->first();
+    }
+
+    /**
      * Get the total price for the pallet.
      *
      * @param boolean $format

@@ -20,8 +20,20 @@
                   {{ $price->price_per_kg }} 
                   EUR/kg
                )
-             <input type="number" name="cat_{{ $category->id }}" value="0" min="0" max="100" class="orderPalletOption" unitsperbox="{{$category->unitsperbox}}" boxesperpallet="{{$category->boxesperpallet}}" mass="{{$category->weight}}" 
-             price="{{ $price->price_per_kg }}">
+
+              {!! Form::number('cat_'.$category->id, 0, [
+                'min' => 0, 
+                'max' => 100,
+                'class' => 'orderPalletOption',
+                'unitsperbox' => $category->unitsperbox,
+                'boxesperpallet' => $category->boxesperpallet,
+                'mass' => $category->weight,
+                'price' => $price->price_per_kg
+              ]) !!}
+
+
+             <!--<input type="number" name="cat_{{ $category->id }}" value="0" min="0" max="100" class="orderPalletOption" unitsperbox="{{$category->unitsperbox}}" boxesperpallet="{{$category->boxesperpallet}}" mass="{{$category->weight}}" 
+             price="{{ $price->price_per_kg }}">-->
             </label>
           @endforeach
         </div>
@@ -110,7 +122,7 @@
                 <td>
                   <a href="{{ url('orders/pallets/'.$pallet->customerReference) }}" class="tiny button primary has-tip" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="View Order"><i class="fa fa-search"></i></a>
                   <a href="#" class="tiny button warning has-tip" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Edit Order"><i class="fa fa-pencil"></i></a>
-                  <a href="#" class="tiny button success has-tip" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Copy Order"><i class="fa fa-clone"></i></a>
+                  <a href="{{ url('orders/pallets/copy/' . $pallet->customerReference) }}" class="tiny button success has-tip" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Copy Order"><i class="fa fa-clone"></i></a>
                   <a href="#" class="tiny button alert has-tip" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Cancel Order"><i class="fa fa-trash"></i></a>
                 </td>
               </tr>
@@ -127,15 +139,20 @@
 
     <script>
       $(document).ready(function(){
+        calculatePrice();
         $('.orderPalletOption').bind('click keyup', function(){
+          calculatePrice();
+        });
+      });
+
+      function calculatePrice(){
           var sum = 0;
           $('.orderPalletOption').each(function() {
               sum += $(this).val() * Number($(this).attr('unitsperbox')) * Number($(this).attr('boxesperpallet')) * Number($(this).attr('mass')) * Number($(this).attr('price'));
           });
           sum = sum.toFixed(2);
           $('#priceTotal').text(sum);
-        });
-      });
+      }
     </script>
 
 @endsection

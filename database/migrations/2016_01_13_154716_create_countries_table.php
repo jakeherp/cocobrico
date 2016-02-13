@@ -19,6 +19,7 @@ class CreateCountriesTable extends Migration
 			$table->string('iso3',3)->default('');
 			$table->string('notificationEmail', 100)->default('admin@cocobrico.com');
             $table->boolean('active')->default(1);
+            $table->timestamps();
         });
     }
 

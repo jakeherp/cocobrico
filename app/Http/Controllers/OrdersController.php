@@ -14,6 +14,7 @@ use App\Remark;
 use App\User;
 use App\Pallet;
 use App\PalletOrder;
+use App\Warehouse;
 
 use Auth;
 
@@ -102,6 +103,51 @@ class OrdersController extends Controller
             $pallet = Pallet::where('customerReference','=',$reference)->first();
             if(count($pallet) > 0 AND $identity->id == $pallet->identity_id){
                 return view('pages.orders.view', compact('user','identity','pallet'));
+            }
+            else{
+                return redirect()->back();
+            }
+        }
+        else{
+            // Container:
+                return 'CONTAINER';
+        }
+    }
+
+    /**
+     * Shows the form for copying a order.
+     *
+     * @param  string $reference
+     * @return Response
+     */
+    public function copyOrder($reference)
+    {
+        $user = Auth::user();
+        $identity = $user->getActiveIdentity();
+        $warehouses = Warehouse::all();
+        $categories = PalletCategory::all();
+        if (strpos($reference, 'P') !== false) {
+            // Pallet:
+            $pallet = Pallet::where('customerReference','=',$reference)->first();
+            if(count($pallet) > 0 AND $identity->id == $pallet->identity_id){
+                if($pallet->pickup == 2){
+                    // Delivery
+                    $inputValues['delivery'] = 'd_' . $pallet->address_id;
+                }
+                else{
+                    // Warehouse
+                    $inputValues['delivery'] = 'w_' . $pallet->warehouse_id;
+                }
+
+                if(count($pallet->get_customer_remark()) > 0){
+                    $inputValues['remark'] = $pallet->get_customer_remark()->body;
+                }
+
+                foreach($categories as $category){
+                    $order = $pallet->palletOrders()->where('pallet_category_id','=',$category->id)->first();
+                    $inputValues['cat_'.$category->id] = $order->amount;
+                }
+                return redirect('orders/pallets')->withInput($inputValues);
             }
             else{
                 return redirect()->back();
