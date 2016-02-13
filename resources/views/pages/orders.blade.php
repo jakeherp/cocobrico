@@ -27,8 +27,8 @@
 		<table id="table" class="scroll" style="width: 100%; padding:0px !important; margin: 0px !important;">
           <thead>
             <tr>
-              <th style="min-width: 100px;">{{ trans('orders.date') }}</th>
-              <th style="min-width: 100px;">{{ trans('orders.number') }}</th>
+              <th>{{ trans('orders.date') }}</th>
+              <th>{{ trans('orders.number') }}</th>
               <th style="min-width: 50px;">{{ trans('orders.container') }}</th>
               <th style="min-width: 50px;">1kg</th>
               <th style="min-width: 50px;">3kg</th>
