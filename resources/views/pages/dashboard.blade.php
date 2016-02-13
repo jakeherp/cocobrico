@@ -28,7 +28,7 @@
       
         <h4>Statistics</h4>
       
-        <table style="width: 100%; color: #fff background: #000;">
+        <table id="table" style="width: 100%; color: #fff background: #000;">
           <thead>
             <tr>
               <th>Product</th>

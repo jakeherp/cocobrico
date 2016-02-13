@@ -13,6 +13,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}" />
     <script type="text/javascript" src="{{ URL::asset('js/vendor/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/vendor/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/vendor/dataTables.foundation.min.js') }}"></script>
+    <script type="text/javascript" language="javascript" class="init">
+      $(document).ready(function() {
+        $('#table').DataTable();
+      } );
+    </script>
   </head>
   <body>
     <div class="off-canvas-wrapper">

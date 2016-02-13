@@ -24,7 +24,7 @@
       
       <div class="large-12 column full-width">
 
-		<table class="scroll" style="width: 100%; padding:0px !important; margin: 0px !important;">
+		<table id="table" class="scroll" style="width: 100%; padding:0px !important; margin: 0px !important;">
           <thead>
             <tr>
               <th style="min-width: 150px;">{{ trans('orders.date') }}</th>

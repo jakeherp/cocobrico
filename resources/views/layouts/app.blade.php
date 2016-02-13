@@ -21,6 +21,13 @@
     <link rel="shortcut icon" href="{{ URL::asset('img/favicon.png') }}" type="image/png">
 
     <script type="text/javascript" src="{{ URL::asset('js/vendor/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/vendor/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/vendor/dataTables.foundation.min.js') }}"></script>
+    <script type="text/javascript" language="javascript" class="init">
+      $(document).ready(function() {
+        $('#table').DataTable();
+      } );
+    </script>
   </head>
   <body>
     <header class="top-bar">
