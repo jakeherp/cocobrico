@@ -30,10 +30,6 @@
                 'mass' => $category->weight,
                 'price' => $price->price_per_kg
               ]) !!}
-
-
-             <!--<input type="number" name="cat_{{ $category->id }}" value="0" min="0" max="100" class="orderPalletOption" unitsperbox="{{$category->unitsperbox}}" boxesperpallet="{{$category->boxesperpallet}}" mass="{{$category->weight}}" 
-             price="{{ $price->price_per_kg }}">-->
             </label>
           @endforeach
         </div>
@@ -98,7 +94,11 @@
             </thead>
             <tbody>
             @foreach($user->getActiveIdentity()->pallets as $pallet)
+              @if($pallet->hasStatus('cancelled'))
+              <tr class="cancelled">
+              @else
               <tr>
+              @endif
                 <td>{{ $pallet->created_at }}</td>
                 <td>{{ $pallet->customerReference }}</td>
                 @foreach($categories as $category)
@@ -109,13 +109,13 @@
                   @endif
                 @endforeach
                 <td>
-                  <span class="@if($pallet->status >= 0) success  @else secondary @endif  label round"><i class="fa fa-question"></i></span>
-                  <span class="@if($pallet->status >= 1) success  @else secondary @endif label round"><i class="fa fa-check"></i></span>
-                  <span class="@if($pallet->status >= 2) success  @else secondary @endif label round"><i class="fa fa-file-text-o"></i></span>
-                  <span class="@if($pallet->status >= 3) success  @else secondary @endif label round"><i class="fa fa-usd"></i></span>
-                  <span class="@if($pallet->status >= 4) success  @else secondary @endif label round"><i class="fa fa-truck"></i></span>
+                  <span class="@if($pallet->hasStatus('ordered')) success  @else secondary @endif  label round"><i class="fa fa-question"></i></span>
+                  <span class="@if($pallet->hasStatus('confirmed')) success  @else secondary @endif label round"><i class="fa fa-check"></i></span>
+                  <span class="@if($pallet->hasStatus('billed')) success  @else secondary @endif label round"><i class="fa fa-file-text-o"></i></span>
+                  <span class="@if($pallet->hasStatus('paid')) success  @else secondary @endif label round"><i class="fa fa-usd"></i></span>
+                  <span class="@if($pallet->hasStatus('shipped')) success  @else secondary @endif label round"><i class="fa fa-truck"></i></span>
                   <div class="boxed-text">
-                    EXTRA TABLE
+                    {{ trans('orders.'.$pallet->getStatus()) }}
                   </div>
                 </td>
                 <td>
@@ -161,10 +161,6 @@
                 'mass' => $category->weight,
                 'price' => $price->price_per_kg
               ]) !!}
-
-
-             <!--<input type="number" name="cat_{{ $category->id }}" value="0" min="0" max="100" class="orderPalletOption" unitsperbox="{{$category->unitsperbox}}" boxesperpallet="{{$category->boxesperpallet}}" mass="{{$category->weight}}" 
-             price="{{ $price->price_per_kg }}">-->
             </label>
           @endforeach
         </div>

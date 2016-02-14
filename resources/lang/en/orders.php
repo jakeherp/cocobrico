@@ -26,6 +26,7 @@ return [
     'paid'               =>  'Paid',
     'shipped'            =>  'Shipped',
     'cancelled'          =>  'Cancelled',
+    'statuserror'        =>  'No Status',
 
     // Options
     'view'               =>  'View order',

@@ -64,4 +64,59 @@ class Pallet extends Model
             return $value;
         }
     }
+
+    /**
+     * Gives back, if the pallet order has a given status.
+     *
+     * @param  string  $slug
+     * @return boolean
+     */
+    public function hasStatus($slug)
+    {
+        $status = OrderStatus::where('type','=',0)->where('slug','=',$slug)->where('type_id','=',$this->id)->get();
+        if(count($status) === 1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    /**
+     * Gives back, if the pallet order has a given status.
+     *
+     * @param  string  $slug
+     * @return boolean
+     */
+    public function getStatus()
+    {
+        $status = OrderStatus::where('type','=',0)->where('type_id','=',$this->id)->orderBy('id', 'desc')->first();
+        if(count($status) == 0){
+            return 'statuserror';
+        }
+        else{
+            return $status->slug;
+        }
+    }
+
+    /**
+     * Toggles a status of a pallet order.
+     *
+     * @param  string  $slug
+     * @return boolean
+     */
+    public function toggleStatus($slug)
+    {
+        $status = OrderStatus::where('type','=',0)->where('slug','=',$slug)->where('type_id','=',$this->id)->first();
+        if(count($status) === 1){
+            $status->delete();
+        }
+        else{
+           $newStatus = new OrderStatus();
+           $newStatus->type = 0;
+           $newStatus->type_id = $this->id;
+           $newStatus->slug = $slug;
+           $newStatus->save();
+        }
+    }
 }

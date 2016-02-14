@@ -64,6 +64,7 @@ class OrdersController extends Controller
         }
 
         $pallet->save();
+        $pallet->toggleStatus('ordered');
 
       // Amounts of the different Pallet Categories:
         foreach($categories as $category){
