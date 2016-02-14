@@ -135,6 +135,95 @@
 
     </section>
 
+
+      <div class="reveal" id="copyOrder" data-reveal>
+        <h3>Copy a previous order</h3>
+
+  {!! Form::open(['url' => 'orders/pallets', 'method' => 'post']) !!}
+      <div class="large-6 small-12 columns">
+      
+        <div class="callout">
+          @foreach($categories as $category)
+            <?php $price = $user->getActiveIdentity()->getPalletPrice($category->id, 'EUR'); ?>
+             <label>
+               {{$category->weight}}kg: {{$category->unitsperbox}} x {{$category->boxesperpallet}} x {{$category->weight}}kg 
+               ( 
+                  {{ $price->price_per_kg }} 
+                  EUR/kg
+               )
+
+              {!! Form::number('cat_'.$category->id, 0, [
+                'min' => 0, 
+                'max' => 100,
+                'class' => 'orderPalletOption',
+                'unitsperbox' => $category->unitsperbox,
+                'boxesperpallet' => $category->boxesperpallet,
+                'mass' => $category->weight,
+                'price' => $price->price_per_kg
+              ]) !!}
+
+
+             <!--<input type="number" name="cat_{{ $category->id }}" value="0" min="0" max="100" class="orderPalletOption" unitsperbox="{{$category->unitsperbox}}" boxesperpallet="{{$category->boxesperpallet}}" mass="{{$category->weight}}" 
+             price="{{ $price->price_per_kg }}">-->
+            </label>
+          @endforeach
+        </div>
+    
+      </div>
+    <div class="large-6 small-12 columns">
+      
+        <div class="callout">
+        
+        <label>{{ trans('orders.deliveryoption') }}
+        <?php
+          $options = array();
+          foreach($warehouses as $warehouse){
+            $name = trans('orders.pickup').' '.$warehouse->name;
+            $options['w_'.$warehouse->id] = $name;
+          }
+          foreach($user->getActiveIdentity()->addresses as $address){
+            $name = trans('orders.deliverto') . ' ' . $address->companyName . ', ' . $address->address1 . ', ' . $address->city . ' ' . $address->postCode . ', ' . $address->country->name;
+            $options['d_'.$address->id] = $name;
+          }
+          echo Form::select('delivery', $options, null, []);
+        ?>
+        </label>
+  
+          <label>
+            {{ trans('orders.remark') }}
+            {!! Form::textarea('remark', null, ['placeholder' => trans('orders.remarkdesc'), 'rows' => 2]) !!}
+          </label>
+  
+          <label>
+            {{ trans('orders.total') }}:
+            <strong>&euro; <span id="priceTotal">0,00</span></strong> {!! trans('orders.plusshipping') !!}
+          </label>
+
+          @include ('errors.list')
+
+          <div class="expanded button-group">
+            <button role="submit" class="button success" id="test"><i class="fa fa-check"></i> {{ trans('orders.place') }}</button>
+          </div>
+        </div>
+    
+      </div>
+    {!! Form::close() !!}
+
+        <button class="close-button" data-close aria-label="Close reveal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="reveal" id="cancelOrder" data-reveal>
+        <h3>Cancel order P...</h3>
+        <div class="callout alert">You are about to cancel your order no. P... . Are you sure you want to cancel this order?</div>
+
+        <button class="alert button">Cancel order</button> <button class="secondary button" data-close>Keep order</button>
+        <button class="close-button" data-close aria-label="Close reveal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
     <script>
       $(document).ready(function(){
         calculatePrice();
