@@ -256,6 +256,8 @@ ul.dropdown.menu.success > li:hover {
 }
 .full-table {
   min-width: rem-calc(640);
+  margin: 1em 0;
+  padding: 0;
 }
 table.dataTable {
   clear: both;

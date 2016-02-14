@@ -25,8 +25,13 @@
     <script type="text/javascript" src="{{ URL::asset('js/vendor/dataTables.foundation.min.js') }}"></script>
     <script type="text/javascript" language="javascript" class="init">
       $(document).ready(function() {
-        $('#table').DataTable();
-      } );
+        $('#table').DataTable( {
+          "order": [],
+          "columnDefs": [ {
+            "targets"  : 'no-sort',
+            "orderable": false,
+          } ]
+        } );
     </script>
   </head>
   <body>
