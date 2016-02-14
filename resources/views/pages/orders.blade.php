@@ -23,8 +23,8 @@
       </div>
       
       <div class="large-12 column full-width">
-
-		<table id="table" class="scroll" style="width: 100%; padding:0px !important; margin: 1em 0 !important;">
+        <div class="horizontal-scroll">
+		    <table id="table" class="full-table">
           <thead>
             <tr>
               <th>{{ trans('orders.date') }}</th>

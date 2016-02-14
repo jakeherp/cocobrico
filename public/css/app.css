@@ -248,7 +248,15 @@ ul.dropdown.menu.success > li:hover {
     background: #22bb5b;
 }
 
-
+.horizontal-scroll {
+  overflow: hidden;
+  overflow-x: auto;
+  clear: both;
+  width: 100%;
+}
+.full-table {
+  min-width: rem-calc(640);
+}
 table.dataTable {
   clear: both;
   margin: 0.5em 0 !important;
