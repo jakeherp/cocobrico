@@ -53,7 +53,7 @@
               </tr>
               <tr>
                 <td>{{ trans('orders.status') }}</td>
-                <td>{{ trans('orders.billed') }}</td>
+                <td>{{ trans('orders.'.$pallet->getStatus()) }}</td>
               </tr>
             </tbody>
           </table>
