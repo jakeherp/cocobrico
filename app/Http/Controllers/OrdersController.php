@@ -34,7 +34,7 @@ class OrdersController extends Controller
     	$remark = $request->remark;
         $delivery = $request->delivery;
 
-        $pallet->customerReference = 'P' . date("y") . date("m") . sprintf("%02d",(count(Pallet::all())+1));
+        $pallet->orderReference = 'P' . date("y") . date("m") . sprintf("%02d",(count(Pallet::all())+1));
         $pallet->identity_id = $identity->id;
 
       // Check if there are orders at all:
@@ -101,7 +101,7 @@ class OrdersController extends Controller
         $identity = $user->getActiveIdentity();
         if (strpos($reference, 'P') !== false) {
             // Pallet:
-            $pallet = Pallet::where('customerReference','=',$reference)->first();
+            $pallet = Pallet::where('orderReference','=',$reference)->first();
             if(count($pallet) > 0 AND $identity->id == $pallet->identity_id){
                 return view('pages.orders.view', compact('user','identity','pallet'));
             }
@@ -129,7 +129,7 @@ class OrdersController extends Controller
         $categories = PalletCategory::all();
         if (strpos($reference, 'P') !== false) {
             // Pallet:
-            $pallet = Pallet::where('customerReference','=',$reference)->first();
+            $pallet = Pallet::where('orderReference','=',$reference)->first();
             if(count($pallet) > 0 AND $identity->id == $pallet->identity_id){
                 if($pallet->pickup == 2){
                     // Delivery
@@ -153,6 +153,31 @@ class OrdersController extends Controller
             else{
                 return redirect()->back();
             }
+        }
+        else{
+            // Container:
+                return 'CONTAINER';
+        }
+    }
+
+    /**
+     * Toggles the cancel status of an order.
+     *
+     * @param  string $reference
+     * @return Response
+     */
+    public function actionToggleCancelation(Request $request)
+    {
+        $reference = $request->orderReference;
+        $user = Auth::user();
+        $identity = $user->getActiveIdentity();
+        if (strpos($reference, 'P') !== false) {
+            // Pallet:
+            $pallet = Pallet::where('orderReference','=',$reference)->first();
+            if(count($pallet) > 0 AND $identity->id == $pallet->identity_id){
+                $pallet->toggleStatus('cancelled');
+            }
+            return redirect()->back();
         }
         else{
             // Container:

@@ -100,7 +100,7 @@
               <tr>
               @endif
                 <td>{{ $pallet->created_at }}</td>
-                <td>{{ $pallet->customerReference }}</td>
+                <td>{{ $pallet->orderReference }}</td>
                 @foreach($categories as $category)
                   @if($order = $pallet->palletOrders()->where('pallet_category_id','=',$category->id)->first())
                     <td>{{ $order->amount }}</td>
@@ -119,10 +119,13 @@
                   </div>
                 </td>
                 <td>
-                  <a href="{{ url('orders/pallets/'.$pallet->customerReference) }}" class="tiny button primary has-tip" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="View Order"><i class="fa fa-search"></i></a>
-                  <a href="#" class="tiny button warning has-tip" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Edit Order"><i class="fa fa-pencil"></i></a>
-                  <a href="{{ url('orders/pallets/copy/' . $pallet->customerReference) }}" class="tiny button success has-tip" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Copy Order"><i class="fa fa-clone"></i></a>
-                  <a href="#" class="tiny button alert has-tip" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Cancel Order"><i class="fa fa-trash"></i></a>
+                  <a href="{{ url('orders/pallets/'.$pallet->orderReference) }}" class="tiny button primary" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="View Order"><i class="fa fa-search"></i></a>
+                  
+                  <a href="#" class="tiny button warning" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Edit Order"><i class="fa fa-pencil"></i></a>
+
+                  <a href="{{ url('orders/pallets/copy/' . $pallet->orderReference) }}" class="tiny button success" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Copy Order"><i class="fa fa-clone"></i></a>
+
+                  <a class="tiny button alert cancelOrderModalButton" orderReference="{{ $pallet->orderReference }}" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Cancel Order" data-open="cancelOrderModal"><i class="fa fa-trash"></i></a>
                 </td>
               </tr>
             @endforeach
@@ -136,7 +139,7 @@
     </section>
 
 
-      <div class="reveal" id="copyOrder" data-reveal>
+      <div class="reveal" id="copyOrderModal" data-reveal>
         <h3>Copy a previous order</h3>
 
   {!! Form::open(['url' => 'orders/pallets', 'method' => 'post']) !!}
@@ -210,11 +213,13 @@
         </button>
       </div>
 
-      <div class="reveal" id="cancelOrder" data-reveal>
+      <div class="reveal" id="cancelOrderModal" data-reveal>
         <h3>Cancel order P...</h3>
-        <div class="callout alert">You are about to cancel your order no. P... . Are you sure you want to cancel this order?</div>
-
-        <button class="alert button">Cancel order</button> <button class="secondary button" data-close>Keep order</button>
+        <div class="callout alert">You are about to cancel your order no. <span id="orderReferenceSpan"></span>. Are you sure you want to cancel this order?</div>
+        {!! Form::open(['url' => 'orders/pallets/cancel', 'method' => 'post']) !!}
+          <input type="hidden" id="orderReference" name="orderReference" value="">
+          <button id="cancelOrderButton" class="alert button">Cancel order</button> <button class="secondary button" data-close>Keep order</button>
+        {!! Form::close() !!}
         <button class="close-button" data-close aria-label="Close reveal" type="button">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -237,5 +242,7 @@
           $('#priceTotal').text(sum);
       }
     </script>
+
+    <script type="text/javascript" src="{{ URL::asset('js/orderactions.js') }}"></script>
 
 @endsection

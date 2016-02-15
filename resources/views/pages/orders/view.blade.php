@@ -5,7 +5,7 @@
     <section class="row" id="content">
 
     <div class="large-12 column">        
-      <h1><i class="fa fa-truck"></i> {{ trans('orders.order') }} {{ $pallet->customerReference }}</h1>
+      <h1><i class="fa fa-truck"></i> {{ trans('orders.order') }} {{ $pallet->orderReference }}</h1>
     </div>
     
     <div class="large-8 medium-6 small-12 column">
@@ -113,7 +113,7 @@
     <div class="large-4 medium-6 small-12 column">
       <div class="callout">
         <h5>{{ trans('orders.options') }}</h5>
-        <a class="small expanded success button" href="{{ url('orders/pallets/copy/' . $pallet->customerReference) }}"><i class="fa fa-copy"></i> {{ trans('orders.copy') }}</a>
+        <a class="small expanded success button" href="{{ url('orders/pallets/copy/' . $pallet->orderReference) }}"><i class="fa fa-copy"></i> {{ trans('orders.copy') }}</a>
         <a class="small expanded warning button" href="#"><i class="fa fa-pencil"></i> {{ trans('orders.edit') }}</a>
         <a class="small expanded alert button" href="#"><i class="fa fa-trash"></i> {{ trans('orders.cancel') }}</a>
       </div>
@@ -129,5 +129,7 @@
     </div>
 
     </section>
+
+    <script type="text/javascript" src="{{ URL::asset('js/orderactions.js') }}"></script>
 
 @endsection

@@ -42,7 +42,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('orders', 'PagesController@orders');
     Route::get('orders/pallets', 'PagesController@orderPallets');
     Route::get('orders/pallets/{reference}', 'OrdersController@viewOrder');
-    Route::get('orders/pallets/copy/{reference}', 'OrdersController@copyOrder');
+    Route::post('orders/pallets/{reference}/copy', 'OrdersController@copyOrder');
+
+    Route::post('orders/pallets/cancel', 'OrdersController@actionToggleCancelation');
+
     Route::post('orders/pallets', 'OrdersController@createOrderPallets');
     Route::get('orders/container', 'PagesController@orderContainer');
 

@@ -14,7 +14,7 @@ class CreatePalletsTable extends Migration
     {
         Schema::create('pallets', function (Blueprint $table) {
             $table->increments('id');
-			$table->string('customerReference',20)->default('');
+			$table->string('orderReference',20)->default('');
             $table->integer('identity_id')->default(0)->references('id')->on('identities')->onDelete('cascade');
 			$table->integer('address_id')->default(0)->references('id')->on('addresses')->onDelete('cascade');
 			$table->timestamp('loadingDate')->default('0000-00-00 00:00:00');
