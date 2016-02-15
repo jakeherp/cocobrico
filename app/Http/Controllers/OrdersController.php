@@ -17,6 +17,7 @@ use App\PalletOrder;
 use App\Warehouse;
 
 use Auth;
+use Response;
 
 class OrdersController extends Controller
 {
@@ -116,57 +117,12 @@ class OrdersController extends Controller
     }
 
     /**
-     * Shows the form for copying a order.
-     *
-     * @param  string $reference
-     * @return Response
-     */
-    public function copyOrder($reference)
-    {
-        $user = Auth::user();
-        $identity = $user->getActiveIdentity();
-        $warehouses = Warehouse::all();
-        $categories = PalletCategory::all();
-        if (strpos($reference, 'P') !== false) {
-            // Pallet:
-            $pallet = Pallet::where('orderReference','=',$reference)->first();
-            if(count($pallet) > 0 AND $identity->id == $pallet->identity_id){
-                if($pallet->pickup == 2){
-                    // Delivery
-                    $inputValues['delivery'] = 'd_' . $pallet->address_id;
-                }
-                else{
-                    // Warehouse
-                    $inputValues['delivery'] = 'w_' . $pallet->warehouse_id;
-                }
-
-                if(count($pallet->get_customer_remark()) > 0){
-                    $inputValues['remark'] = $pallet->get_customer_remark()->body;
-                }
-
-                foreach($categories as $category){
-                    $order = $pallet->palletOrders()->where('pallet_category_id','=',$category->id)->first();
-                    $inputValues['cat_'.$category->id] = $order->amount;
-                }
-                return redirect('orders/pallets')->withInput($inputValues);
-            }
-            else{
-                return redirect()->back();
-            }
-        }
-        else{
-            // Container:
-                return 'CONTAINER';
-        }
-    }
-
-    /**
      * Toggles the cancel status of an order.
      *
      * @param  string $reference
      * @return Response
      */
-    public function actionToggleCancelation(Request $request)
+    public function actionCancleOrder(Request $request)
     {
         $reference = $request->orderReference;
         $user = Auth::user();
@@ -175,13 +131,64 @@ class OrdersController extends Controller
             // Pallet:
             $pallet = Pallet::where('orderReference','=',$reference)->first();
             if(count($pallet) > 0 AND $identity->id == $pallet->identity_id){
-                $pallet->toggleStatus('cancelled');
+                if(!$pallet->hasStatus('cancelled') || ($pallet->hasStatus('cancelled') && $user->hasPermission('is_admin'))){
+                    if(count($pallet) > 0 AND $identity->id == $pallet->identity_id){
+                        $pallet->toggleStatus('cancelled');
+                    }
+                }
             }
             return redirect()->back();
         }
         else{
             // Container:
                 return 'CONTAINER';
+        }
+    }
+
+    /**
+     * Gets all the data of an order for a ajax modal.
+     *
+     * @param  string $reference
+     * @return array data
+     */
+    public function actionGetOrder($reference)
+    {
+        $user = Auth::user();
+        $identity = $user->getActiveIdentity();
+        $warehouses = Warehouse::all();
+        $categories = PalletCategory::all();
+        $data = array();
+        if (strpos($reference, 'P') !== false) {
+        // Pallet:
+            $pallet = Pallet::where('orderReference','=',$reference)->first();
+            if(count($pallet) > 0 AND $identity->id == $pallet->identity_id){
+                if($pallet->pickup == 2){
+                    // Delivery
+                    $data['delivery'] = 'd_' . $pallet->address_id;
+                }
+                else{
+                    // Warehouse
+                    $data['delivery'] = 'w_' . $pallet->warehouse_id;
+                }
+
+                $data['remark'] = $pallet->get_customer_remark()->body;
+
+                foreach($categories as $category){
+                    $order = $pallet->palletOrders()->where('pallet_category_id','=',$category->id)->first();
+                    if($order){
+                        $data['cat_'.$category->id] = $order->amount;
+                    }
+                    else{
+                        $data['cat_'.$category->id] = 0;
+                    }
+                }
+
+                return Response::json($data);
+            }
+        }
+        else{
+        // Container:
+            return 'CONTAINER';
         }
     }
 }

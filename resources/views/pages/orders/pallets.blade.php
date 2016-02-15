@@ -119,13 +119,48 @@
                   </div>
                 </td>
                 <td>
-                  <a href="{{ url('orders/pallets/'.$pallet->orderReference) }}" class="tiny button primary" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="View Order"><i class="fa fa-search"></i></a>
+                  <a 
+                    href="{{ url('orders/pallets/'.$pallet->orderReference) }}" 
+                    class="tiny button primary" 
+                    data-tooltip aria-haspopup="true" 
+                    data-disable-hover='false' 
+                    tabindex=1 
+                    title="View Order"
+                  ><i class="fa fa-search"></i></a>
                   
-                  <a href="#" class="tiny button warning" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Edit Order"><i class="fa fa-pencil"></i></a>
+                  <a 
+                    class="tiny button warning" 
+                    data-tooltip aria-haspopup="true" 
+                    data-disable-hover='false' 
+                    tabindex=1 
+                    title="Edit Order"                   
+                    @if( $pallet->hasStatus('cancelled') )
+                      disabled
+                    @endif
+                  ><i class="fa fa-pencil"></i></a>
 
-                  <a href="{{ url('orders/pallets/copy/' . $pallet->orderReference) }}" class="tiny button success" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Copy Order"><i class="fa fa-clone"></i></a>
+                  <a 
+                    class="tiny button success copyOrderModalButton" 
+                    orderReference="{{ $pallet->orderReference }}" 
+                    data-tooltip aria-haspopup="true" 
+                    data-disable-hover='false' 
+                    tabindex=1 
+                    title="Copy Order" 
+                    data-open="copyOrderModal"
+                  ><i class="fa fa-clone"></i></a>
 
-                  <a class="tiny button alert cancelOrderModalButton" orderReference="{{ $pallet->orderReference }}" data-tooltip aria-haspopup="true" data-disable-hover='false' tabindex=1 title="Cancel Order" data-open="cancelOrderModal"><i class="fa fa-trash"></i></a>
+                  <a 
+                    class="tiny button alert cancelOrderModalButton" 
+                    orderReference="{{ $pallet->orderReference }}" 
+                    data-tooltip aria-haspopup="true" 
+                    data-disable-hover='false' 
+                    tabindex=1 
+                    title="Cancel Order" 
+                    data-open="cancelOrderModal" 
+                    @if( $pallet->hasStatus('cancelled') )
+                      disabled
+                    @endif
+                  ><i class="fa fa-trash"></i></a>
                 </td>
               </tr>
             @endforeach
@@ -156,9 +191,10 @@
                )
 
               {!! Form::number('cat_'.$category->id, 0, [
+                'id'  => 'order_cat_'.$category->id,
                 'min' => 0, 
                 'max' => 100,
-                'class' => 'orderPalletOption',
+                'class' => 'modalOrderPalletOption',
                 'unitsperbox' => $category->unitsperbox,
                 'boxesperpallet' => $category->boxesperpallet,
                 'mass' => $category->weight,
@@ -184,18 +220,18 @@
             $name = trans('orders.deliverto') . ' ' . $address->companyName . ', ' . $address->address1 . ', ' . $address->city . ' ' . $address->postCode . ', ' . $address->country->name;
             $options['d_'.$address->id] = $name;
           }
-          echo Form::select('delivery', $options, null, []);
+          echo Form::select('delivery', $options, null, ['id' => 'order_delivery']);
         ?>
         </label>
   
           <label>
             {{ trans('orders.remark') }}
-            {!! Form::textarea('remark', null, ['placeholder' => trans('orders.remarkdesc'), 'rows' => 2]) !!}
+            {!! Form::textarea('remark', null, ['id' => 'order_remark', 'placeholder' => trans('orders.remarkdesc'), 'rows' => 2]) !!}
           </label>
   
           <label>
             {{ trans('orders.total') }}:
-            <strong>&euro; <span id="priceTotal">0,00</span></strong> {!! trans('orders.plusshipping') !!}
+            <strong>&euro; <span id="modalPriceTotal">0,00</span></strong> {!! trans('orders.plusshipping') !!}
           </label>
 
           @include ('errors.list')
@@ -218,7 +254,8 @@
         <div class="callout alert">You are about to cancel your order no. <span id="orderReferenceSpan"></span>. Are you sure you want to cancel this order?</div>
         {!! Form::open(['url' => 'orders/pallets/cancel', 'method' => 'post']) !!}
           <input type="hidden" id="orderReference" name="orderReference" value="">
-          <button id="cancelOrderButton" class="alert button">Cancel order</button> <button class="secondary button" data-close>Keep order</button>
+          <button id="cancelOrderButton" class="alert button">Cancel order</button>
+          <button type="reset" class="secondary button" data-close>Keep order</button>
         {!! Form::close() !!}
         <button class="close-button" data-close aria-label="Close reveal" type="button">
           <span aria-hidden="true">&times;</span>
@@ -229,17 +266,21 @@
       $(document).ready(function(){
         calculatePrice();
         $('.orderPalletOption').bind('click keyup', function(){
-          calculatePrice();
+          calculatePrice('#priceTotal');
+        });
+
+        $('.modalOrderPalletOption').bind('click keyup', function(){
+          calculatePrice('#modalPriceTotal');
         });
       });
 
-      function calculatePrice(){
+      function calculatePrice(id){
           var sum = 0;
           $('.orderPalletOption').each(function() {
               sum += $(this).val() * Number($(this).attr('unitsperbox')) * Number($(this).attr('boxesperpallet')) * Number($(this).attr('mass')) * Number($(this).attr('price'));
           });
           sum = sum.toFixed(2);
-          $('#priceTotal').text(sum);
+          $(id).text(sum);
       }
     </script>
 

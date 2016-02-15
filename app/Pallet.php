@@ -42,7 +42,15 @@ class Pallet extends Model
      */
     public function get_customer_remark()
     {
-        return Remark::where('slug','=','pallet')->where('slug_id','=',$this->id)->where('headline', '=', 'Customer Remark')->first();
+        $remark = Remark::where('slug','=','pallet')->where('slug_id','=',$this->id)->where('headline', '=', 'Customer Remark')->first();
+        if($remark){
+            return $remark;
+        }
+        else{
+            $remark = new Remark();
+            $remark->body = '';
+            return $remark;
+        }
     }
 
     /**

@@ -9,6 +9,8 @@
     <meta name="publisher" content="Cocobrico Europe Ltd">
     <meta name="author" content="PCServe Media Ltd">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>{{ trans('global.title') }}</title>
 
     <link rel="stylesheet" href="{{ URL::asset('css/foundation.css') }}" />
