@@ -74,7 +74,8 @@
           <div class="medium-2 columns">
             <ul class="tabs vertical" id="example-vert-tabs" data-tabs>
               <li class="tabs-title is-active"><a href="#panel1v" aria-selected="true">Customer Details</a></li>
-              <li class="tabs-title"><a href="#panel2v"><i class="fa fa-plus"></i> New company</a></li>
+              <li class="tabs-title"><a href="#panel2v">Remarks</a></li>
+              <li class="tabs-title"><a href="#panel3v"><i class="fa fa-plus"></i> New company</a></li>
             </ul>
             </div>
             <div class="medium-10 columns">
@@ -83,6 +84,9 @@
 
                 <form>
                   <div class="row">
+                    <div class="small-12 column">
+                      <div class="warning callout"><i class="fa fa-exclamation-triangle"></i> Customer pays invoices late!</div>
+                    </div>
                   	<div class="small-12 column"><h5>Personal Details</h5></div>
                     <div class="small-3 columns">
                       <label for="middle-label" class="text-right middle">First Name</label>
@@ -176,8 +180,40 @@
 
               </div>
               <div class="tabs-panel" id="panel2v">
+                <div class="row">
+                  <div class="small-12 column">
+                    <h2>Remarks</h2>
 
-				
+                    <label>
+                      Hot Remarks
+                      <div class="warning callout">
+                        <button class="tiny alert button pull-right"><i class="fa fa-times"></i></button><button class="tiny warning button pull-right"><i class="fa fa-pencil"></i></button>
+                        Customer pays invoices late!
+                      </div>
+                    </label>
+                    <button class="success button"><i class="fa fa-plus"></i> Add Hot Remark</button>
+
+                    <hr>
+
+                    <label>
+                      Remarks
+                      <div class="callout">
+                        <button class="tiny alert button pull-right"><i class="fa fa-times"></i></button><button class="tiny warning button pull-right"><i class="fa fa-pencil"></i></button>
+                        Special agreement for delivery before receipt of payment.
+                      </div>
+                      <div class="callout">
+                        <button class="tiny alert button pull-right"><i class="fa fa-times"></i></button><button class="tiny warning button pull-right"><i class="fa fa-pencil"></i></button>
+                        Special agreement for delivery before receipt of payment.
+                      </div>
+                    </label>
+                    <button class="success button"><i class="fa fa-plus"></i> Add Remark</button>
+
+                  </div>
+                </div>
+              </div>
+              <div class="tabs-panel" id="panel3v">
+
+        
 
               </div>
             </div>
