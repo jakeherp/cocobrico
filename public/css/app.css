@@ -383,3 +383,6 @@ table#table{
 .dataTables_wrapper label{
 	color: #fff;
 }
+tr.cancelled{
+  text-decoration: line-through;
+}
