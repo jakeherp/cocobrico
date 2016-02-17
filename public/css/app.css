@@ -385,4 +385,5 @@ table#table{
 }
 tr.cancelled{
   text-decoration: line-through;
+  color: #000;
 }
