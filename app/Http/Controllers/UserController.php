@@ -21,7 +21,7 @@ class UserController extends Controller
 {
     
 	public function __construct(){
-		$this->middleware('customer', ['only' => ['showRegisterForm','register']]);
+		$this->middleware('customer', ['only' => ['showRegisterForm','register','changeActiveIdentity']]);
 		$this->middleware('auth', ['only' => 'logout']);
 	}
 
@@ -103,6 +103,25 @@ class UserController extends Controller
 			// User logged in!
 			return $this->authenticate($request);
 		}
+    }
+
+    /**
+	 * Changes the active identity of the user.
+	 *
+	 * @param  integer $id
+	 * @return Response
+	 */
+    public function changeActiveIdentity($id){
+    	$user = Auth::user();
+    	if($id != $user->getActiveIdentity()->id){
+    		foreach($user->identities as $identity){
+    			if($identity->id == $id){
+    				$user->identities()->updateExistingPivot($user->getActiveIdentity()->id, ['active' => 0]);
+    				$user->identities()->updateExistingPivot($identity->id, ['active' => 1]);
+    			}
+    		}
+    	}
+    	return redirect()->back();
     }
 
 	/**

@@ -41,6 +41,9 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('orders', 'PagesController@orders');
 
+    // Changing Parameters
+        Route::get('identity/{id}/change', 'UserController@changeActiveIdentity');
+
     // Pallet Orders:
         Route::get('orders/pallets', 'PagesController@orderPallets');                       // Pallet order overview
         Route::post('orders/pallets/remark', 'OrdersController@createRemark');              // Create a new remark
