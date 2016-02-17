@@ -69,7 +69,7 @@
                 <li class="header">{{ trans('global.companies') }}</li>
                 @foreach($user->identities as $identity)
                   <li>
-                    <a href="identity/{{ $identity->id }}/change">{{ $identity->get_main_address()->companyName }} 
+                    <a href="{{ url('identity/' . $identity->id . '/change') }}">{{ $identity->get_main_address()->companyName }} 
                       @if($user->getActiveIdentity()->id == $identity->id)
                         <i class="fa fa-check"></i>
                       @endif

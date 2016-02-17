@@ -22,7 +22,7 @@ use Response;
 class OrdersController extends Controller
 {
     /**
-	 * Creates a new palet order.
+	 * Creates a new pallet order.
 	 *
 	 * @param  Request $request
 	 * @return Response
@@ -113,7 +113,7 @@ class OrdersController extends Controller
                     $remark->body = $request->remark;
                     $remark->save();
                 }
-                return redirect('orders/pallets/'.$pallet->orderReference)->with(compact('user','identity','pallet','categories','warehouses'));
+                return redirect('orders/pallets/'.$pallet->orderReference);
             }
         }
         else{
