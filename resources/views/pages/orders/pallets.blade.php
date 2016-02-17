@@ -246,8 +246,8 @@
 
       <!-- Modal for cancelling orders -->
       <div class="reveal" id="cancelOrderModal" data-reveal>
-        <h3>Cancel order P...</h3>
-        <div class="callout alert">You are about to cancel your order no. <span id="orderReferenceSpan"></span>. Are you sure you want to cancel this order?</div>
+        <h3>Cancel order <span class="orderReferenceSpan"></span></h3>
+        <div class="callout alert">You are about to cancel your order no. <span class="orderReferenceSpan"></span>. Are you sure you want to cancel this order?</div>
         {!! Form::open(['url' => 'orders/pallets/cancel', 'method' => 'post']) !!}
           <input type="hidden" id="orderReference" name="orderReference" value="">
           <button id="cancelOrderButton" class="alert button">Cancel order</button>

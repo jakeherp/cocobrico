@@ -16,14 +16,14 @@ $(document).ready(function() {
     });
 
 	// Functionality for cancelling orders:
-	$('.cancelOrderModalButton').click( function(){
+	$('#table').on('click', '.cancelOrderModalButton', function() {
 		var reference = $(this).attr('orderReference');
 		$('#orderReference').val(reference);
 		$('.orderReferenceSpan').text(reference);
 	});
 
 	// Functionality for copying orders:
-	$('.copyOrderModalButton').click( function(){
+	$('#table').on('click', '.copyOrderModalButtonn', function() {
 		$('#orderModalHeadline').text('Copy a previous order');
 		$('#orderModalButton').text('Place Order');
 		var reference = $(this).attr('orderReference');
@@ -38,7 +38,7 @@ $(document).ready(function() {
 	});
 
 	// Functionality for editing orders:
-    $('.editOrderModalButton').click(function(){
+	$('#table').on('click', '.editOrderModalButton', function() {
     	$('#orderModalHeadline').text('Edit an order');
 		$('#putOrderModal').html('<input type="hidden" name="_method" value="PUT">');
 		$('#orderModalButton').text('Save Changes');
