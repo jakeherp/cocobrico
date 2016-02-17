@@ -189,7 +189,7 @@ class OrdersController extends Controller
                         $remark->save();
                     }
 
-                    return redirect('orders/pallets');
+                    return redirect('orders/pallets/' . $pallet->orderReference);
                 }
             }
             return redirect()->back();
