@@ -40,15 +40,20 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('accounts', 'PagesController@accounts');
 
     Route::get('orders', 'PagesController@orders');
-    Route::get('orders/pallets', 'PagesController@orderPallets');
-    Route::get('orders/pallets/{reference}', 'OrdersController@viewOrder');
-    
-    //Route::post('orders/pallets/copy', 'OrdersController@copyOrder');
-    Route::get('orders/pallets/{reference}/get', 'OrdersController@actionGetOrder');
-    Route::post('orders/pallets/cancel', 'OrdersController@actionCancleOrder');
 
-    Route::post('orders/pallets', 'OrdersController@createOrderPallets');
-    Route::get('orders/container', 'PagesController@orderContainer');
+    // Pallet Orders:
+        Route::get('orders/pallets', 'PagesController@orderPallets');                       // Pallet order overview
+        Route::post('orders/pallets/remark', 'OrdersController@createRemark');              // Create a new remark
+        Route::post('orders/pallets/cancel', 'OrdersController@actionCancleOrder');         // Cancels a pallet order
+        Route::get('orders/pallets/{reference}', 'OrdersController@viewOrder');             // Detail view of one pallet order
+        Route::get('orders/pallets/{reference}/get', 'OrdersController@actionGetOrder');    // Get data of a pallet order (AJAX)
+        Route::get('orders/pallets/pallets/{reference}/get', 'OrdersController@actionGetOrder');
+        Route::put('orders/pallets', 'OrdersController@editOrder');                         // Edit a pallet order from overview
+        Route::post('orders/pallets', 'OrdersController@createOrderPallets');               // Copy a pallet order from overview
+        Route::post('orders/pallets/{reference}', 'OrdersController@createOrderPallets');   // Copy a pallet order from detail view
+        Route::put('orders/pallets/{reference}', 'OrdersController@editOrder');             // Edit a pallet order from detail view
+    // Container Orders:
+        Route::get('orders/container', 'PagesController@orderContainer');                   // Container order overview   
 
     Route::get('downloads', 'PagesController@downloads');
     Route::get('settings', 'PagesController@settings');
