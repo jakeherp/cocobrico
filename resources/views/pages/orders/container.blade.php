@@ -16,11 +16,7 @@
             <tbody>
               <tr>
                 <td>Options available</td>
-                <td>3</td>
-              </tr>
-              <tr>
-                <td>Option Rate</td>
-                <td>16,000 EUR</td>
+                <td>{{ count($user->getActiveIdentity()->options()->where('price','>',0)->get()) }}</td>
               </tr>
             </tbody>
           </table>
@@ -32,22 +28,24 @@
         <h4>Order more options</h4>
           <table style="width: 100%; color: #fff background: #000;">
             <tbody>
+              {!! Form::open(['url' => 'orders/container', 'method' => 'post']) !!}
               <tr>
                 <td>Quantity</td>
-                <td width="30%"><input type="number" min="1" value="1" style="margin: 0;"></td>
+                <td width="30%"><input name="amount" type="number" min="1" value="1" style="margin: 0;"></td>
               </tr>
               <tr>
                 <td>Option Rate</td>
-                <td>16,000 EUR</td>
+                <td>{{ $defaultPrice }} EUR</td>
               </tr>
               <tr>
-              	<td colspan="2"><button class="expanded success button">Place Order &raquo;</button></td>
+              	<td colspan="2"><button role="submit" class="expanded success button">Place Order &raquo;</button></td>
               </tr>
+              {!! Form::close() !!}
             </tbody>
           </table>
       </div>
 
-    @if(count($user->getActiveIdentity()->options) > 0)
+    @if( count($user->getActiveIdentity()->options()) > 0 )
       <div class="small-12 columns">
       
         <h4>Your available options</h4>
@@ -64,12 +62,12 @@
             </tr>
           </thead>
           <tbody>
-            @foreach($user->getActiveIdentity()->options() as $option)
+            @foreach($user->getActiveIdentity()->options as $option)
                <tr>
                 <td>{{ $option->created_at }}</td>
-                <td>C1023-5</td>
+                <td>{{ $option->orderReference }}</td>
                 <td>Container Option</td>
-                <td>{{ $option->value }} EUR</td>
+                <td>{{ number_format ($option->price , 2 , '.' , '&#39;' ) }} EUR</td>
                 <td>Ordered</td>
                 <td><a href="#" class="alert button">Cancel Order</a></td>
               </tr>
