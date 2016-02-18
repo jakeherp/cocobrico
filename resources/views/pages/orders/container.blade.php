@@ -47,7 +47,7 @@
           </table>
       </div>
 
-
+    @if(count($user->getActiveIdentity()->options) > 0)
       <div class="small-12 columns">
       
         <h4>Your available options</h4>
@@ -64,7 +64,7 @@
             </tr>
           </thead>
           <tbody>
-            @foreach($identity->options() as $option)
+            @foreach($user->getActiveIdentity()->options() as $option)
                <tr>
                 <td>{{ $option->created_at }}</td>
                 <td>C1023-5</td>
@@ -78,7 +78,7 @@
         </table>
             
       </div>
-
+    @endif
     </section>
     
     

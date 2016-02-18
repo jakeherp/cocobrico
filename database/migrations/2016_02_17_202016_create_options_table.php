@@ -15,9 +15,8 @@ class CreateOptionsTable extends Migration
         Schema::create('options', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('identity_id')->default(0);
-            $table->double('value',2)->default(0.00);
-            $table->integer('counter')->default(1);
-            $table->string('orderReference')->default(1);
+            $table->double('value')->default(0);
+            $table->string('orderReference')->default('');   
             $table->timestamps();
         });
     }
