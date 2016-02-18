@@ -12,6 +12,7 @@ use Auth;
 use App\PalletCategory;
 use App\Warehouse;
 use App\Option;
+use App\News;
 
 class PagesController extends Controller
 {
@@ -55,7 +56,9 @@ class PagesController extends Controller
 	 */
     public function dashboard(){
     	$user = Auth::user();
-    	return view('pages.dashboard', compact('user'));
+    	//$news = News::where('for_all', '=', 1)->where('start', '<=', time())->where('end', '>=', time())->get();
+    	$orders = $user->getActiveIdentity()->getRecentOrders(5);
+    	return view('pages.dashboard', compact('user','orders'));
 	}
 
 	/**

@@ -85,6 +85,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the news shown in the users dashboard.
+     */
+    public function news()
+    {
+        return $this->belongsToMany('App\News','news_user')->withPivot('active');
+    }
+
+    /**
      * Get the permissions associated with the user.
      */
     public function permissions()

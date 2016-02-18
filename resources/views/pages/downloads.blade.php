@@ -5,14 +5,16 @@
     <section class="row" id="content">
 
 	  <div class="large-12 column">
-      	<h1><i class="fa fa-download"></i> Downloads</h1>
-      </div>
-
+      <h1><i class="fa fa-download"></i> Downloads</h1>
+    </div>
+    @if(count($user->files) == 0)
+      <h4>There are currently no files available for download.</h4>
+    @else
       <div class="large-12 columns">
       
         <h4>The following documents are available for download <span class="secondary label">{{ count($user->files) }}</span></h4>
       
-		<table class="scroll datatable">
+		  <table class="scroll datatable">
           <thead>
             <tr>
               <th width="20%">File</th>
@@ -41,7 +43,7 @@
         </ul>
 
       </div>
-
+    @endif
     </section>
     
 @endsection

@@ -83,31 +83,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>12034023</td>
-              <td>02/01/2016</td>
-              <td>Ordered</td>
-            </tr>
-            <tr>
-              <td>12034018</td>
-              <td>01/01/2016</td>
-              <td>Cancelled</td>
-            </tr>
-            <tr>
-              <td>12034012</td>
-              <td>01/11/2015</td>
-              <td>Shipped</td>
-            </tr>
-            <tr>
-              <td>12034008</td>
-              <td>14/10/2015</td>
-              <td>Shipped</td>
-            </tr>
-            <tr>
-              <td>12034914</td>
-              <td>05/10/2015</td>
-              <td>Shipped</td>
-            </tr>
+            @foreach($orders as $order)
+              <tr>
+                <td>{{ $order['reference'] }}</td>
+                <td>{{ $order['created_at'] }}</td>
+                <td>{{ $order['status'] }}</td>
+              </tr>
+            @endforeach
           </tbody>
         </table>  
     

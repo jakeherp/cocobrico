@@ -51,6 +51,42 @@ class Identity extends Model
     }
 
     /**
+     * Get the recent orders of the identity.
+     *
+     * @return Array RecentOrders
+     */
+    public function getRecentOrders($amount)
+    {
+        $orders = array();
+        $i = 0;
+        $pallets = $this->pallets()->select('id','orderReference as reference','created_at')->orderBy('id', 'desc')->take($amount)->get();
+        foreach($pallets as $pallet){
+            $i++;
+            $orders[$i]['id'] = $pallet->id;
+            $orders[$i]['reference'] = $pallet->reference;
+            $orders[$i]['created_at'] = $pallet->created_at;
+            $orders[$i]['status'] = $pallet->getStatus();
+        }
+        $options = $this->options()->select('id','orderReference as reference','created_at')->orderBy('id', 'desc')->take($amount)->get();
+        foreach($options as $option){
+            $i++;
+            $orders[$i]['id'] = $option->id;
+            $orders[$i]['reference'] = $option->reference;
+            $orders[$i]['created_at'] = $option->created_at;
+            $orders[$i]['status'] = 'ordered';
+        }
+
+        /*foreach ($orders as $key => $row) {
+            $created[$key]  = $row['created_at'];
+        }*/
+
+        //$orders = array_multisort($created, SORT_DESC, $orders);
+        //$orders = array_slice ($orders , 0 , 5);
+
+        return $orders;
+    }
+
+    /**
      * Get the users associated with the identity.
      */
     public function users()

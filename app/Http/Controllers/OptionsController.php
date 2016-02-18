@@ -26,7 +26,7 @@ class OptionsController extends Controller
         		$option = new Option();
         		$option->identity_id = Auth::user()->getActiveIdentity()->id;
         		$option->price = Option::get_default_price(false);
-        		$option->orderReference = 'O' . 12345;
+        		$option->orderReference = 'OPT' . Auth::user()->getActiveIdentity()->customerReference . date("y") . sprintf("%02d",(count(Auth::user()->getActiveIdentity()->options)+1));
         		$option->save();
         	}
         	return redirect('orders/container');
