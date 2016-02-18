@@ -29,10 +29,13 @@
       $(document).ready(function() {
 
         $('#table').dataTable( {
-                "columnDefs": [ {
-                  "targets": 'no-sort',
-                  "orderable": false,
-            } ]
+            "columnDefs": [ {
+              "targets": 'no-sort',
+              "orderable": false,
+            } ],
+            "language": {
+                "url": "{{ URL::asset('lang/English.json') }}"
+            }
         } );
 
       } );
