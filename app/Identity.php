@@ -101,4 +101,12 @@ class Identity extends Model
     {
         return $this->hasMany('App\Pallet');
     }
+
+    /**
+     * Get all of the options ordered by the identity.
+     */
+    public function options()
+    {
+        return $this->hasMany('App\Option');
+    }
 }

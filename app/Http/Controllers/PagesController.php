@@ -11,6 +11,7 @@ use Auth;
 
 use App\PalletCategory;
 use App\Warehouse;
+use App\Option;
 
 class PagesController extends Controller
 {
@@ -86,7 +87,8 @@ class PagesController extends Controller
 	 */
     public function orderContainer(){
     	$user = Auth::user();
-    	return view('pages.orders.container', compact('user'));
+    	$defaultPrice = Option::get_default_price(true);
+    	return view('pages.orders.container', compact('user','defaultPrice'));
 	}
 
 	/**

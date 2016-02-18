@@ -57,6 +57,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::put('orders/pallets/{reference}', 'OrdersController@editOrder');             // Edit a pallet order from detail view
     // Container Orders:
         Route::get('orders/container', 'PagesController@orderContainer');                   // Container order overview   
+        Route::post('orders/container', 'OptionsController@placeOption');                   // Container order overview   
 
     Route::get('downloads', 'PagesController@downloads');
     Route::get('settings', 'PagesController@settings');
