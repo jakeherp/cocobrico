@@ -248,6 +248,13 @@ ul.dropdown.menu.success > li:hover {
     background: #22bb5b;
 }
 
+div.callout.secondary > em {
+    display: block;
+    font-size: .75em;
+    text-align: right;
+    color: #999;
+}
+
 .horizontal-scroll {
   overflow: hidden;
   overflow-x: auto;
