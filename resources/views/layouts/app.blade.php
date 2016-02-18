@@ -34,7 +34,7 @@
               "orderable": false,
             } ],
             "language": {
-                "url": "{{ URL::asset('lang/English.json') }}"
+                "url": "{{ URL::asset('lang/Russian.json') }}"
             }
         } );
 
