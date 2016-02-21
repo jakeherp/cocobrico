@@ -89,6 +89,32 @@ class UserController extends Controller
     }
 
     /**
+	 * Shows the page where the user can reset his password.
+	 *
+	 * @return Response
+	 */
+    public function forgotPassword($user_id){
+    	$user = User::find($user_id);
+    	return view('auth.password',compact('user'));
+    }
+
+    /**
+	 * Send an email to the user for the password reset.
+	 *
+	 * @return Response
+	 */
+    public function resetPassword(Request $request){
+    	$user = User::find($request->userId);
+    	$user->register_token = str_random(40);
+    	$user->save();
+    	$sent = Mail::send('emails.verifyEmail', ['user' => $user], function ($m) use ($user) {
+        	$m->from('noreply@cb.pcserve.eu', 'Cocobrico');
+        	$m->to($user->email, $user->email)->subject('Reset your Password.');
+        });
+    	return redirect('/')->with('messages', ['We send you an email with a link to reset your password.']);
+    }
+
+    /**
 	 * Registers the users password.
 	 *
 	 * @param  CheckPasswordRequest $request

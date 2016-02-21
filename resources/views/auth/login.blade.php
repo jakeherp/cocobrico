@@ -30,7 +30,7 @@
                   </div>  
                   {!! Form::submit(trans('auth.login'), ['class' => 'button alert']) !!}
                   <div class="float-right text-right">
-                  	<a href="#" class="text-right">{{ trans('auth.forgotpassword') }}</a>
+                  	<a href="{{ url('password/'.$user->id) }}" class="text-right">{{ trans('auth.forgotpassword') }}</a>
                   </div>
 
                 </div>

@@ -29,6 +29,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('identify', 'UserController@identify');
     Route::get('identify', function () { return redirect('/'); });
 
+    Route::get('password/{user_id}', 'UserController@forgotPassword');
+    Route::post('password', 'UserController@resetPassword');
+
     Route::get('register', function () { return redirect('/'); });
     Route::get('register/{token}', 'UserController@showRegisterForm');
     Route::put('register', 'UserController@register');
