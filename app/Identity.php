@@ -76,6 +76,10 @@ class Identity extends Model
             $orders[$i]['status'] = 'ordered';
         }
 
+        array_multisort(array_column($orders, 'created_at'), SORT_DESC, $orders);
+
+        $orders = array_slice ($orders , 0 , 5);
+
         /*foreach ($orders as $key => $row) {
             $created[$key]  = $row['created_at'];
         }*/
