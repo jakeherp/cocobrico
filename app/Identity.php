@@ -136,6 +136,31 @@ class Identity extends Model
     }
 
     /**
+     * Counts all pallet orders.
+     *
+     * @param integer $year
+     * @return array $amounts
+     */
+    public function countPalletOrders($year)
+    {
+        $amounts = array();
+        foreach(PalletCategory::all() as $category){  
+            $amounts[$category->id] = 0;
+            $orders = DB::table('pallets')
+                ->leftJoin('pallet_orders', 'pallet_orders.pallet_id', '=', 'pallets.id')
+                ->select('pallet_orders.amount as amount')
+                ->where('pallets.identity_id', '=', $this->id)
+                ->where('pallet_orders.pallet_category_id', '=', $category->id)
+                ->where('pallets.created_at', 'like', '%' . $year . '%')
+                ->get();
+            foreach($orders as $order){
+                $amounts[$category->id] += $order->amount;
+            }
+        }
+        return $amounts;
+    }
+
+    /**
      * Get all of the prices for the identity.
      */
     public function prices()

@@ -56,9 +56,10 @@ class PagesController extends Controller
 	 */
     public function dashboard(){
     	$user = Auth::user();
+    	$categories = PalletCategory::all();
     	//$news = News::where('for_all', '=', 1)->where('start', '<=', time())->where('end', '>=', time())->get();
     	$orders = $user->getActiveIdentity()->getRecentOrders(5);
-    	return view('pages.dashboard', compact('user','orders'));
+    	return view('pages.dashboard', compact('user','orders','categories'));
 	}
 
 	/**

@@ -48,6 +48,23 @@ class Option extends Model
     }
 
     /**
+     * Gives back, if the pallet order has a given status.
+     *
+     * @param  string  $slug
+     * @return boolean
+     */
+    public function hasStatus($slug)
+    {
+        $status = OrderStatus::where('type','=',1)->where('slug','=',$slug)->where('type_id','=',$this->id)->get();
+        if(count($status) === 1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    /**
      * Toggles a status of a option order.
      *
      * @param  string  $slug

@@ -40,7 +40,11 @@
             </thead>
             <tbody>
                 @foreach($orders as $order)
-                    <tr>
+                    @if($order['obj']->hasStatus('cancelled'))
+                        <tr class="cancelled">
+                    @else
+                        <tr>
+                    @endif
                         <td>{{ date(trans('global.datetimeformat'),$order['created_at']) }}</td>
                         <td>{{ $order['obj']->orderReference }}</td>
                         <td>

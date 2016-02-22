@@ -39,30 +39,28 @@
           <tbody>
             <tr>
               <td>Container</td>
-              <td>21</td>
-              <td>12</td>
+              <td>XX</td>
+              <td>XX</td>
             </tr>
-            <tr>
-              <td>Pallet 1kg</td>
-              <td>3</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>Pallet 3kg</td>
-              <td>2</td>
-              <td>2</td>
-            </tr>
-            <tr>
-              <td>Pallet 10kg</td>
-              <td>1</td>
-              <td>2</td>
-            </tr>
+            @foreach($categories as $category)
+              <tr>
+                <td>Pallet {{ $category->weight }}kg</td>
+                <td>
+                  <?php $info = $user->getActiveIdentity()->countPalletOrders(date('Y',time())); ?>
+                  {{ $info[$category->id] }}
+                </td>
+                <td>
+                  <?php $info = $user->getActiveIdentity()->countPalletOrders(date('Y',time())-1); ?>
+                  {{ $info[$category->id] }}
+                </td>
+              </tr>
+            @endforeach
           </tbody>
           <tfoot>
             <tr>
               <td>Total orders:</td>
-              <td>27</td>
-              <td>17</td>
+              <td>XX</td>
+              <td>XX</td>
             </tr>
           </tfoot>
         </table>  
