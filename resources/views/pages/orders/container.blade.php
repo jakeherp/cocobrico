@@ -63,19 +63,53 @@
           </thead>
           <tbody>
             @foreach($user->getActiveIdentity()->options as $option)
-               <tr>
+              @if($option->hasStatus('cancelled'))
+              <tr class="cancelled">
+              @else
+              <tr>
+              @endif
                 <td>{{ $option->created_at }}</td>
                 <td>{{ $option->orderReference }}</td>
                 <td>Container Option</td>
                 <td>{{ number_format ($option->price , 2 , '.' , '&#39;' ) }} EUR</td>
-                <td>Ordered</td>
-                <td><a href="#" class="alert button">Cancel Order</a></td>
+                <td>{{ trans('orders.'.$option->getStatus()) }}</td>
+                <td>
+                  <a 
+                    class="alert button cancelOrderModalButton" 
+                    orderReference="{{ $option->orderReference }}" 
+                    data-tooltip aria-haspopup="true" 
+                    data-disable-hover='false' 
+                    tabindex=1 
+                    title="Cancel Order" 
+                    @if( $option->hasStatus('cancelled') )
+                      disabled
+                    @else
+                      data-open="cancelOrderModal" 
+                    @endif
+                  >Cancel Order</a></td>
               </tr>
             @endforeach
           </tbody>
         </table>
             
       </div>
+
+      <!-- Modal for cancelling orders -->
+      <div class="reveal" id="cancelOrderModal" data-reveal>
+        <h3>Cancel order <span class="orderReferenceSpan"></span></h3>
+        <div class="callout alert">You are about to cancel your order no. <span class="orderReferenceSpan"></span>. Are you sure you want to cancel this order?</div>
+        {!! Form::open(['url' => 'orders/container/cancel', 'method' => 'post']) !!}
+          <input type="hidden" id="orderReference" name="orderReference" value="">
+          <button id="cancelOrderButton" class="alert button">Cancel order</button>
+          <button type="reset" class="secondary button" data-close>Keep order</button>
+        {!! Form::close() !!}
+        <button class="close-button" data-close aria-label="Close reveal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <script type="text/javascript" src="{{ URL::asset('js/orderactions.js') }}"></script>
+
     @endif
     </section>
     

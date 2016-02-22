@@ -12,6 +12,7 @@ use App\PalletCategory;
 use App\Price;
 use App\Remark;
 use App\User;
+use App\Option;
 use App\Pallet;
 use App\PalletOrder;
 use App\Warehouse;
@@ -239,7 +240,7 @@ class OrdersController extends Controller
         $reference = $request->orderReference;
         $user = Auth::user();
         $identity = $user->getActiveIdentity();
-        if (strpos($reference, 'P') !== false) {
+        if ($reference[0] == 'P') {
             // Pallet:
             $pallet = Pallet::where('orderReference','=',$reference)->first();
             if(count($pallet) > 0 AND $identity->id == $pallet->identity_id){
@@ -251,7 +252,13 @@ class OrdersController extends Controller
         }
         else{
             // Container:
-                return 'CONTAINER';
+            $option = Option::where('orderReference','=',$reference)->first();
+            if(count($option) > 0 AND $identity->id == $option->identity_id){
+                if(!$option->hasStatus('cancelled') || ($option->hasStatus('cancelled') && $user->hasPermission('is_admin'))){
+                    $option->toggleStatus('cancelled');
+                }
+            }
+            return redirect()->back();
         }
     }
 
