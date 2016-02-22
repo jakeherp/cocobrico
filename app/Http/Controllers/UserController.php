@@ -95,7 +95,12 @@ class UserController extends Controller
 	 */
     public function forgotPassword($user_id){
     	$user = User::find($user_id);
-    	return view('auth.password',compact('user'));
+    	if($user){
+    		return view('auth.password',compact('user'));
+    	}
+    	else{
+    		return redirect('/');
+    	}
     }
 
     /**
@@ -105,13 +110,18 @@ class UserController extends Controller
 	 */
     public function resetPassword(Request $request){
     	$user = User::find($request->userId);
-    	$user->register_token = str_random(40);
-    	$user->save();
-    	$sent = Mail::send('emails.verifyEmail', ['user' => $user], function ($m) use ($user) {
-        	$m->from('noreply@cb.pcserve.eu', 'Cocobrico');
-        	$m->to($user->email, $user->email)->subject('Reset your Password.');
-        });
-    	return redirect('/')->with('messages', ['We send you an email with a link to reset your password.']);
+    	if($user){
+	    	$user->register_token = str_random(40);
+	    	$user->save();
+	    	$sent = Mail::send('emails.verifyEmail', ['user' => $user], function ($m) use ($user) {
+	        	$m->from('noreply@cb.pcserve.eu', 'Cocobrico');
+	        	$m->to($user->email, $user->email)->subject('Reset your Password.');
+	        });
+    		return redirect('/')->with('messages', ['We send you an email with a link to reset your password.']);
+    	}
+    	else{
+    		return redirect('/');
+    	}
     }
 
     /**

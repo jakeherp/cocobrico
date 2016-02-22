@@ -55,30 +55,46 @@ class Identity extends Model
      *
      * @return Array RecentOrders
      */
-    public function getRecentOrders($amount)
+    public function getRecentOrders($amount = 0)
     {
         $orders = array();
         $i = 0;
-        $pallets = $this->pallets()->select('id','orderReference as reference','created_at')->orderBy('id', 'desc')->take($amount)->get();
+        $pallets = $this->pallets()->orderBy('id', 'desc');
+
+        if($amount == 0){
+            $pallets = $pallets->get();
+        }
+        else{
+            $pallets = $pallets->take($amount)->get();
+        }
+
         foreach($pallets as $pallet){
             $i++;
-            $orders[$i]['id'] = $pallet->id;
-            $orders[$i]['reference'] = $pallet->reference;
-            $orders[$i]['created_at'] = $pallet->created_at;
-            $orders[$i]['status'] = $pallet->getStatus();
+            $orders[$i]['obj'] = $pallet;
+            $orders[$i]['type'] = 'pallet';
+            $orders[$i]['created_at'] = strtotime($pallet->created_at);
         }
-        $options = $this->options()->select('id','orderReference as reference','created_at')->orderBy('id', 'desc')->take($amount)->get();
+        $options = $this->options()->orderBy('id', 'desc');
+
+        if($amount == 0){
+            $options = $options->get();
+        }
+        else{
+            $options = $options->take($amount)->get();
+        }
+
         foreach($options as $option){
             $i++;
-            $orders[$i]['id'] = $option->id;
-            $orders[$i]['reference'] = $option->reference;
-            $orders[$i]['created_at'] = $option->created_at;
-            $orders[$i]['status'] = 'ordered';
+            $orders[$i]['obj'] = $option;
+            $orders[$i]['type'] = 'option';
+            $orders[$i]['created_at'] = strtotime($option->created_at);
         }
 
         array_multisort(array_column($orders, 'created_at'), SORT_DESC, $orders);
 
-        $orders = array_slice ($orders , 0 , 5);
+        if($amount != 0){
+            $orders = array_slice ($orders , 0 , $amount);
+        }
         
         return $orders;
     }

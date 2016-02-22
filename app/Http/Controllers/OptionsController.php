@@ -28,6 +28,7 @@ class OptionsController extends Controller
         		$option->price = Option::get_default_price(false);
         		$option->orderReference = 'OPT' . Auth::user()->getActiveIdentity()->customerReference . date("y") . sprintf("%02d",(count(Auth::user()->getActiveIdentity()->options)+1));
         		$option->save();
+                $option->toggleStatus('ordered');
         	}
         	return redirect('orders/container');
         }

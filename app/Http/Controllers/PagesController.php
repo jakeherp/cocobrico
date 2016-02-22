@@ -68,7 +68,9 @@ class PagesController extends Controller
 	 */
     public function orders(){
     	$user = Auth::user();
-    	return view('pages.orders', compact('user'));
+    	$categories = PalletCategory::all();
+    	$orders = $user->getActiveIdentity()->getRecentOrders();
+    	return view('pages.orders', compact('user','orders','categories'));
 	}
 
 	/**

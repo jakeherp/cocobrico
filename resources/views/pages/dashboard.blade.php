@@ -73,7 +73,7 @@
       <div class="large-6 small-12 columns">
       
         <h4>Recent orders</h4>
-      
+        @if($orders)
         <table style="width: 100%; color: #fff background: #000;">
           <thead>
             <tr>
@@ -83,16 +83,18 @@
             </tr>
           </thead>
           <tbody>
-            @foreach($orders as $order)
-              <tr>
-                <td>{{ $order['reference'] }}</td>
-                <td>{{ $order['created_at'] }}</td>
-                <td>{{ $order['status'] }}</td>
-              </tr>
-            @endforeach
+              @foreach($orders as $order)
+                <tr>
+                  <td>{{ $order['obj']->orderReference }}</td>
+                  <td>{{ date(trans('global.datetimeformat'),$order['created_at']) }}</td>
+                  <td>{{ trans('orders.'.$order['obj']->getStatus()) }}</td>
+                </tr>
+              @endforeach
           </tbody>
         </table>  
-    
+        @else
+          <p>There are currently no orders!</p>
+        @endif
       </div>
 
     </section>
