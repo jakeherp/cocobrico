@@ -45,11 +45,11 @@
             <tbody>
               <tr>
                 <td>{{ trans('orders.date') }}</td>
-                <td>{{ date('d.m.Y', time($pallet->created_at)) }}</td>
+                <td>{{ date(trans('global.dateformat'), strtotime($pallet->created_at)) }}</td>
               </tr>
               <tr>
                 <td>{{ trans('orders.time') }}</td>
-                <td>{{ date('H:i:s', time($pallet->created_at)) }}</td>
+                <td>{{ date(trans('global.timeformat'), strtotime($pallet->created_at)) }}</td>
               </tr>
               <tr>
                 <td>{{ trans('orders.status') }}</td>
@@ -140,7 +140,7 @@
       <div class="callout">
         <h5>{{ trans('orders.remarks') }}</h5>
         @foreach($pallet->get_remarks() as $remark)
-          <div class="callout secondary">{{ $remark->body }} <em>{{ $remark->created_at }}</em></div>
+          <div class="callout secondary">{{ $remark->body }} <em>{{  date(trans('global.datetimeformat'), strtotime($remark->created_at)) }}</em></div>
         @endforeach
         <h6>{{ trans('orders.newremark') }}:</h6>
         {!! Form::open(['url' => ('orders/pallets/remark'), 'method' => 'post', 'id' => 'orderModalFormId']) !!}

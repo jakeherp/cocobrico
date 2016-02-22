@@ -23,6 +23,8 @@ return [
     'companies'             => 'Your companies',
     'settings'              => 'Settings',
     'messages'              => 'Messages',
-    'datetimeformat'        => 'd.m.Y H:i',
+    'datetimeformat'        => 'd.m.Y H:i:s',
+    'dateformat'            => 'd.m.Y',
+    'timeformat'            => 'H:i:s',
 
 ];
