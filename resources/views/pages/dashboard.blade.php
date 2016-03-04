@@ -3,7 +3,7 @@
 @section('content')
     
     <section class="row" id="content">
-
+<!--
 	  <div class="large-12 column">
 
         <div class="alert callout" data-closable>
@@ -23,7 +23,7 @@
         </div>
         
       </div>
-
+-->
       <div class="large-6 small-12 columns">
       
         <h4>Statistics</h4>
