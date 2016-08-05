@@ -15,7 +15,7 @@ class CreateCountriesTable extends Migration
         Schema::create('countries', function (Blueprint $table) {
             $table->increments('id');
 			$table->string('iso', 2)->default('');
-			$table->integer('name')->default('');
+			$table->integer('name');
 			$table->string('iso3',3)->default('');
 			$table->string('notificationEmail', 100)->default('admin@cocobrico.com');
             $table->boolean('active')->default(1);
