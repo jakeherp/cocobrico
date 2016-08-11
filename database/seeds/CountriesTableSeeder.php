@@ -16,7 +16,7 @@ class CountriesTableSeeder extends Seeder
     	Country::truncate();
 
     	$countries = [
-    	 	['id' => 1, 'iso' => 'AF', 'name' => 'Afghanistan', 'exclusivity' => 0, 'notificationEmail' => 'info@cocobrico.com', 'active' => 1],
+    	['id' => 1, 'iso' => 'AF', 'name' => 'Afghanistan', 'exclusivity' => 0, 'notificationEmail' => 'info@cocobrico.com', 'active' => 1],
 			['id' => 2, 'iso' => 'AL', 'name' => 'Albania', 'exclusivity' => 0, 'notificationEmail' => 'info@cocobrico.com', 'active' => 1],
 			['id' => 3, 'iso' => 'DZ', 'name' => 'Algeria', 'exclusivity' => 0, 'notificationEmail' => 'info@cocobrico.com', 'active' => 1],
 			['id' => 4, 'iso' => 'AS', 'name' => 'American Samoa', 'exclusivity' => 0, 'notificationEmail' => 'info@cocobrico.com', 'active' => 1],
