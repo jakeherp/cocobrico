@@ -83,9 +83,7 @@ class UserController extends Controller
 				return view('auth.register',compact('user'));
 			}
 		}
-		else{
-			return redirect('/');
-		}
+		return redirect('/')->with('messages', ['The token you have entered is invalid.']);
 	}
 
 	/**

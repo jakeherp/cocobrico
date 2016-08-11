@@ -6,7 +6,6 @@
       <div class="large-6 small-12 large-centered columns">
         <div class="callout large">
           <h3>{{ trans('auth.signin') }}</h3>
-          <p>{{ trans('auth.welcomeback') }}, {{ $user->firstname }}</p>
 
           @if ($errors->any())
               @foreach ($errors->all() as $error)
@@ -30,7 +29,7 @@
                   </div>  
                   {!! Form::submit(trans('auth.login'), ['class' => 'button alert']) !!}
                   <div class="float-right text-right">
-                  	<a href="{{ url('password/'.$user->id) }}" class="text-right">{{ trans('auth.forgotpassword') }}</a>
+                  	<a href="{{ url('password/') }}" class="text-right">{{ trans('auth.forgotpassword') }}</a>
                   </div>
 
                 </div>
