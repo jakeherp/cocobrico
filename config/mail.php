@@ -54,7 +54,10 @@ return [
     |
     */
 
-    'from' => ['address' => 'noreply@cb.pcserve.eu', 'name' => 'Cocobrico'],
+    'from' => [
+        'address' => env('MAIL_FROM_ADDRESS', 'noreply@cb.pcserve.eu'), 
+        'name' => env('MAIL_FROM_NAME', 'Cocobrico')
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -106,6 +109,6 @@ return [
     |
     */
 
-    'sendmail' => '/usr/sbin/sendmail -t -i',
+    'sendmail' => env('MAIL_SENDMAIL', '/usr/sbin/sendmail -t -i'),
 
 ];
